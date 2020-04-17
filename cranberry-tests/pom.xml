@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.cranberry</groupId>
+        <artifactId>cranberry</artifactId>
+        <version>${revision}${sha1}${changelist}</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <artifactId>cranberry-tests</artifactId>
+    <name>cranberry-test</name>
+    <description>
+        The cranberry tests is a module of cranberry library (see cranberry). This module provides  the unit tests
+        for the remaining modules of the cranberry project.
+    </description>
+    <url>https://github.com/ololx/cranberry/tree/master/cranberry-test</url>
+    <inceptionYear>2019</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://github.com/ololx/cranberry/LICENSE</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Alexander A. Kropotin</name>
+            <email>ololx@icloud.com</email>
+            <roles>
+                <role>initial work</role>
+                <role>author</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <properties>
+        <junit-jupiter.version>5.5.2</junit-jupiter.version>
+    </properties>
+
+    <dependencies>
+        <!--<test-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!--test/>-->
+        <!--<cranberry-muffin-->
+        <dependency>
+            <groupId>org.cranberry</groupId>
+            <artifactId>cranberry-muffin</artifactId>
+        </dependency>
+        <!--cranberry-muffin/>-->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--<compiler-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <!--compiler>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <configuration>
+                    <includes>
+                        <include>**Test*</include>
+                    </includes>
+                    <excludes>
+                        <exclude></exclude>
+                    </excludes>
+                    <excludedGroups></excludedGroups>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

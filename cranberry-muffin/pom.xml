@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.cranberry</groupId>
+        <artifactId>cranberry</artifactId>
+        <version>${revision}${sha1}${changelist}</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <artifactId>cranberry-muffin</artifactId>
+    <name>cranberry-muffin</name>
+    <description>
+        The cranberry muffin is a module of cranberry library and also java library is designed
+        to combine the possibilities of thematically grouped modules into one common library.
+    </description>
+    <url>https://github.com/ololx/cranberry</url>
+    <inceptionYear>2020</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://github.com/ololx/cranberry/LICENSE</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Alexander A. Kropotin</name>
+            <email>ololx@icloud.com</email>
+            <roles>
+                <role>initial work</role>
+                <role>author</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <!--<cranberry-statement-->
+        <dependency>
+            <groupId>org.cranberry</groupId>
+            <artifactId>cranberry-statement</artifactId>
+        </dependency>
+        <!--cranberry-statement>-->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>create-fat-jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

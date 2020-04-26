@@ -11,11 +11,11 @@
         <relativePath>../</relativePath>
     </parent>
 
-    <artifactId>cranberry-statement</artifactId>
-    <name>cranberry-statement</name>
+    <artifactId>cranberry-logging</artifactId>
+    <name>cranberry-logging</name>
     <description>
-        The cranberry statement is a module of cranberry library (see cranberry). This module provides an api for the
-        statements validation (such as not null and e.t.c.). This module includes an annotations for the injecting methods
+        The cranberry logging is a module of cranberry library (see cranberry). This module provides an API for the
+        displaying and displaying method parameters. This module includes an annotations for the injecting methods
         of this api into code during compilation.
     </description>
     <url>https://github.com/ololx/cranberry</url>

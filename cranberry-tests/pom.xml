@@ -64,12 +64,20 @@
             <scope>test</scope>
         </dependency>
         <!--test/>-->
-        <!--<cranberry-muffin-->
+        <!--<cranberry-modules-->
         <dependency>
             <groupId>org.cranberry</groupId>
-            <artifactId>cranberry-muffin</artifactId>
+            <artifactId>cranberry-statement</artifactId>
         </dependency>
-        <!--cranberry-muffin/>-->
+        <dependency>
+            <groupId>org.cranberry</groupId>
+            <artifactId>cranberry-logging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.cranberry</groupId>
+            <artifactId>cranberry-logging</artifactId>
+        </dependency>
+        <!--cranberry-modules/>-->
     </dependencies>
 
     <build>

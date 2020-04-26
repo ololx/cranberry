@@ -1,6 +1,5 @@
-package org.cranberry.statement.processor;
+package org.cranberry.logging.processor;
 
-import com.sun.source.tree.Tree;
 import com.sun.source.util.JavacTask;
 import com.sun.source.util.TaskEvent;
 import com.sun.source.util.Trees;
@@ -14,36 +13,31 @@ import com.sun.tools.javac.tree.JCTree.JCVariableDecl;
 import com.sun.tools.javac.tree.TreeMaker;
 import com.sun.tools.javac.util.List;
 import org.cranberry.commons.handler.EnterCompilationHandler;
-import org.cranberry.commons.scanner.VariableCompilationTreeScanner;
+import org.cranberry.commons.scanner.MethodCompilationTreeScanner;
 import org.cranberry.commons.util.TypeUtil;
-import org.cranberry.statement.annotation.NotBlank;
-import org.cranberry.statement.annotation.NotEmpty;
-import org.cranberry.statement.annotation.NotNull;
-import org.cranberry.statement.internal.util.Statements;
+import org.cranberry.logging.annotation.LogParam;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.*;
 import javax.lang.model.util.Types;
-import javax.tools.Diagnostic;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
  * The type State processor.
  */
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
-public class StatementProcessor extends AbstractProcessor {
+public class LoggingProcessor extends AbstractProcessor {
 
     /**
      * The constant SUPPORTED_ANNOTATIONS.
      */
     public static final Set<Class> SUPPORTED_ANNOTATIONS = new HashSet<Class>(){{
-        add(NotNull.class);
-        add(NotEmpty.class);
-        add(NotBlank.class);
+        add(LogParam.class);
     }};
 
     private JavacProcessingEnvironment javacProcessingEnv;
@@ -60,7 +54,7 @@ public class StatementProcessor extends AbstractProcessor {
 
     private JavacTask task;
 
-    private VariableCompilationTreeScanner scanner;
+    private MethodCompilationTreeScanner scanner;
 
     private TypeUtil typeUtil;
 
@@ -78,9 +72,9 @@ public class StatementProcessor extends AbstractProcessor {
         super.init(processingEnvironment);
         this.parser = Trees.instance(processingEnvironment);
         this.task = JavacTask.instance(processingEnvironment);
-        this.scanner = new VariableCompilationTreeScanner(this.parser);
+        this.scanner = new MethodCompilationTreeScanner(this.parser);
         this.scanner.setFilter(
-                (VariableElement element) ->
+                (element) ->
                         SUPPORTED_ANNOTATIONS.stream()
                                 .map(eachAnnotation -> element.getAnnotation(eachAnnotation) != null)
                                 .filter(b -> b != false)
@@ -115,40 +109,12 @@ public class StatementProcessor extends AbstractProcessor {
                                     this.typeUtil.getType(processingAnnotation)))
                                 continue;
 
-                            if (this.typeUtil.isSame(this.typeUtil.getType(processingAnnotation),
-                                    this.typeUtil.getType(NotBlank.class))
-                            && !this.checkTypeForNoBlankAnnotation(element)) {
-                                this.messager.printMessage(
-                                        Diagnostic.Kind.ERROR,
-                                        "@NotBlank could be applied to a String type only " + element.toString()
-                                        );
-                            } else if (this.typeUtil.isSame(this.typeUtil.getType(processingAnnotation),
-                                    this.typeUtil.getType(NotEmpty.class))
-                            && !this.checkTypeForNoEmtyAnnotation(element)) {
-                                this.messager.printMessage(
-                                        Diagnostic.Kind.ERROR,
-                                        "@NotEmpty could be applied to a String, Collection or Map types only "
-                                                + element.toString()
-                                );
-                            }
-
                             injectStatementsCall(element, annotationMirror);
                         }
                     }
                 });
 
         return true;
-    }
-
-    private boolean checkTypeForNoEmtyAnnotation(Element element) {
-        return this.typeUtil.isMap(element.asType())
-                || this.typeUtil.isCollection(element.asType())
-                || this.typeUtil.isArray(element.asType())
-                || this.typeUtil.isSame(element.asType(), this.typeUtil.getType(String.class));
-    }
-
-    private boolean checkTypeForNoBlankAnnotation(Element element) {
-        return this.typeUtil.isSame(element.asType(), this.typeUtil.getType(String.class));
     }
 
     /**
@@ -170,24 +136,41 @@ public class StatementProcessor extends AbstractProcessor {
         if ((parentElement = currentElement.getEnclosingElement()) != null) {
             JCTree parentNode = utils.getTree(parentElement);
 
-            JCStatement statement = this.getMethodExecutionStatement(currentNode, annotationMirror);
+            List<JCStatement> statement = this.getMethodExecutionStatements(parentElement, currentNode, annotationMirror);
 
-            ((JCMethodDecl) parentNode).body.stats = this.injectStatementIntoBody(
-                    ((JCMethodDecl) parentNode).body.stats,
-                    List.of(statement),
-                    currentElement);
+            ((JCMethodDecl) currentNode).body.stats = this.injectStatementIntoBody(
+                    ((JCMethodDecl) currentNode).body.stats,
+                    statement
+            );
         }
     }
 
-    private JCStatement getMethodExecutionStatement(JCTree currentNode, AnnotationMirror annotationMirror) {
-        JCExpression stateExpression = this.getMethodExecutionExpression(String.format(
-                "%s.state%s",
-                Statements.class.getCanonicalName(),
-                annotationMirror.getAnnotationType().asElement().getSimpleName()
+    private List<JCStatement> getMethodExecutionStatements(Element parentNode, JCTree currentNode, AnnotationMirror annotationMirror) {
+        final List<JCVariableDecl> params = ((JCMethodDecl) currentNode).params;
+
+        List<JCStatement> statements = List.nil();
+        for (JCVariableDecl param : params) {
+            statements = statements.append(this.getMethodExecutionStatement(parentNode, currentNode, annotationMirror, param));
+        }
+
+        return statements;
+    }
+
+    private JCStatement getMethodExecutionStatement(Element parentNode,
+                                                    JCTree currentNode,
+                                                    AnnotationMirror annotationMirror,
+                                                    JCVariableDecl param) {
+        final List<JCVariableDecl> params = ((JCMethodDecl) currentNode).params;
+        JCExpression loggerGetExpression = this.getMethodExecutionExpression(String.format(
+                "%s.getLogger",
+                Logger.class.getCanonicalName()
         ));
 
-        List<JCExpression> stateParams = List.nil();
-        stateParams = stateParams.append(maker.Ident(((JCVariableDecl) currentNode).name));
+        List<JCExpression> loggerGetArgs = List.nil();
+        loggerGetArgs = loggerGetArgs.append(maker.Literal(parentNode.toString()));
+
+        JCExpression loggerGet = maker.Apply(List.<JCExpression>nil(), loggerGetExpression, loggerGetArgs);
+        loggerGet = maker.Select(loggerGet, utils.getName("info"));
 
         String message = null;
         for (Map.Entry<? extends ExecutableElement, ? extends AnnotationValue> annotationEnElementValue :
@@ -197,14 +180,24 @@ public class StatementProcessor extends AbstractProcessor {
                 continue;
 
             message = String.valueOf(annotationEnElementValue.getValue().getValue());
-            stateParams = stateParams.append(maker.Literal(message));
         }
 
-        JCStatement statement = maker.Exec(maker.Apply(
-                List.<JCExpression>nil(),
-                stateExpression,
-                stateParams)
+        JCExpression mainFormatExpression = this.getMethodExecutionExpression("String.format");
+
+        List<JCExpression> mainFormatArgs = List.nil();
+        mainFormatArgs = mainFormatArgs.append(maker.Literal(message != null ? "%s %s" : "%s = %s"));
+        mainFormatArgs = mainFormatArgs.append(maker.Literal(message != null ? message : param.getName().toString()));
+        mainFormatArgs = mainFormatArgs.append(maker.Ident(param.name));
+
+        JCExpression format = maker.Apply(List.<JCExpression>nil(), mainFormatExpression, mainFormatArgs);
+
+        List<JCExpression> printlnArgs = List.nil();
+        printlnArgs = printlnArgs.append(format);
+
+        JCStatement statement = maker.Exec(maker.Apply(List.<JCExpression>nil(), loggerGet, printlnArgs)
         );
+
+        System.err.println(statement);
 
         return statement;
     }
@@ -220,7 +213,7 @@ public class StatementProcessor extends AbstractProcessor {
         return expression;
     }
 
-    private List<JCStatement> injectStatementIntoBody(List<JCStatement> source, List<JCStatement> injection, Element currentElement) {
+    private List<JCStatement> injectStatementIntoBody(List<JCStatement> source, List<JCStatement> injection) {
 
         if (source.isEmpty())
             return injection;
@@ -229,19 +222,8 @@ public class StatementProcessor extends AbstractProcessor {
             return source;
 
         List<JCStatement> statements = List.nil();
-
-        for (JCStatement statement : source.reverse()) {
-            if (currentElement.getKind() == ElementKind.LOCAL_VARIABLE
-                    && statement.getKind() == Tree.Kind.VARIABLE
-                    && ((JCVariableDecl) statement).name.equals(((JCVariableDecl) this.utils.getTree(currentElement)).name))
-                statements = statements.prependList(injection);
-
-            statements = statements.prepend(statement);
-
-            if (currentElement.getKind() == ElementKind.PARAMETER
-                    && statement.equals(source.get(0)))
-                statements = statements.prependList(injection);
-        }
+        statements = statements.appendList(injection);
+        statements = statements.appendList(source);
 
         return statements;
     }

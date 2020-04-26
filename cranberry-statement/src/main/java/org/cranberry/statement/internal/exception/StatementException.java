@@ -17,7 +17,9 @@
 package org.cranberry.statement.internal.exception;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 /**

@@ -19,7 +19,7 @@ package org.cranberry.commons.scanner;
 import com.sun.source.tree.MethodTree;
 import com.sun.source.util.Trees;
 
-import javax.lang.model.element.VariableElement;
+import javax.lang.model.element.ExecutableElement;
 
 /**
  * The type Method compilation tree scanner.
@@ -28,7 +28,7 @@ import javax.lang.model.element.VariableElement;
  * @project cranberry
  * @created 2020 -02-19 14:43
  */
-public class MethodCompilationTreeScanner extends AbstractCompilationTreeScanner<VariableElement> {
+public class MethodCompilationTreeScanner extends AbstractCompilationTreeScanner<ExecutableElement> {
 
     /**
      * Instantiates a new Method compilation tree scanner.

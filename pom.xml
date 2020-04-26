@@ -39,6 +39,7 @@
     <modules>
         <module>/cranberry-engine</module>
         <module>/cranberry-statement</module>
+        <module>/cranberry-logging</module>
         <module>/cranberry-tests</module>
         <module>/cranberry-muffin</module>
     </modules>
@@ -70,6 +71,11 @@
             <dependency>
                 <groupId>org.cranberry</groupId>
                 <artifactId>cranberry-statement</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.cranberry</groupId>
+                <artifactId>cranberry-logging</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

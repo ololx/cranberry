@@ -42,7 +42,7 @@ public class LogParamAnnotationExample {
      * Messages in the log will label the format {@char "name of param = param"} for each parameter.
      */
     @LogParam
-    public static void runWithoutCustomMessage(@NotEmpty List<String> param) {
+    public static void runWithoutCustomMessage(List<String> param) {
         param.stream()
                 .forEach(eachParam -> {
                     System.out.println(eachParam);
@@ -56,8 +56,7 @@ public class LogParamAnnotationExample {
      * Messages in the log will label the format {@char "message param"} for each parameter.
      */
     @LogParam(message = "Start execution with param =")
-    public static void runWithCustomMessage(
-            @NotEmpty(message = "This param couldn't be empty") List<String> param) {
+    public static void runWithCustomMessage(List<String> param) {
         param.stream()
                 .forEach(eachParam -> {
                     System.out.println(eachParam);

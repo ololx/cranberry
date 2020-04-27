@@ -16,6 +16,7 @@ import org.cranberry.commons.handler.EnterCompilationHandler;
 import org.cranberry.commons.scanner.MethodCompilationTreeScanner;
 import org.cranberry.commons.util.TypeUtil;
 import org.cranberry.logging.annotation.LogParam;
+import org.cranberry.logging.wrapper.LoggerWrapper;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
@@ -162,8 +163,8 @@ public class LoggingProcessor extends AbstractProcessor {
                                                     JCVariableDecl param) {
         final List<JCVariableDecl> params = ((JCMethodDecl) currentNode).params;
         JCExpression loggerGetExpression = this.getMethodExecutionExpression(String.format(
-                "%s.getLogger",
-                Logger.class.getCanonicalName()
+                "%s.getInstance",
+                LoggerWrapper.class.getCanonicalName()
         ));
 
         List<JCExpression> loggerGetArgs = List.nil();
@@ -193,6 +194,7 @@ public class LoggingProcessor extends AbstractProcessor {
 
         List<JCExpression> printlnArgs = List.nil();
         printlnArgs = printlnArgs.append(format);
+        printlnArgs = printlnArgs.append(maker.Literal(((JCMethodDecl) currentNode).getName().toString()));
 
         JCStatement statement = maker.Exec(maker.Apply(List.<JCExpression>nil(), loggerGet, printlnArgs)
         );

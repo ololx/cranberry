@@ -48,6 +48,12 @@
             <artifactId>cranberry-statement</artifactId>
         </dependency>
         <!--cranberry-statement>-->
+        <!--<cranberry-logging-->
+        <dependency>
+            <groupId>org.cranberry</groupId>
+            <artifactId>cranberry-logging</artifactId>
+        </dependency>
+        <!--cranberry-logging>-->
     </dependencies>
 
     <build>
@@ -65,7 +71,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.2.3</version>
                 <configuration>
                     <createDependencyReducedPom>false</createDependencyReducedPom>
                 </configuration>

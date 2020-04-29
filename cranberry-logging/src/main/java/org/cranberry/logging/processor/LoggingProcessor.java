@@ -14,6 +14,7 @@ import com.sun.tools.javac.tree.TreeMaker;
 import com.sun.tools.javac.util.List;
 import org.cranberry.commons.handler.EnterCompilationHandler;
 import org.cranberry.commons.scanner.MethodCompilationTreeScanner;
+import org.cranberry.commons.scanner.VariableCompilationTreeScanner;
 import org.cranberry.commons.util.TypeUtil;
 import org.cranberry.logging.annotation.LogParam;
 import org.cranberry.logging.wrapper.LoggerWrapper;
@@ -137,7 +138,7 @@ public class LoggingProcessor extends AbstractProcessor {
         if ((parentElement = currentElement.getEnclosingElement()) != null) {
             JCTree parentNode = utils.getTree(parentElement);
 
-            List<JCStatement> statement = this.getMethodExecutionStatements(parentElement, currentNode, annotationMirror);
+            List<JCStatement> statement = this.getMethodExecutionStatements((JCTree.JCClassDecl) parentNode, currentNode, annotationMirror);
 
             ((JCMethodDecl) currentNode).body.stats = this.injectStatementIntoBody(
                     ((JCMethodDecl) currentNode).body.stats,
@@ -146,7 +147,7 @@ public class LoggingProcessor extends AbstractProcessor {
         }
     }
 
-    private List<JCStatement> getMethodExecutionStatements(Element parentNode, JCTree currentNode, AnnotationMirror annotationMirror) {
+    private List<JCStatement> getMethodExecutionStatements(JCTree.JCClassDecl parentNode, JCTree currentNode, AnnotationMirror annotationMirror) {
         final List<JCVariableDecl> params = ((JCMethodDecl) currentNode).params;
 
         List<JCStatement> statements = List.nil();
@@ -157,18 +158,20 @@ public class LoggingProcessor extends AbstractProcessor {
         return statements;
     }
 
-    private JCStatement getMethodExecutionStatement(Element parentNode,
+    private JCStatement getMethodExecutionStatement(JCTree.JCClassDecl parentNode,
                                                     JCTree currentNode,
                                                     AnnotationMirror annotationMirror,
                                                     JCVariableDecl param) {
         final List<JCVariableDecl> params = ((JCMethodDecl) currentNode).params;
         JCExpression loggerGetExpression = this.getMethodExecutionExpression(String.format(
                 "%s.getInstance",
-                LoggerWrapper.class.getCanonicalName()
+                LoggerWrapper.class.getName()
         ));
 
+        System.err.println(parentNode.getSimpleName().toString());
+
         List<JCExpression> loggerGetArgs = List.nil();
-        loggerGetArgs = loggerGetArgs.append(maker.Literal(parentNode.toString()));
+        loggerGetArgs = loggerGetArgs.append(maker.Literal(parentNode.getSimpleName().toString()));
 
         JCExpression loggerGet = maker.Apply(List.<JCExpression>nil(), loggerGetExpression, loggerGetArgs);
         loggerGet = maker.Select(loggerGet, utils.getName("info"));

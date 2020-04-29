@@ -73,10 +73,6 @@
             <groupId>org.cranberry</groupId>
             <artifactId>cranberry-logging</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.cranberry</groupId>
-            <artifactId>cranberry-logging</artifactId>
-        </dependency>
         <!--cranberry-modules/>-->
     </dependencies>
 

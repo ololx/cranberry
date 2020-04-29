@@ -28,7 +28,13 @@ import java.util.logging.Logger;
  */
 public final class LoggerWrapper {
 
+    private final String sourceClassName;
+
     private final Logger logger;
+
+    public static LoggerWrapper getInstance(Logger logger) {
+        return new LoggerWrapper(logger);
+    }
 
     public static LoggerWrapper getInstance(Class<?> clazz) {
         return new LoggerWrapper(clazz);
@@ -38,12 +44,24 @@ public final class LoggerWrapper {
         return new LoggerWrapper(className);
     }
 
+    LoggerWrapper(Logger logger) {
+        this(logger, null);
+    }
+
     LoggerWrapper(Class<?> clazz) {
         this(clazz.getName());
     }
 
-    LoggerWrapper(String className) {
-        logger = Logger.getLogger(className);
+    LoggerWrapper(String sourceClassName) {
+        this.sourceClassName = sourceClassName;
+        logger = Logger.getLogger(sourceClassName);
+    }
+
+    LoggerWrapper(Logger logger, String sourceClassName) {
+        this.logger = logger;
+        this.sourceClassName = sourceClassName != null
+                ? sourceClassName
+                : logger.getName();
     }
 
     public void info(String message, String sourceMethodName, Throwable t) {
@@ -71,7 +89,7 @@ public final class LoggerWrapper {
             logRecord.setThrown(throwable);
         }
 
-        logRecord.setSourceClassName(logger.getName());
+        logRecord.setSourceClassName(sourceClassName);
         logRecord.setSourceMethodName(sourceMethodName);
 
         return logRecord;

@@ -53,8 +53,7 @@ public final class LoggerWrapper {
     }
 
     LoggerWrapper(String sourceClassName) {
-        this.sourceClassName = sourceClassName;
-        logger = Logger.getLogger(sourceClassName);
+        this(Logger.getLogger(sourceClassName), sourceClassName);
     }
 
     LoggerWrapper(Logger logger, String sourceClassName) {
@@ -89,6 +88,7 @@ public final class LoggerWrapper {
             logRecord.setThrown(throwable);
         }
 
+        logRecord.setLoggerName(sourceClassName);
         logRecord.setSourceClassName(sourceClassName);
         logRecord.setSourceMethodName(sourceMethodName);
 

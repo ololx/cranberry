@@ -158,20 +158,20 @@ public class LoggingProcessor extends AbstractProcessor {
         return statements;
     }
 
-    private JCStatement getMethodExecutionStatement(JCTree.JCClassDecl parentNode,
+    private JCStatement getMethodExecutionStatement(JCTree parentNode,
                                                     JCTree currentNode,
                                                     AnnotationMirror annotationMirror,
                                                     JCVariableDecl param) {
         final List<JCVariableDecl> params = ((JCMethodDecl) currentNode).params;
         JCExpression loggerGetExpression = this.getMethodExecutionExpression(String.format(
                 "%s.getInstance",
-                LoggerWrapper.class.getName()
+                LoggerWrapper.class.getCanonicalName()
         ));
 
-        System.err.println(parentNode.getSimpleName().toString());
+        System.err.println(((JCTree.JCClassDecl) parentNode).sym.fullname.toString());
 
         List<JCExpression> loggerGetArgs = List.nil();
-        loggerGetArgs = loggerGetArgs.append(maker.Literal(parentNode.getSimpleName().toString()));
+        loggerGetArgs = loggerGetArgs.append(maker.Literal(((JCTree.JCClassDecl) parentNode).sym.fullname.toString()));
 
         JCExpression loggerGet = maker.Apply(List.<JCExpression>nil(), loggerGetExpression, loggerGetArgs);
         loggerGet = maker.Select(loggerGet, utils.getName("info"));

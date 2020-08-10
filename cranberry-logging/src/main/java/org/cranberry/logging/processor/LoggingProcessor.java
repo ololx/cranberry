@@ -168,8 +168,6 @@ public class LoggingProcessor extends AbstractProcessor {
                 LoggerWrapper.class.getCanonicalName()
         ));
 
-        System.err.println(((JCTree.JCClassDecl) parentNode).sym.fullname.toString());
-
         List<JCExpression> loggerGetArgs = List.nil();
         loggerGetArgs = loggerGetArgs.append(maker.Literal(((JCTree.JCClassDecl) parentNode).sym.fullname.toString()));
 
@@ -201,8 +199,6 @@ public class LoggingProcessor extends AbstractProcessor {
 
         JCStatement statement = maker.Exec(maker.Apply(List.<JCExpression>nil(), loggerGet, printlnArgs)
         );
-
-        System.err.println(statement);
 
         return statement;
     }

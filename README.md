@@ -16,7 +16,7 @@ ________________________________________
 
 The Cranberry is a java library that allows to write less code - it's  automatically plugs into your project build and sweets up your java.
 
-[![status](https://img.shields.io/badge/status-active-active?style=flat-square)](BADGES_GUIDE.md#status) [![version](https://img.shields.io/badge/version-0.1.0-informational?style=flat-square)](BADGES_GUIDE.md#version) [![stable](https://img.shields.io/badge/stable-no-important?style=flat-square)](BADGES_GUIDE.md#stable) [![build](https://img.shields.io/badge/build-passing-success?style=flat-square)](BADGES_GUIDE.md#build) [![oss lifecycle](https://img.shields.io/badge/oss_lifecycle-active-important?style=flat-square)](BADGES_GUIDE.md#oss-lifecycle) [![maintenance](https://img.shields.io/badge/maintenance-yes-informational?style=flat-square)](BADGES_GUIDE.md#maintenance) [![latest release date](https://img.shields.io/badge/latest_release_date-April_17,_2020-informational?style=flat-square)](BADGES_GUIDE.md#release-date) [![last commit](https://img.shields.io/badge/last_commit-April_30,_2020-informational?style=flat-square)](BADGES_GUIDE.md#commit-date)
+[![status](https://img.shields.io/badge/status-active-active?style=flat-square)](BADGES_GUIDE.md#status) [![version](https://img.shields.io/badge/version-0.2.0-informational?style=flat-square)](BADGES_GUIDE.md#version) [![stable](https://img.shields.io/badge/stable-no-important?style=flat-square)](BADGES_GUIDE.md#stable) [![build](https://img.shields.io/badge/build-passing-success?style=flat-square)](BADGES_GUIDE.md#build) [![oss lifecycle](https://img.shields.io/badge/oss_lifecycle-active-important?style=flat-square)](BADGES_GUIDE.md#oss-lifecycle) [![maintenance](https://img.shields.io/badge/maintenance-yes-informational?style=flat-square)](BADGES_GUIDE.md#maintenance) [![latest release date](https://img.shields.io/badge/latest_release_date-August_10,_2020-informational?style=flat-square)](BADGES_GUIDE.md#release-date) [![last commit](https://img.shields.io/badge/last_commit-August_10,_2020-informational?style=flat-square)](BADGES_GUIDE.md#commit-date)
 
 [![license](https://img.shields.io/badge/license-Apache_2.0-informational?style=flat-square)](LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
@@ -50,8 +50,9 @@ Sometimes it wants frequently used code to be generated automatically. Especiall
 The cranberry project includes the follows modules:
 
 - [cranberry-muffin](cranberry-muffin/README.md) - this module provides a general realisation of simple tools and wrappers which are used in another cranberry modules for the automatically code generating during compilation;
-- [cranberry engine](cranberry-engine/README.md) - this module provides an api for the statements validation (such as not null and e.t.c.). This module includes an annotations for the injecting methods of this api into code during compilation;
-- [cranberry statement](cranberry-statement/README.md) - this module  is designed to combine the possibilities of thematically grouped modules into one common library;
+- [cranberry engine](cranberry-engine/README.md) - this module  is designed to combine the possibilities of thematically grouped modules into one common library;
+- [cranberry statement](cranberry-statement/README.md) - this module provides an api for the statements validation (such as not null and e.t.c.). This module includes an annotations for the injecting methods of this api into code during compilation;
+- [cranberry logging](cranberry-logging/README.md) - this module provides an api for the loggint method params;
 - [cranberry tests](cranberry-tests/README.md) - this module contains the unit tests for the remaining modules of the cranberry project.
 
 ## 📸 Demo
@@ -65,6 +66,7 @@ The demonstration shows how `cranberry` helps to write less code on the checking
 - The api for the statements validation about not null values of the `Object` type;
 - The api for the statements validation about not empty values of the `Map` type, the `Collection` type, the `Array` and the `String` type;
 - The api for the statements validation about not blank values of the `String` type; 
+- The api for the loggint method params;
 - The annotations for the injecting methods of this api into code during compilation.
 
 ### To Do
@@ -148,6 +150,26 @@ The simple example below presents the the checking of a parameters on `not null`
 public List<SomeDetail> findSomeDetailbyUidAndTypeCode(@NotNull Long uid, 
     @NotEmpty("The Type Code must be not empty") String typeCode) {
     return Collections.EMPTY_LIST;
+}
+...
+```
+
+The simple example below presents the the logging of a parameters of method with the specific message.
+
+```java
+...
+/**
+ * The example of {@code @LogParam} annotation usage on {@code List<String> param}.
+ * <p>
+ * When this method is called, the parameters will be displayed in the log;
+ * Messages in the log will label the format {@char "message param"} for each parameter.
+ */
+@LogParam(message = "Start execution with param =")
+public static void runWithCustomMessage(List<String> param) {
+    param.stream()
+            .forEach(eachParam -> {
+                System.out.println(eachParam);
+            });
 }
 ...
 ```

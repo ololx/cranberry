@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - The new statement for the checking logial assertions.
 
+## [0.2.0] - 2020-08-10
+
+### Added
+
+- The module [cranberry logging](cranberry-logging/README.md) which provides an api for the loggint method params. This module includes an annotations for the injecting methods of this api into code during compilation.
+
 ## [0.1.0] - 2020-04-17
 
 ### Added

@@ -39,13 +39,14 @@
     <modules>
         <module>/cranberry-engine</module>
         <module>/cranberry-statement</module>
-        <module>/cranberry-tests</module>
+        <module>/cranberry-logging</module>
         <module>/cranberry-muffin</module>
+        <module>/cranberry-tests</module>
     </modules>
 
     <properties>
         <!--<project versioning-->
-        <revision>0.1.0</revision>
+        <revision>0.2.0</revision>
         <changelist></changelist>
         <sha1/>
         <!--project versioning>-->
@@ -70,6 +71,11 @@
             <dependency>
                 <groupId>org.cranberry</groupId>
                 <artifactId>cranberry-statement</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.cranberry</groupId>
+                <artifactId>cranberry-logging</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -152,7 +158,11 @@
                     <branch>refs/heads/cranberry-repository</branch>
                     <repositoryName>cranberry</repositoryName>
                     <repositoryOwner>ololx</repositoryOwner>
-                    <includes><include>**/*</include>
+                    <includes>
+                        <include>/cranberry-engine/*</include>
+                        <include>/cranberry-statement/*</include>
+                        <include>/cranberry-logging/*</include>
+                        <include>/cranberry-muffin/*</include>
                     </includes>
                     <excludes>
                         <exclude>/cranberry-tests/*</exclude>

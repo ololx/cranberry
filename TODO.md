@@ -7,6 +7,7 @@
 - [ ] Add the new statement for the checking empty values.
 - [ ] Add the new statement for the checking null values.
 - [ ] Add the new statement for the checking blank values.
-- [ ] Add the new module for logging implementation of the  parameters and return statements.
+- [x] Add the new module for logging implementation of the  parameters. 
+- [ ] Add the new module for logging implementation of the return statements.
 
 ---

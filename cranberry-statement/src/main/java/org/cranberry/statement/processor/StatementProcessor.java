@@ -19,6 +19,7 @@ import org.cranberry.commons.util.TypeUtil;
 import org.cranberry.statement.annotation.NotBlank;
 import org.cranberry.statement.annotation.NotEmpty;
 import org.cranberry.statement.annotation.NotNull;
+import org.cranberry.statement.annotation.True;
 import org.cranberry.statement.internal.util.Statements;
 
 import javax.annotation.processing.*;
@@ -44,6 +45,7 @@ public class StatementProcessor extends AbstractProcessor {
         add(NotNull.class);
         add(NotEmpty.class);
         add(NotBlank.class);
+        add(True.class);
     }};
 
     private JavacProcessingEnvironment javacProcessingEnv;
@@ -124,10 +126,18 @@ public class StatementProcessor extends AbstractProcessor {
                                         );
                             } else if (this.typeUtil.isSame(this.typeUtil.getType(processingAnnotation),
                                     this.typeUtil.getType(NotEmpty.class))
-                            && !this.checkTypeForNoEmtyAnnotation(element)) {
+                            && !this.checkTypeForNoEmptyAnnotation(element)) {
                                 this.messager.printMessage(
                                         Diagnostic.Kind.ERROR,
-                                        "@NotEmpty could be applied to a String, Collection or Map types only "
+                                        "@NotEmpty could be applied to an Arrays, a String, a Collection or a Map types only "
+                                                + element.toString()
+                                );
+                            } else if (this.typeUtil.isSame(this.typeUtil.getType(processingAnnotation),
+                                    this.typeUtil.getType(True.class))
+                            && !this.checkTypeForTrueAnnotation(element)) {
+                                this.messager.printMessage(
+                                        Diagnostic.Kind.ERROR,
+                                        "@True could be applied to an Boolean types only "
                                                 + element.toString()
                                 );
                             }
@@ -140,7 +150,11 @@ public class StatementProcessor extends AbstractProcessor {
         return true;
     }
 
-    private boolean checkTypeForNoEmtyAnnotation(Element element) {
+    private boolean checkTypeForTrueAnnotation(Element element) {
+        return this.typeUtil.isSame(element.asType(), this.typeUtil.getType(Boolean.class));
+    }
+
+    private boolean checkTypeForNoEmptyAnnotation(Element element) {
         return this.typeUtil.isMap(element.asType())
                 || this.typeUtil.isCollection(element.asType())
                 || this.typeUtil.isArray(element.asType())
@@ -193,8 +207,7 @@ public class StatementProcessor extends AbstractProcessor {
         for (Map.Entry<? extends ExecutableElement, ? extends AnnotationValue> annotationEnElementValue :
                 annotationMirror.getElementValues().entrySet()) {
 
-            if (annotationEnElementValue.getKey().toString() == "message")
-                continue;
+            if (annotationEnElementValue.getKey().toString() == "message") continue;
 
             message = String.valueOf(annotationEnElementValue.getValue().getValue());
             stateParams = stateParams.append(maker.Literal(message));
@@ -222,11 +235,9 @@ public class StatementProcessor extends AbstractProcessor {
 
     private List<JCStatement> injectStatementIntoBody(List<JCStatement> source, List<JCStatement> injection, Element currentElement) {
 
-        if (source.isEmpty())
-            return injection;
+        if (source.isEmpty()) return injection;
 
-        if (injection.isEmpty() || source.containsAll(injection))
-            return source;
+        if (injection.isEmpty() || source.containsAll(injection)) return source;
 
         List<JCStatement> statements = List.nil();
 

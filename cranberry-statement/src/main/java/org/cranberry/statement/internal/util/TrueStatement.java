@@ -16,24 +16,25 @@
  */
 package org.cranberry.statement.internal.util;
 
-import org.cranberry.statement.internal.exception.NotBlankStatementException;
+import org.cranberry.statement.internal.exception.NotNullStatementException;
+import org.cranberry.statement.internal.exception.TrueStatementException;
 
 /**
- * The type Not blank statement.
- *
+ * The type Not null statement.
+ * <p>
  * @author Alexander A. Kropotin
  * @project cranberry
- * @created 2020 -03-20 15:18 <p>
+ * @created 2020 -03-09 20:21
  */
-class NotBlankStatement implements Statement {
+class TrueStatement implements Statement {
 
     /**
      * Check.
      *
      * @param actual the actual
      */
-    static void check(String actual) {
-        NotEmptyStatement.check(actual);
+    static void check(Boolean actual) {
+        TrueStatement.check(actual, null);
     }
 
     /**
@@ -42,9 +43,9 @@ class NotBlankStatement implements Statement {
      * @param actual  the actual
      * @param message the message
      */
-    static void check(String actual, String message) {
-        if (Reasoner.isObjectNull(actual) || actual.trim().length() == 0) {
-            throw new NotBlankStatementException(message, actual);
+    static void check(Boolean actual, String message) {
+        if (actual == null || !actual) {
+            throw new TrueStatementException(message);
         }
     }
 }

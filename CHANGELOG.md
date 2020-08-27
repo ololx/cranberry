@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - The new statement for the checking logial assertions.
 
+## [0.3.0] - 2020-08-27
+
+### Added
+
+- The the `@True` annotation and `true` statement checker.
+
 ## [0.2.0] - 2020-08-10
 
 ### Added

@@ -10,22 +10,22 @@ import java.lang.annotation.Target;
  * <p>
  * Example:
  * <pre>
- * public static void runWithoutCustomMessage(@NotNull String param) {
+ * public static void runWithoutCustomMessage(@True Boolean param) {
  * }
  * </pre>
  * <p>
  * will generate:
  * <pre>
  * public static void runWithoutCustomMessage(@NotNull String param) {
- *     Statements.stateNotNull(param);
+ *     Statements.stateTrue(param);
  * }
  * </pre>
- * this code will throw {@link org.cranberry.statement.internal.exception.NotNullStatementException}
- * if the `param` is null; see {@link org.cranberry.statement.internal.util.Statements}.
+ * this code will throw {@link org.cranberry.statement.internal.exception.TrueStatementException}
+ * if the `param` is not `true`; see {@link org.cranberry.statement.internal.util.Statements}.
  * <p>
- * This annotation is valid for `params` and `local variables` of the `Object` type.
+ * This annotation is valid for `params` and `local variables` of the of the `Boolean` type and `boolean` primitive.
  * <p>
- * see {@link org.cranberry.statement.internal.exception.NotNullStatementException}
+ * see {@link org.cranberry.statement.internal.exception.TrueStatementException}
  * see {@link org.cranberry.statement.internal.util.Statements}
  */
 @Retention(RetentionPolicy.SOURCE)
@@ -34,8 +34,6 @@ import java.lang.annotation.Target;
         ElementType.LOCAL_VARIABLE
 })
 public @interface True {
-
-    boolean condition() default true;
 
     /**
      * Message string.

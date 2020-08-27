@@ -37,8 +37,8 @@ public final class TrueStatementException extends StatementException {
      * by value of 'null'.
      */
     {
-        this.expected = ValueWrapper.getInstance("true");
-        this.actual = ValueWrapper.getInstance("false");
+        this.expected = ValueWrapper.getInstance(Boolean.TRUE);
+        this.actual = ValueWrapper.getInstance(Boolean.FALSE);
     }
 
     /**
@@ -52,7 +52,7 @@ public final class TrueStatementException extends StatementException {
     }
 
     /**
-     * Constructs an {@code NotNullStatementException} with the
+     * Constructs an {@code TrueStatementException} with the
      * specified message, but without an expected/actual values and a cause.
      * <p>
      * The expected/actual values are defined by default.
@@ -65,7 +65,7 @@ public final class TrueStatementException extends StatementException {
     }
 
     /**
-     * Constructs an {@code NotNullStatementException} with the
+     * Constructs an {@code TrueStatementException} with the
      * specified cause, but without the specified message and an expected/actual values.
      * <p>
      * The expected/actual values are defined by default.
@@ -81,7 +81,7 @@ public final class TrueStatementException extends StatementException {
     }
 
     /**
-     * Constructs an {@code NotNullStatementException} with the specified message and cause
+     * Constructs an {@code TrueStatementException} with the specified message and cause
      * but without the specified expected/actual values.
      * <p>
      * The expected/actual values are defined by default.

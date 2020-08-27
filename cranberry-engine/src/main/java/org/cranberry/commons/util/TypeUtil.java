@@ -111,6 +111,17 @@ public class TypeUtil {
     }
 
     /**
+     * Is primitive boolean.
+     *
+     * @param t the t
+     * @return the boolean
+     */
+    public boolean isInPrimitive(TypeMirror t) {
+        return PRIMITIVE_TYPES.contains(t.getKind())
+                && t.getKind().isPrimitive();
+    }
+
+    /**
      * Is array boolean.
      *
      * @param t the t

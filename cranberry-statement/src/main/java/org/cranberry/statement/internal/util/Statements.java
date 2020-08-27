@@ -124,4 +124,24 @@ public final class Statements {
     public static void stateNotBlank(String str) {
         stateNotBlank(str, null);
     }
+
+    /**
+     * State this is true.
+     *
+     * @param expr the boolean expression
+     */
+    //----->TRUE STATEMENTS
+    public static void stateTrue(Boolean expr) {
+        stateTrue(expr, null);
+    }
+
+    /**
+     * State this is true.
+     *
+     * @param expr the boolean expression
+     * @param message the message
+     */
+    public static void stateTrue(Boolean expr, String message) {
+        TrueStatement.check(expr, message);
+    }
 }

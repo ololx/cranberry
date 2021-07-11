@@ -22,10 +22,7 @@ import javax.lang.model.type.TypeKind;
 import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -43,23 +40,25 @@ public class TypeUtil {
 
     private static final Set<TypeKind> PRIMITIVE_TYPES;
 
+    private static final TypeKind ARRAY_TYPE;
+
     private static final Class<?> COLLECTION_TYPE;
 
     private static final Class<?> MAP_TYPE;
 
     static {
-        PRIMITIVE_TYPES = Arrays.asList(
-                TypeKind.BOOLEAN,
-                TypeKind.BYTE,
-                TypeKind.CHAR,
-                TypeKind.DOUBLE,
-                TypeKind.FLOAT,
-                TypeKind.INT,
-                TypeKind.LONG,
-                TypeKind.SHORT
-        )
-                .stream()
-                .collect(Collectors.toSet());
+        PRIMITIVE_TYPES = new HashSet<TypeKind>(8, 1f) {{
+            add(TypeKind.BOOLEAN);
+            add(TypeKind.BYTE);
+            add(TypeKind.CHAR);
+            add(TypeKind.DOUBLE);
+            add(TypeKind.FLOAT);
+            add(TypeKind.INT);
+            add(TypeKind.LONG);
+            add(TypeKind.SHORT);
+        }};
+
+        ARRAY_TYPE = TypeKind.ARRAY;
 
         COLLECTION_TYPE = Collection.class;
 
@@ -111,24 +110,13 @@ public class TypeUtil {
     }
 
     /**
-     * Is primitive boolean.
-     *
-     * @param t the t
-     * @return the boolean
-     */
-    public boolean isInPrimitive(TypeMirror t) {
-        return PRIMITIVE_TYPES.contains(t.getKind())
-                && t.getKind().isPrimitive();
-    }
-
-    /**
      * Is array boolean.
      *
      * @param t the t
      * @return the boolean
      */
     public boolean isArray(TypeMirror t) {
-        return true;
+        return t.getKind().equals(ARRAY_TYPE);
     }
 
     /**

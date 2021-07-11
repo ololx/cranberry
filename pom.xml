@@ -46,7 +46,7 @@
 
     <properties>
         <!--<project versioning-->
-        <revision>0.3.0</revision>
+        <revision>0.3.1</revision>
         <changelist></changelist>
         <sha1/>
         <!--project versioning>-->

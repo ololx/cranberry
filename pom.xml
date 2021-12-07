@@ -4,16 +4,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.cranberry</groupId>
+    <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry</artifactId>
     <version>${revision}${sha1}${changelist}</version>
+
     <name>cranberry</name>
     <description>
         The cranberry is a java library that allows to write less code - it's automatically
         plugs into your project build and sweets up your java.
     </description>
     <url>https://github.com/ololx/cranberry</url>
-    <inceptionYear>2019</inceptionYear>
+
+    <scm>
+        <url>https://github.com/ololx/cranberry</url>
+        <connection>scm:hg:https://github.com/ololx/cranberry</connection>
+    </scm>
 
     <licenses>
         <license>
@@ -24,10 +29,10 @@
 
     <developers>
         <developer>
+            <id>developer-1</id>
             <name>Alexander A. Kropotin</name>
             <email>ololx@icloud.com</email>
             <roles>
-                <role>initial work</role>
                 <role>author</role>
                 <role>developer</role>
             </roles>
@@ -35,6 +40,36 @@
     </developers>
 
     <packaging>pom</packaging>
+
+    <!--<deploy on repository-->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+    <!--deploy on repository>-->
+
+    <properties>
+        <!--<project versions-->
+        <revision>0.3.1</revision>
+        <changelist>-SNAPSHOT</changelist>
+        <sha1/>
+        <!--project versions>-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+
+        <!--<maven central plugins versions-->
+        <plugin.nexus.staging.ver>1.6.8</plugin.nexus.staging.ver>
+        <plugin.maven.source.ver>3.2.1</plugin.maven.source.ver>
+        <plugin.maven.javadoc.ver>3.3.1</plugin.maven.javadoc.ver>
+        <plugin.maven.gpg.ver>3.0.1</plugin.maven.gpg.ver>
+        <!--maven central plugins versions>-->
+    </properties>
 
     <modules>
         <module>/cranberry-engine</module>
@@ -44,59 +79,129 @@
         <module>/cranberry-tests</module>
     </modules>
 
-    <properties>
-        <!--<project versioning-->
-        <revision>0.3.1</revision>
-        <changelist></changelist>
-        <sha1/>
-        <!--project versioning>-->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-        <github.global.server>github</github.global.server>
-        <github.maven-plugin>0.12</github.maven-plugin>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.cranberry</groupId>
+                <groupId>io.github.ololx.cranberry</groupId>
                 <artifactId>cranberry-muffin</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.cranberry</groupId>
+                <groupId>io.github.ololx.cranberry</groupId>
                 <artifactId>cranberry-engine</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.cranberry</groupId>
+                <groupId>io.github.ololx.cranberry</groupId>
                 <artifactId>cranberry-statement</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.cranberry</groupId>
+                <groupId>io.github.ololx.cranberry</groupId>
                 <artifactId>cranberry-logging</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.cranberry</groupId>
+                <groupId>io.github.ololx.cranberry</groupId>
                 <artifactId>cranberry-tests</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <!--<deploy on repository-->
-    <distributionManagement>
-        <repository>
-            <id>cranberry.repository</id>
-            <name>Temporary Staging Repository</name>
-            <url>file://${project.build.directory}/cranberry-repository</url>
-        </repository>
-    </distributionManagement>
-    <!--deploy on repository>-->
+    <profiles>
+        <profile>
+            <id>deploy-snapshot</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>test-example</id>
+            <build>
+            </build>
+        </profile>
+    </profiles>
 
     <build>
+        <pluginManagement>
+            <!--<deploy on repository-->
+            <plugins>
+                <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <version>${plugin.nexus.staging.ver}</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <serverId>ossrh</serverId>
+                        <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                        <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${plugin.maven.source.ver}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${plugin.maven.javadoc.ver}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>${plugin.maven.gpg.ver}</version>
+                    <executions>
+                        <execution>
+                            <id>sign-artifacts</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
+                            <configuration>
+                                <keyname>0x803FF391</keyname>
+                                <passphraseServerId>0x803FF391</passphraseServerId>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+            <!--deploy on repository>-->
+        </pluginManagement>
         <plugins>
             <!--<compiler-->
             <plugin>
@@ -129,7 +234,6 @@
                     </execution>
                     <execution>
                         <id>flatten.clean</id>
-                        <phase>clean</phase>
                         <goals>
                             <goal>clean</goal>
                         </goals>
@@ -137,47 +241,6 @@
                 </executions>
             </plugin>
             <!--flatten pom>-->
-            <!--<deploy on repository-->
-            <plugin>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.2</version>
-                <configuration>
-                    <altDeploymentRepository>
-                        cranberry.repository::default::file://${project.build.directory}/cranberry-repository
-                    </altDeploymentRepository>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.github.github</groupId>
-                <artifactId>site-maven-plugin</artifactId>
-                <version>${github.maven-plugin}</version>
-                <configuration>
-                    <message>Maven artifacts for cranberry project ${revision}${sha1}${changelist}</message>
-                    <noJekyll>true</noJekyll>
-                    <outputDirectory>${project.build.directory}/cranberry-repository</outputDirectory>
-                    <branch>refs/heads/cranberry-repository</branch>
-                    <repositoryName>cranberry</repositoryName>
-                    <repositoryOwner>ololx</repositoryOwner>
-                    <includes>
-                        <include>/cranberry-engine/*</include>
-                        <include>/cranberry-statement/*</include>
-                        <include>/cranberry-logging/*</include>
-                        <include>/cranberry-muffin/*</include>
-                    </includes>
-                    <excludes>
-                        <exclude>/cranberry-tests/*</exclude>
-                    </excludes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>site</goal>
-                        </goals>
-                        <phase>deploy</phase>
-                    </execution>
-                </executions>
-            </plugin>
-            <!--deploy on repository>-->
         </plugins>
     </build>
 </project>

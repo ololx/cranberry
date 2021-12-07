@@ -1,14 +1,9 @@
 package org.cranberry.statement;
 
-import org.cranberry.statement.annotation.NotNull;
 import org.cranberry.statement.annotation.True;
-import org.cranberry.statement.internal.exception.NotNullStatementException;
 import org.cranberry.statement.internal.exception.TrueStatementException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;

@@ -14,22 +14,30 @@
         plugs into your project build and sweets up your java.
     </description>
     <url>https://github.com/ololx/cranberry</url>
-
-    <scm>
-        <url>https://github.com/ololx/cranberry</url>
-        <connection>scm:hg:https://github.com/ololx/cranberry</connection>
-    </scm>
+    <inceptionYear>2019</inceptionYear>
 
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
-            <url>https://github.com/ololx/cranberry/LICENSE</url>
+            <url>https://apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
         </license>
     </licenses>
 
+    <scm>
+        <url>https://github.com/ololx/cranberry</url>
+        <connection>scm:git:https://github.com/ololx/cranberry</connection>
+        <developerConnection>scm:git:git@github.com:ololx/cranberry.git</developerConnection>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/ololx/cranberry/issues</url>
+    </issueManagement>
+
     <developers>
         <developer>
-            <id>developer-1</id>
+            <id>ololx</id>
             <name>Alexander A. Kropotin</name>
             <email>ololx@icloud.com</email>
             <roles>
@@ -76,7 +84,7 @@
         <module>/cranberry-statement</module>
         <module>/cranberry-logging</module>
         <module>/cranberry-muffin</module>
-        <module>/cranberry-tests</module>
+        <!--<module>/cranberry-tests</module>-->
     </modules>
 
     <dependencyManagement>
@@ -112,6 +120,12 @@
     <profiles>
         <profile>
             <id>deploy-snapshot</id>
+            <modules>
+                <module>/cranberry-engine</module>
+                <module>/cranberry-statement</module>
+                <module>/cranberry-logging</module>
+                <module>/cranberry-muffin</module>
+            </modules>
             <build>
                 <plugins>
                     <plugin>
@@ -135,8 +149,13 @@
         </profile>
         <profile>
             <id>test-example</id>
-            <build>
-            </build>
+            <modules>
+                <module>/cranberry-engine</module>
+                <module>/cranberry-statement</module>
+                <module>/cranberry-logging</module>
+                <module>/cranberry-muffin</module>
+                <module>/cranberry-tests</module>
+            </modules>
         </profile>
     </profiles>
 
@@ -180,6 +199,13 @@
                             </goals>
                         </execution>
                     </executions>
+                    <configuration>
+                        <additionalDependencies>
+                            -Xdoclint:none
+                            -notimestamp
+                            -link http://docs.oracle.com/javase/8/docs/api/
+                        </additionalDependencies>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -199,10 +225,21 @@
                         </execution>
                     </executions>
                 </plugin>
+                <!--deploy on repository>-->
             </plugins>
-            <!--deploy on repository>-->
         </pluginManagement>
         <plugins>
+            <!--<check plugin versions-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <rulesUri>file://${user.dir}/rules.xml</rulesUri>
+                    <generateBackupPoms>false</generateBackupPoms>
+                </configuration>
+            </plugin>
+            <!--check plugin versions>-->
             <!--<compiler-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

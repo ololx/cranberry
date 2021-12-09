@@ -22,8 +22,10 @@ import javax.lang.model.type.TypeKind;
 import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * The type Type util.
@@ -32,22 +34,45 @@ import java.util.stream.Collectors;
  * @project cranberry
  * @created 2020 -03-02 16:41
  */
-public class TypeUtil {
+public final class TypeUtil {
 
+    /**
+     * The variable  typeUtil
+     */
     private final Types typeUtil;
 
+    /**
+     * The variable elementUtil
+     */
     private final Elements elementUtil;
 
+    /**
+     * The variable PRIMITIVE_TYPES
+     */
     private static final Set<TypeKind> PRIMITIVE_TYPES;
 
+    /**
+     * The variable ARRAY_TYPE
+     */
     private static final TypeKind ARRAY_TYPE;
 
+    /**
+     * The variable COLLECTION_TYPE
+     */
     private static final Class<?> COLLECTION_TYPE;
 
+    /**
+     * The variable MAP_TYPE
+     */
     private static final Class<?> MAP_TYPE;
 
+    /**
+     * The variable PRIMITIVE_TYPES_COUNT
+     */
+    private static final int PRIMITIVE_TYPES_CAPACITY = 8;
+
     static {
-        PRIMITIVE_TYPES = new HashSet<TypeKind>(8, 1f) {{
+        PRIMITIVE_TYPES = new HashSet<TypeKind>(PRIMITIVE_TYPES_CAPACITY, 1f) {{
             add(TypeKind.BOOLEAN);
             add(TypeKind.BYTE);
             add(TypeKind.CHAR);
@@ -71,7 +96,7 @@ public class TypeUtil {
      * @param types    the types
      * @param elements the elements
      */
-    public TypeUtil(Types types, Elements elements) {
+    public TypeUtil(final Types types, final Elements elements) {
         this.typeUtil = types;
         this.elementUtil = elements;
     }
@@ -83,7 +108,7 @@ public class TypeUtil {
      * @param t2 the t 2
      * @return the boolean
      */
-    public boolean isSame(TypeMirror t1, TypeMirror t2) {
+    public boolean isSame(final TypeMirror t1, final TypeMirror t2) {
         return this.typeUtil.isAssignable(t1, t2);
     }
 
@@ -94,7 +119,7 @@ public class TypeUtil {
      * @param t2 the t 2
      * @return the boolean
      */
-    public boolean isDifferent(TypeMirror t1, TypeMirror t2) {
+    public boolean isDifferent(final TypeMirror t1, final TypeMirror t2) {
         return !this.typeUtil.isAssignable(t1, t2);
     }
 
@@ -104,7 +129,7 @@ public class TypeUtil {
      * @param t the t
      * @return the boolean
      */
-    public boolean isPrimitive(TypeMirror t) {
+    public boolean isPrimitive(final TypeMirror t) {
         return PRIMITIVE_TYPES.contains(t.getKind())
                 && t.getKind().isPrimitive();
     }
@@ -115,7 +140,7 @@ public class TypeUtil {
      * @param t the t
      * @return the boolean
      */
-    public boolean isArray(TypeMirror t) {
+    public boolean isArray(final TypeMirror t) {
         return t.getKind().equals(ARRAY_TYPE);
     }
 
@@ -125,7 +150,7 @@ public class TypeUtil {
      * @param t the t
      * @return the boolean
      */
-    public boolean isCollection(TypeMirror t) {
+    public boolean isCollection(final TypeMirror t) {
         TypeElement paramType = this.getTypeAsElement(t);
 
         return paramType != null
@@ -142,7 +167,7 @@ public class TypeUtil {
      * @param t the t
      * @return the boolean
      */
-    public boolean isMap(TypeMirror t) {
+    public boolean isMap(final TypeMirror t) {
         TypeElement paramType = this.getTypeAsElement(t);
 
         return paramType != null
@@ -159,7 +184,7 @@ public class TypeUtil {
      * @param clazz the clazz
      * @return the type
      */
-    public TypeMirror getType(Class<?> clazz) {
+    public TypeMirror getType(final Class<?> clazz) {
         return this.getType(clazz.getCanonicalName());
     }
 
@@ -169,7 +194,7 @@ public class TypeUtil {
      * @param className the class name
      * @return the type
      */
-    public TypeMirror getType(String className) {
+    public TypeMirror getType(final String className) {
         return this.elementUtil.getTypeElement(className).asType();
     }
 
@@ -179,7 +204,7 @@ public class TypeUtil {
      * @param className the class name
      * @return the type as element
      */
-    public TypeElement getTypeAsElement(String className) {
+    public TypeElement getTypeAsElement(final String className) {
         return (TypeElement) this.typeUtil.asElement(this.getType(className));
     }
 
@@ -189,7 +214,7 @@ public class TypeUtil {
      * @param t the t
      * @return the type as element
      */
-    public TypeElement getTypeAsElement(TypeMirror t) {
+    public TypeElement getTypeAsElement(final TypeMirror t) {
         return (TypeElement) this.typeUtil.asElement(t);
     }
 }

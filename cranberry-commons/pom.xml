@@ -5,40 +5,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.cranberry</groupId>
+        <groupId>io.github.ololx.cranberry</groupId>
         <artifactId>cranberry</artifactId>
         <version>${revision}${sha1}${changelist}</version>
         <relativePath>../</relativePath>
     </parent>
 
-    <artifactId>cranberry-engine</artifactId>
-    <name>cranberry-engine</name>
+    <artifactId>cranberry-commons</artifactId>
+    <name>cranberry-commons</name>
     <description>
-        The cranberry engine is a module of Cranberry library (see cranberry). This module provides a general realisation
+        The cranberry commons is a module of Cranberry library (see cranberry). This module provides a general realisation
         of simple tools and wrappers which are used in another cranberry modules for the automatically code
         generating during compilation.
     </description>
-    <url>https://github.com/ololx/cranberry</url>
-    <inceptionYear>2019</inceptionYear>
-
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>https://github.com/ololx/cranberry/LICENSE</url>
-        </license>
-    </licenses>
-
-    <developers>
-        <developer>
-            <name>Alexander A. Kropotin</name>
-            <email>ololx@icloud.com</email>
-            <roles>
-                <role>initial work</role>
-                <role>author</role>
-                <role>developer</role>
-            </roles>
-        </developer>
-    </developers>
 
     <packaging>jar</packaging>
 

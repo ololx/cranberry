@@ -16,7 +16,6 @@
  */
 package org.cranberry.statement.internal.util;
 
-import org.cranberry.statement.internal.exception.NotNullStatementException;
 import org.cranberry.statement.internal.exception.TrueStatementException;
 
 /**

@@ -14,7 +14,6 @@ import com.sun.tools.javac.tree.TreeMaker;
 import com.sun.tools.javac.util.List;
 import org.cranberry.commons.handler.EnterCompilationHandler;
 import org.cranberry.commons.scanner.MethodCompilationTreeScanner;
-import org.cranberry.commons.scanner.VariableCompilationTreeScanner;
 import org.cranberry.commons.util.TypeUtil;
 import org.cranberry.logging.annotation.LogParam;
 import org.cranberry.logging.wrapper.LoggerWrapper;
@@ -26,7 +25,6 @@ import javax.lang.model.util.Types;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**

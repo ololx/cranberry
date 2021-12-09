@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.cranberry</groupId>
+        <groupId>io.github.ololx.cranberry</groupId>
         <artifactId>cranberry</artifactId>
         <version>${revision}${sha1}${changelist}</version>
         <relativePath>../</relativePath>
@@ -14,30 +14,9 @@
     <artifactId>cranberry-tests</artifactId>
     <name>cranberry-test</name>
     <description>
-        The cranberry tests is a module of cranberry library (see cranberry). This module provides  the unit tests
+        The cranberry tests is a module of cranberry library (see cranberry). This module provides the unit tests
         for the remaining modules of the cranberry project.
     </description>
-    <url>https://github.com/ololx/cranberry/tree/master/cranberry-test</url>
-    <inceptionYear>2019</inceptionYear>
-
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>https://github.com/ololx/cranberry/LICENSE</url>
-        </license>
-    </licenses>
-
-    <developers>
-        <developer>
-            <name>Alexander A. Kropotin</name>
-            <email>ololx@icloud.com</email>
-            <roles>
-                <role>initial work</role>
-                <role>author</role>
-                <role>developer</role>
-            </roles>
-        </developer>
-    </developers>
 
     <properties>
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
@@ -66,11 +45,11 @@
         <!--test/>-->
         <!--<cranberry-modules-->
         <dependency>
-            <groupId>org.cranberry</groupId>
+            <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-statement</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.cranberry</groupId>
+            <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-logging</artifactId>
         </dependency>
         <!--cranberry-modules/>-->

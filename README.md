@@ -16,7 +16,7 @@ ________________________________________
 
 The Cranberry is a java library that allows to write less code - it's  automatically plugs into your project build and sweets up your java.
 
-[![status](https://img.shields.io/badge/status-active-active?style=flat-square)](BADGES_GUIDE.md#status) [![version](https://img.shields.io/badge/version-0.3.1-informational?style=flat-square)](BADGES_GUIDE.md#version) [![stable](https://img.shields.io/badge/stable-no-important?style=flat-square)](BADGES_GUIDE.md#stable) [![build](https://img.shields.io/badge/build-passing-success?style=flat-square)](BADGES_GUIDE.md#build) [![oss lifecycle](https://img.shields.io/badge/oss_lifecycle-active-important?style=flat-square)](BADGES_GUIDE.md#oss-lifecycle) [![maintenance](https://img.shields.io/badge/maintenance-yes-informational?style=flat-square)](BADGES_GUIDE.md#maintenance) [![last release](https://img.shields.io/badge/latest_release_date-August_27,_2020-informational?style=flat-square)](BADGES_GUIDE.md#release-date) [![last commit](https://img.shields.io/badge/last_commit-July_11,_2021-informational?style=flat-square)](BADGES_GUIDE.md#commit-date)
+[![status](https://img.shields.io/badge/status-active-active?style=flat-square)](BADGES_GUIDE.md#status) [![version](https://img.shields.io/badge/version-0.40-informational?style=flat-square)](BADGES_GUIDE.md#version) [![stable](https://img.shields.io/badge/stable-no-important?style=flat-square)](BADGES_GUIDE.md#stable) [![build](https://img.shields.io/badge/build-passing-success?style=flat-square)](BADGES_GUIDE.md#build) [![oss lifecycle](https://img.shields.io/badge/oss_lifecycle-active-important?style=flat-square)](BADGES_GUIDE.md#oss-lifecycle) [![maintenance](https://img.shields.io/badge/maintenance-yes-informational?style=flat-square)](BADGES_GUIDE.md#maintenance) [![last release](https://img.shields.io/badge/latest_release_date-December_09,_2020-informational?style=flat-square)](BADGES_GUIDE.md#release-date) [![last commit](https://img.shields.io/badge/last_commit-December_09,_2021-informational?style=flat-square)](BADGES_GUIDE.md#commit-date)
 
 [![license](https://img.shields.io/badge/license-Apache_2.0-informational?style=flat-square)](LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
@@ -93,40 +93,27 @@ Before using it, make sure that follows software are installed on the local mach
 
 In order to add cranberry to your project it is quite simple to:
 
-1 - Add this repository to repositories in pom:
-
-```xml
-<repository>
-    <id>cranberry-repository</id>
-    <url>https://raw.github.com/ololx/cranberry/cranberry-repository/</url>
-    <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>always</updatePolicy>
-    </snapshots>
-</repository>
-```
-
-2 - Add this dependency to classpath in pom:
+1 - Add this dependency to classpath in pom:
 
 ```xml
 <dependency>
-    <groupId>org.cranberry</groupId>
+    <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>${module-name}</artifactId>
     <version>${version}</version>
 </dependency>
 ```
 
-_Example of dependency for installing `cranberry-muffin` module with version `0.1.0` is presented bellow_
+_Example of dependency for installing `cranberry-muffin` module with version `0.4.0` is presented bellow_
 
 ```xml
 <dependency>
-    <groupId>org.cranberry</groupId>
+    <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry-muffin</artifactId>
-    <version>0.1.0</version>
+    <version>0.4.0</version>
 </dependency>
 ```
 
-3 - Execute this with goal
+2 - Execute this with goal
 
 ```bash
 clean install
@@ -136,7 +123,7 @@ clean install
 
 For the cloning this repository to a local machine, just use the follows link:
 
-```http
+```https
 https://github.com/ololx/cranberry
 ```
 

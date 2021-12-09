@@ -25,9 +25,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/ololx/cranberry</url>
         <connection>scm:git:https://github.com/ololx/cranberry</connection>
         <developerConnection>scm:git:git@github.com:ololx/cranberry.git</developerConnection>
+        <url>https://github.com/ololx/cranberry</url>
     </scm>
 
     <issueManagement>
@@ -42,14 +42,14 @@
             <email>ololx@icloud.com</email>
             <roles>
                 <role>author</role>
-                <role>developer</role>
+                <role>contributor</role>
             </roles>
         </developer>
     </developers>
 
     <packaging>pom</packaging>
 
-    <!--<deploy on repository-->
+    <!--<maven central  repository-->
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -60,16 +60,20 @@
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
-    <!--deploy on repository>-->
+    <!--maven central repository>-->
 
     <properties>
         <!--<project versions-->
         <revision>0.3.1</revision>
-        <changelist>-SNAPSHOT</changelist>
+        <changelist></changelist>
         <sha1/>
         <!--project versions>-->
+
+        <!--<project specific-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+        <checkstyle-maven-plugin.version>2.17</checkstyle-maven-plugin.version>
+        <!--<project specific-->
 
         <!--<maven central plugins versions-->
         <plugin.nexus.staging.ver>1.6.8</plugin.nexus.staging.ver>
@@ -80,11 +84,10 @@
     </properties>
 
     <modules>
-        <module>/cranberry-engine</module>
+        <module>/cranberry-commons</module>
         <module>/cranberry-statement</module>
         <module>/cranberry-logging</module>
         <module>/cranberry-muffin</module>
-        <!--<module>/cranberry-tests</module>-->
     </modules>
 
     <dependencyManagement>
@@ -96,7 +99,7 @@
             </dependency>
             <dependency>
                 <groupId>io.github.ololx.cranberry</groupId>
-                <artifactId>cranberry-engine</artifactId>
+                <artifactId>cranberry-commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -119,9 +122,9 @@
 
     <profiles>
         <profile>
-            <id>deploy-snapshot</id>
+            <id>ossrh-develop</id>
             <modules>
-                <module>/cranberry-engine</module>
+                <module>/cranberry-commons</module>
                 <module>/cranberry-statement</module>
                 <module>/cranberry-logging</module>
                 <module>/cranberry-muffin</module>
@@ -144,13 +147,17 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
                     </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
         <profile>
-            <id>test-example</id>
+            <id>develop</id>
             <modules>
-                <module>/cranberry-engine</module>
+                <module>/cranberry-commons</module>
                 <module>/cranberry-statement</module>
                 <module>/cranberry-logging</module>
                 <module>/cranberry-muffin</module>
@@ -225,17 +232,67 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.5.3</version>
+                    <configuration>
+                        <localCheckout>true</localCheckout>
+                        <pushChanges>false</pushChanges>
+                        <mavenExecutorId>forked-path</mavenExecutorId>
+                        <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven.scm</groupId>
+                            <artifactId>maven-scm-provider-gitexe</artifactId>
+                            <version>1.9.5</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
                 <!--deploy on repository>-->
             </plugins>
         </pluginManagement>
         <plugins>
+            <!--<check styles-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle-maven-plugin.version}</version>
+                <configuration>
+                    <excludes>**/generated/**/*</excludes>
+                    <configLocation>check_style_google_rules.xml</configLocation>
+                    <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+                    <encoding>UTF-8</encoding>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>6.19</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <!--check styles>-->
             <!--<check plugin versions-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>2.5</version>
                 <configuration>
-                    <rulesUri>file://${user.dir}/rules.xml</rulesUri>
+                    <rulesUri>file://${user.dir}/check_dependency_versions_rules.xml.xml</rulesUri>
                     <generateBackupPoms>false</generateBackupPoms>
                 </configuration>
             </plugin>
@@ -280,4 +337,13 @@
             <!--flatten pom>-->
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>

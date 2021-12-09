@@ -22,13 +22,13 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!--<cranberry-engine-->
+        <!--<cranberry-commons-->
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
-            <artifactId>cranberry-engine</artifactId>
+            <artifactId>cranberry-commons</artifactId>
             <scope>compile</scope>
         </dependency>
-        <!--cranberry-engine>-->
+        <!--cranberry-commons>-->
     </dependencies>
 
     <build>

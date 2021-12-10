@@ -1,13 +1,13 @@
 /**
  * Copyright 2020 the project cranberry authors
  * and the original author or authors annotated by {@author}
- * <p>
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p>
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,9 +23,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @project cranberry
- * @created 2020-04-06 07:27
- * <p>
+ * project cranberry
+ * created 2020-04-06 07:27
+ * 
  * @author Alexander A. Kropotin
  */
 public class NotEmptyAnnotationExampleForParameters {
@@ -38,10 +38,10 @@ public class NotEmptyAnnotationExampleForParameters {
         if (args[0].equals(String.valueOf(0))) {
             /**
              * Execute example of {@code @NotEmpty} annotation usage.
-             * <p>
+             * 
              * This example will execute if {@code arg[0] = 0}. An value of the {@code arg[1]}
              * will be used for the value of the parameter {@code @NotEmpty List<String> param}.
-             * <p>
+             * 
              * Run the {@code NotEmptyAnnotationExampleForParameters} with
              * the following {@link args[]} parameters:
              * <ul>
@@ -63,10 +63,10 @@ public class NotEmptyAnnotationExampleForParameters {
         if (args[0].equals(String.valueOf(1))) {
             /**
              * Execute example of {@code @NotEmpty} annotation usage.
-             * <p>
+             * 
              * This example will execute if {@code arg[0] = 1}. An value of the {@code arg[1]}
              * will be used for the parameter value of a method {@link #runWithCustomMessage(List)}.
-             * <p>
+             * 
              * Run the {@code NotEmptyAnnotationExampleForParameters} with
              * the following {@link args[]} parameters:
              * <ul>
@@ -88,7 +88,7 @@ public class NotEmptyAnnotationExampleForParameters {
 
     /**
      * The example of {@code @NotEmpty} annotation usage on {@code List<String> param}.
-     * <p>
+     * 
      * If the annotated {@code param} is an empty list,
      * the {@code NotEmptyStatementException} will be thrown with
      * a localized default {@code NotEmptyStatementException} detail.
@@ -102,7 +102,7 @@ public class NotEmptyAnnotationExampleForParameters {
 
     /**
      * The example of {@code @NotEmpty} annotation usage on {@code List<String> param}.
-     * <p>
+     * 
      * If the annotated {@code param} is an empty list,
      * the {@code NotEmptyStatementException} will be thrown with
      * a specified custom message.

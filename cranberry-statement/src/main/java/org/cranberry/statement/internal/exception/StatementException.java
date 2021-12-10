@@ -1,13 +1,13 @@
 /**
  * Copyright 2020 the project cranberry authors
  * and the original author or authors annotated by {@author}
- * <p>
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p>
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,10 +25,10 @@ import java.util.stream.Collectors;
 /**
  * The type Statement exception.
  * Thrown to indicate that a some kind of statement has failed.
- * <p>
- * @project cranberry
- * @created 2020-03-10 09:45
- * <p>
+ * 
+ * project cranberry
+ * created 2020-03-10 09:45
+ * 
  * @author Alexander A. Kropotin
  */
 public class StatementException extends IllegalArgumentException {
@@ -36,18 +36,18 @@ public class StatementException extends IllegalArgumentException {
     /**
      * The type ValueWrapper.
      * The wrapper of a value that is used in an statements exceptions.
-     * <p>
+     * 
      * This stores the value {@link #getValue()}, value type {@link #getType() runtime type}
      * and value hash code {@link #toString()}.
-     * <p>
+     * 
      * This allows to get a value string representation {@link #getValueStringRepresentation()}
-     * <p>
+     * 
      * The {@link #toString()} method returns the string representation of the
      * value along with its type and identity hash code.
-     * <p>
-     * @project cranberry
-     * @created 2020-04-16 12:45
-     * <p>
+     * 
+     * project cranberry
+     * created 2020-04-16 12:45
+     * 
      * @author Alexander A. Kropotin
      */
     static final class ValueWrapper implements Serializable {
@@ -59,14 +59,14 @@ public class StatementException extends IllegalArgumentException {
 
         /**
          * The wrapped value hash code; see {@link #toString()}.
-         * <p>
+         * 
          * @serial
          */
         private final int valueHashCode;
 
         /**
          * The wrapped value type; see {@link #toString()}, {@link #getType()}.
-         * <p>
+         * 
          * @serial
          */
         private final Class<?> type;
@@ -74,7 +74,7 @@ public class StatementException extends IllegalArgumentException {
         /**
          * The wrapped value; see {@link #getValueStringRepresentation()},
          * {@link #getValue()}, {@link #toString()}, {@link #getType()}.
-         * <p>
+         * 
          * @serial
          */
         private final Object value;
@@ -82,12 +82,12 @@ public class StatementException extends IllegalArgumentException {
         /**
          * The factory method for the getting a new {@code ValueWrapper} instance
          * for the supplied {@code value}.
-         * <p>
+         * 
          * This method will return a new {@code ValueWrapper} instance for a given value
          * suitable for all {@code values} if the value is not an instance of a wrapper.
          * Otherwise, if the supplied {@code value} is already a {@link ValueWrapper} instance,
          * this method will return it as is.
-         * <p>
+         * 
          * @param value the value to wrap; may be {@code null}
          * @return a wrapper for the supplied value; never {@code null}
          */
@@ -102,7 +102,7 @@ public class StatementException extends IllegalArgumentException {
         /**
          * Returns the string representation of a value for the supplied {@code value}
          * via the supplied custom {@code nullStringRepresentation}.
-         * <p>
+         * 
          * If the supplied {@code value} is {@code null}, this method will return a
          * custom representation of the value from the {@code nullStringRepresentation}.
          * If the supplied {@code value} is not {@code null}, this method will return a string representation
@@ -116,7 +116,7 @@ public class StatementException extends IllegalArgumentException {
          *         for the value - in another cases.
          *     </li>
          * </ul>
-         * <p>
+         * 
          * @param value the value to wrap; may be {@code null}
          * @param nullStringRepresentation a custom representation of the value; is used by default
          * when value is {@code null}.
@@ -141,7 +141,7 @@ public class StatementException extends IllegalArgumentException {
         /**
          * Constructs an {@code ValueWrapper} with the
          * specified value, value type and value hash code.
-         * <p>
+         * 
          * @param value the value to wrap; may be {@code null}.
          */
         private ValueWrapper(Object value) {
@@ -155,7 +155,7 @@ public class StatementException extends IllegalArgumentException {
         /**
          * Returns the origin value supplied to {@link #ValueWrapper(Object)} or
          * {@code null} if the value is {@code null}.
-         * <p>
+         * 
          * @return an origin value with type {@code Object}.
          */
         public Object getValue() {
@@ -165,7 +165,7 @@ public class StatementException extends IllegalArgumentException {
         /**
          * Returns the origin value type supplied to {@link #ValueWrapper(Object)} or
          * {@code null} if the value is {@code null}.
-         * <p>
+         * 
          * @return a origin value type with type {@code Class<?>}.
          */
         public Class<?> getType() {
@@ -177,10 +177,10 @@ public class StatementException extends IllegalArgumentException {
          * This method returns wrapped value string representation by invoking
          * {@link #getValueStringRepresentation(Object value, String nullStringRepresentation)
          * ValueWrapper.getValueStringRepresentation(this.getValue(), null)}.
-         * <p>
+         * 
          * If the wrapped {@code value} is {@code null}, this method will return a
          * string `{@code null}'.
-         * <p>
+         * 
          * @return a string representation for the wrapper value; never {@code null}
          */
         public String getValueStringRepresentation() {
@@ -189,7 +189,7 @@ public class StatementException extends IllegalArgumentException {
 
         /**
          * Indicates whether the wrapped value is defined or not.
-         * <p>
+         * 
          * @return {@code true} if the wrapped value is not null;
          * {@code false} otherwise.
          */
@@ -200,7 +200,7 @@ public class StatementException extends IllegalArgumentException {
         /**
          * Indicates whether the wrapped value is undefined or
          * it is defined.
-         * <p>
+         * 
          * @return {@code true} if the wrapped value is null;
          * {@code false} otherwise.
          */
@@ -210,7 +210,7 @@ public class StatementException extends IllegalArgumentException {
 
         /**
          * Indicates whether the wrapped value type is defined or not.
-         * <p>
+         * 
          * @return {@code true} if the wrapped value type is not null;
          * {@code false} otherwise.
          */
@@ -221,7 +221,7 @@ public class StatementException extends IllegalArgumentException {
         /**
          * Indicates whether the wrapped value type is undefined
          * or it is defined.
-         * <p>
+         * 
          * @return {@code true} if the wrapped value type is null;
          * {@code false} otherwise.
          */
@@ -232,12 +232,12 @@ public class StatementException extends IllegalArgumentException {
         /**
          * Returns the string representation of a value along with its type and
          * identity hash code.
-         * <p>
+         * 
          * The {@code toString} method for this class returns a string consisting of:
          * <ul>
          *     <li>
          *         the string representation of the origin value - if the origin value is null;
-         *         <p>
+         *         
          *         for instance:
          *         <blockquote>
          *             <pre>
@@ -250,7 +250,7 @@ public class StatementException extends IllegalArgumentException {
          *         the at-sign character `{@code @}', the unsigned hexadecimal representation
          *         of the hash code of the origin value object, the at-sign character `{@code =}'
          *         and the string representation of the origin value - if the origin value is null.
-         *         <p>
+         *         
          *         for instance:
          *         <blockquote>
          *             <pre>
@@ -260,7 +260,7 @@ public class StatementException extends IllegalArgumentException {
          *         </blockquote>
          *     </li>
          * </ul>
-         * <p>
+         * 
          * @return a string representation of the object.
          */
         @Override
@@ -285,11 +285,11 @@ public class StatementException extends IllegalArgumentException {
      * The localized exception detail message templates. The template localization is set in
      * accordance with the user language or English, if there is not set user language in system properties;
      * see {@link System#getProperty(String, String)}
-     * <p>
+     * 
      * This is used to inform about the cause of the exception
      * together with {@link #expected};
      * see {@link #getDetail()} and {@link #getMessage()}
-     * <p>
+     * 
      * For example, the exception default detail for the not null statement takes value:
      * <ul>
      *     <li>
@@ -301,7 +301,7 @@ public class StatementException extends IllegalArgumentException {
      *         Ожидается 'not empty' is expected but actually was 'null'} - for EN localization and default localization
      *     </li>
      * </ul>
-     * <p>
+     * 
      */
     public static final ResourceBundle LOCALE_DETAIL_MESSAGE_PATTERNS = ResourceBundle.getBundle(
             "org.cranberry.statement.resources.messages",
@@ -316,9 +316,9 @@ public class StatementException extends IllegalArgumentException {
      * This is used to inform about the cause of the exception
      * together with {@link #expected};
      * see {@link #getDetail()} and {@link #getMessage()}
-     * <p>
+     * 
      * For example, for the statement of not null value, this always contains value of 'null'.
-     * <p>
+     * 
      * @serial
      */
     protected ValueWrapper actual;
@@ -328,9 +328,9 @@ public class StatementException extends IllegalArgumentException {
      * This is used to inform about the cause of the exception
      * together with {@link #actual};
      * see {@link #getDetail()} and {@link #getMessage()}
-     * <p>
+     * 
      * For example, for the statement of not null value, this always contains value of 'not null'.
-     * <p>
+     * 
      * @serial
      */
     protected ValueWrapper expected;
@@ -346,7 +346,7 @@ public class StatementException extends IllegalArgumentException {
     /**
      * Constructs an {@code StatementException} with the
      * specified message, but without an expected/actual values and a cause.
-     * <p>
+     * 
      * @param message the detail message; {@code null} or blank will be
      * converted to the empty {@code String}
      */
@@ -357,9 +357,7 @@ public class StatementException extends IllegalArgumentException {
     /**
      * Constructs an {@code StatementException} with the
      * specified cause, but without the specified message and an expected/actual values.
-     * <p>
-     * @param cause the detail message; {@code null} or blank will be
-     * converted to the empty {@code String}
+     *
      * @param  cause the cause, which is saved for later retrieval by the
      * {@link Throwable#getCause()}; a {@code null} value
      * is indicates that the cause is nonexistent or unknown.
@@ -371,7 +369,7 @@ public class StatementException extends IllegalArgumentException {
     /**
      * Constructs an {@code StatementException} with the specified message and cause
      * but without the specified expected/actual values.
-     * <p>
+     * 
      * @param message the detail message; {@code null} or blank will be
      * converted to the empty {@code String}
      * @param cause the cause of the failure
@@ -383,7 +381,7 @@ public class StatementException extends IllegalArgumentException {
     /**
      * Constructs an {@code StatementException} with the specified message and
      * expected value, but without the specified expected value and cause.
-     * <p>
+     * 
      * @param message the detail message; {@code null} or blank will be
      * converted to the empty {@code String}
      * @param actual the actual value; may be {@code null}
@@ -395,7 +393,7 @@ public class StatementException extends IllegalArgumentException {
     /**
      * Constructs an {@code StatementException} with a message,
      * actual value, and a cause, but without the specified expected value.
-     * <p>
+     * 
      * @param message the detail message; {@code null} or blank will be
      * converted to the empty {@code String}
      * @param actual the actual value; may be {@code null}
@@ -421,12 +419,12 @@ public class StatementException extends IllegalArgumentException {
     /**
      * Constructs an {@code StatementException} with the specified message,
      * expected/actual values and a cause.
-     * <p>
+     * 
      * @param message the detail message; {@code null} or blank will be
      * converted to the empty {@code String}
-     * @param expected the expected value; {@code null} will be wrapped into a {@Code String} value
+     * @param expected the expected value; {@code null} will be wrapped into a {@code String} value
      * via the {@link String#valueOf(Object)}.
-     * @param actual the actual value; {@code null} will be wrapped into a {@Code String} value
+     * @param actual the actual value; {@code null} will be wrapped into a {@code String} value
      * via the {@link String#valueOf(Object)}.
      * @param cause the cause of the failure
      */
@@ -445,7 +443,7 @@ public class StatementException extends IllegalArgumentException {
 
     /**
      * Returns the actual value wrapped in {@code ValueWrapper} instance.
-     * <p>
+     * 
      * @return {@code ValueWrapper} instance which store the {@link #actual}
      */
     public ValueWrapper getActual() {
@@ -454,7 +452,7 @@ public class StatementException extends IllegalArgumentException {
 
     /**
      * Returns the expected value wrapped in ValueWrapper instance.
-     * <p>
+     * 
      * @return {@code ValueWrapper} instance which store the {@link #expected}
      */
     public ValueWrapper getExpected() {
@@ -463,7 +461,7 @@ public class StatementException extends IllegalArgumentException {
 
     /**
      * Returns the detail string of this statement exception actual/expected values.
-     * <p>
+     * 
      * @return the detail string of this {@code StatementException} instance
      * actual/expected values (which could not be {@code null}).
      */
@@ -480,7 +478,7 @@ public class StatementException extends IllegalArgumentException {
     /**
      * Returns the detail message string of this statement exception or the statement detail with
      * actual/expected values.
-     * <p>
+     * 
      * @return the detail message string of this {@code StatementException} instance
      * (which could not be {@code null}).
      */
@@ -495,11 +493,11 @@ public class StatementException extends IllegalArgumentException {
     /**
      * Returns a short description of this statement exception using the same format
      * as {@link Throwable#toString()}.
-     * <p>
+     * 
      * Since the constructors of this class convert supplied {@code null} or
      * blank messages to the empty {@code String}, this method only includes
      * non-empty messages in its return value.
-     * <p>
+     * 
      * @return a string representation of this {@code StatementException}.
      */
     @Override

@@ -31,8 +31,8 @@ import java.util.Set;
  * The type Type util.
  *
  * @author Alexander A. Kropotin
- * @project cranberry
- * @created 2020 -03-02 16:41
+ * project cranberry
+ * created 2020 -03-02 16:41
  */
 public final class TypeUtil {
 

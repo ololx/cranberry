@@ -21,9 +21,11 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 /**
- * @project cranberry
- * @created 2020-04-27 20:31
- * <p>
+ * The interface Logging processor.
+ *
+ * @author Alexander A. Kropotin
+ * project cranberry
+ * created 2020-04-27 20:31
  * @author Alexander A. Kropotin
  */
 public final class LoggerWrapper {

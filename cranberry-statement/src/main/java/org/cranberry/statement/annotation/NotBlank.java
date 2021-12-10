@@ -7,13 +7,13 @@ import java.lang.annotation.Target;
 
 /**
  * Causes cranberry to generate a statements validation method invoking.
- * <p>
+ *
  * Example:
  * <pre>
  * public static void runWithoutCustomMessage(@NotBlank String param) {
  * }
  * </pre>
- * <p>
+ * 
  * will generate:
  * <pre>
  * public static void runWithoutCustomMessage(@NotBlank String param) {
@@ -22,9 +22,9 @@ import java.lang.annotation.Target;
  * </pre>
  * this code will throw {@link org.cranberry.statement.internal.exception.NotBlankStatementException}
  * if the `param` is blank; see {@link org.cranberry.statement.internal.util.Statements}.
- * <p>
+ * 
  * This annotation is valid for `params` and `local variables` of of the `String` type.
- * <p>
+ * 
  * see {@link org.cranberry.statement.internal.exception.NotBlankStatementException}
  * see {@link org.cranberry.statement.internal.util.Statements}
  */
@@ -37,7 +37,7 @@ public @interface NotBlank {
 
     /**
      * Message string.
-     * <p>
+     * 
      * @return the custom message string of the statement exception.
      */
     String message() default "";

@@ -72,16 +72,18 @@ public final class TypeUtil {
     private static final int PRIMITIVE_TYPES_CAPACITY = 8;
 
     static {
-        PRIMITIVE_TYPES = new HashSet<TypeKind>(PRIMITIVE_TYPES_CAPACITY, 1f) {{
-            add(TypeKind.BOOLEAN);
-            add(TypeKind.BYTE);
-            add(TypeKind.CHAR);
-            add(TypeKind.DOUBLE);
-            add(TypeKind.FLOAT);
-            add(TypeKind.INT);
-            add(TypeKind.LONG);
-            add(TypeKind.SHORT);
-        }};
+        PRIMITIVE_TYPES = new HashSet<TypeKind>(PRIMITIVE_TYPES_CAPACITY, 1f) {
+            {
+                add(TypeKind.BOOLEAN);
+                add(TypeKind.BYTE);
+                add(TypeKind.CHAR);
+                add(TypeKind.DOUBLE);
+                add(TypeKind.FLOAT);
+                add(TypeKind.INT);
+                add(TypeKind.LONG);
+                add(TypeKind.SHORT);
+            }
+        };
 
         ARRAY_TYPE = TypeKind.ARRAY;
 
@@ -104,23 +106,23 @@ public final class TypeUtil {
     /**
      * Is same boolean.
      *
-     * @param t1 the t 1
-     * @param t2 the t 2
+     * @param type1 the t 1
+     * @param type2 the t 2
      * @return the boolean
      */
-    public boolean isSame(final TypeMirror t1, final TypeMirror t2) {
-        return this.typeUtil.isAssignable(t1, t2);
+    public boolean isSame(final TypeMirror type1, final TypeMirror type2) {
+        return this.typeUtil.isAssignable(type1, type2);
     }
 
     /**
      * Is different boolean.
      *
-     * @param t1 the t 1
-     * @param t2 the t 2
+     * @param type1 the t 1
+     * @param type2 the t 2
      * @return the boolean
      */
-    public boolean isDifferent(final TypeMirror t1, final TypeMirror t2) {
-        return !this.typeUtil.isAssignable(t1, t2);
+    public boolean isDifferent(final TypeMirror type1, final TypeMirror type2) {
+        return !this.typeUtil.isAssignable(type1, type2);
     }
 
     /**

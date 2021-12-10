@@ -31,8 +31,8 @@ import java.util.function.Predicate;
  *
  * @param <E> the type parameter
  * @author Alexander A. Kropotin
- * @project cranberry
- * @created 2019 -12-26 14:51
+ * project cranberry
+ * created 2019 -12-26 14:51
  */
 public abstract class AbstractCompilationTreeScanner<E extends Element>
         extends TreePathScanner<Void, Void>

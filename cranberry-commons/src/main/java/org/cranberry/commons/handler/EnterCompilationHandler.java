@@ -27,8 +27,8 @@ import java.util.Set;
  * @param <T> the type parameter
  * @param <K> the type parameter
  * @author Alexander A. Kropotin
- * @project cranberry
- * @created 2019 -12-23 13:41
+ * project cranberry
+ * created 2019 -12-23 13:41
  */
 public final class EnterCompilationHandler<T extends TaskEvent, K extends TaskEvent.Kind>
         extends AbstractCompilationHandler<T, K> {

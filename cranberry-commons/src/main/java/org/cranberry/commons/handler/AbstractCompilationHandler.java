@@ -27,8 +27,8 @@ import java.util.function.Consumer;
  * @param <T> the type parameter
  * @param <K> the type parameter
  * @author Alexander A. Kropotin
- * @project cranberry
- * @created 2019 -12-23 12:52
+ * project cranberry
+ * created 2019 -12-23 12:52
  */
 public abstract class AbstractCompilationHandler<T extends TaskEvent, K extends TaskEvent.Kind>
         implements CompilationHandler<T> {

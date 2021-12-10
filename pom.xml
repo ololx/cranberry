@@ -263,7 +263,7 @@
                     <excludes>**/generated/**/*</excludes>
                     <configLocation>check_style_google_rules.xml</configLocation>
                     <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
-                    <encoding>UTF-8</encoding>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
                     <linkXRef>false</linkXRef>
@@ -292,7 +292,7 @@
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>2.5</version>
                 <configuration>
-                    <rulesUri>file://${user.dir}/check_dependency_versions_rules.xml.xml</rulesUri>
+                    <rulesUri>file://${user.dir}/check_dependency_versions_rules.xml</rulesUri>
                     <generateBackupPoms>false</generateBackupPoms>
                 </configuration>
             </plugin>

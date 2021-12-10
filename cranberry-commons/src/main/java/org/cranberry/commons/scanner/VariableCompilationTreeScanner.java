@@ -25,8 +25,8 @@ import javax.lang.model.element.VariableElement;
  * The type Variable compilation tree scanner.
  *
  * @author Alexander A. Kropotin
- * @project cranberry
- * @created 2019 -12-26 17:43
+ * project cranberry
+ * created 2019 -12-26 17:43
  */
 public class VariableCompilationTreeScanner extends AbstractCompilationTreeScanner<VariableElement> {
 

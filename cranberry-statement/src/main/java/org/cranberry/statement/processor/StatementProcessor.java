@@ -34,6 +34,10 @@ import java.util.stream.Collectors;
 
 /**
  * The type State processor.
+ *
+ * @author Alexander A. Kropotin
+ * project cranberry
+ * created 2020 -03-09 20:21
  */
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class StatementProcessor extends AbstractProcessor {

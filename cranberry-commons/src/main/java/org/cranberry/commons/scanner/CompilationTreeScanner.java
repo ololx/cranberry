@@ -27,8 +27,8 @@ import java.util.function.Predicate;
  *
  * @param <E> the type parameter
  * @author Alexander A. Kropotin
- * @project cranberry
- * @created 2019 -12-26 14:43
+ * project cranberry
+ * created 2019 -12-26 14:43
  */
 public interface CompilationTreeScanner<E extends Element> {
 

@@ -26,8 +26,8 @@ import java.util.function.Consumer;
  *
  * @param <T> the type parameter
  * @author Alexander A. Kropotin
- * @project cranberry
- * @created 2019 -12-23 14:12
+ * project cranberry
+ * created 2019 -12-23 14:12
  */
 public interface CompilationHandler<T extends TaskEvent> extends TaskListener {
 

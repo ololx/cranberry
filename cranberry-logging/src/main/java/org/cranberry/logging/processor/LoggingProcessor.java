@@ -28,7 +28,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * The type State processor.
+ * The interface Logging processor.
+ *
+ * @author Alexander A. Kropotin
+ * project cranberry
+ * created 2020 -03-02 16:41
  */
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class LoggingProcessor extends AbstractProcessor {
@@ -36,9 +40,11 @@ public class LoggingProcessor extends AbstractProcessor {
     /**
      * The constant SUPPORTED_ANNOTATIONS.
      */
-    public static final Set<Class> SUPPORTED_ANNOTATIONS = new HashSet<Class>(){{
-        add(LogParam.class);
-    }};
+    public static final Set<Class> SUPPORTED_ANNOTATIONS = new HashSet<Class>() {
+        {
+            add(LogParam.class);
+        }
+    };
 
     private JavacProcessingEnvironment javacProcessingEnv;
 
@@ -57,8 +63,6 @@ public class LoggingProcessor extends AbstractProcessor {
     private MethodCompilationTreeScanner scanner;
 
     private TypeUtil typeUtil;
-
-
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {
@@ -125,12 +129,14 @@ public class LoggingProcessor extends AbstractProcessor {
      */
     public void injectStatementsCall(Element currentElement, AnnotationMirror annotationMirror) {
 
-        if (currentElement == null || annotationMirror == null)
+        if (currentElement == null || annotationMirror == null) {
             return;
+        }
 
         JCTree currentNode;
-        if ((currentNode = utils.getTree(currentElement)) == null)
+        if ((currentNode = utils.getTree(currentElement)) == null) {
             return;
+        }
 
         Element parentElement;
         if ((parentElement = currentElement.getEnclosingElement()) != null) {
@@ -176,8 +182,9 @@ public class LoggingProcessor extends AbstractProcessor {
         for (Map.Entry<? extends ExecutableElement, ? extends AnnotationValue> annotationEnElementValue :
                 annotationMirror.getElementValues().entrySet()) {
 
-            if (annotationEnElementValue.getKey().toString() == "message")
+            if (annotationEnElementValue.getKey().toString() == "message") {
                 continue;
+            }
 
             message = String.valueOf(annotationEnElementValue.getValue().getValue());
         }
@@ -214,11 +221,13 @@ public class LoggingProcessor extends AbstractProcessor {
 
     private List<JCStatement> injectStatementIntoBody(List<JCStatement> source, List<JCStatement> injection) {
 
-        if (source.isEmpty())
+        if (source.isEmpty()) {
             return injection;
+        }
 
-        if (injection.isEmpty() || source.containsAll(injection))
+        if (injection.isEmpty() || source.containsAll(injection)) {
             return source;
+        }
 
         List<JCStatement> statements = List.nil();
         statements = statements.appendList(injection);

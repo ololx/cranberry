@@ -26,8 +26,8 @@ import java.util.Collection;
  * @param <T> the type parameter
  * @param <K> the type parameter
  * @author Alexander A. Kropotin
- * @project cranberry
- * @created 2019 -12-23 13:23
+ * project cranberry
+ * created 2019 -12-23 13:23
  */
 public class MultiPhaseCompilationHandler<T extends TaskEvent, K extends TaskEvent.Kind>
         extends AbstractCompilationHandler<T, K>

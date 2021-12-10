@@ -41,7 +41,11 @@
             <property name="allowNonPrintableEscapes" value="true"/>
         </module>
         <module name="LineLength">
-            <property name="max" value="100"/>
+            <!--Modified defaults for cranberry project-->
+            <property name="max" value="121"/>
+            <!-- Actual Google Java Style defaults -->
+            <!--<property name="max" value="100"/>-->
+
             <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
         </module>
         <module name="AvoidStarImport"/>

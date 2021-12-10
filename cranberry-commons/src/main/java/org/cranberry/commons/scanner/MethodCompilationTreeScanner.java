@@ -25,8 +25,8 @@ import javax.lang.model.element.ExecutableElement;
  * The type Method compilation tree scanner.
  *
  * @author Alexander A. Kropotin
- * @project cranberry
- * @created 2020 -02-19 14:43
+ * project cranberry
+ * created 2020 -02-19 14:43
  */
 public class MethodCompilationTreeScanner extends AbstractCompilationTreeScanner<ExecutableElement> {
 

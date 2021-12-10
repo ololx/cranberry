@@ -25,8 +25,8 @@ import java.util.Collection;
  *
  * @param <K> the type parameter
  * @author Alexander A. Kropotin
- * @project cranberry
- * @created 2019 -12-23 12:32
+ * project cranberry
+ * created 2019 -12-23 12:32
  */
 public interface SettableCompilationHandler<K extends TaskEvent.Kind> {
 

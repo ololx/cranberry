@@ -5,6 +5,10 @@ import java.util.Map;
 
 /**
  * The type Statements.
+ *
+ * @author Alexander A. Kropotin
+ * project cranberry
+ * created 2020 -03-09 20:21
  */
 public final class Statements {
 

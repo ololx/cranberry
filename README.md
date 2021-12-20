@@ -16,13 +16,15 @@ ________________________________________
 
 The Cranberry is a java library that allows to write less code - it's  automatically plugs into your project build and sweets up your java.
 
-[![maven](https://maven-badges.herokuapp.com/maven-central/io.github.ololx.cranberry/cranberry/badge.svg?style=flat-square&colour=attention)](https://search.maven.org/search?q=g:io.github.ololx.cranberry)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.ololx.cranberry/cranberry.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22)
 
-[![status](https://img.shields.io/badge/status-active-active?style=flat-square)](BADGES_GUIDE.md#status) [![build](https://img.shields.io/badge/build-passing-success?style=flat-square)](BADGES_GUIDE.md#build) [![oss lifecycle](https://img.shields.io/badge/oss_lifecycle-active-important?style=flat-square)](BADGES_GUIDE.md#oss-lifecycle) [![last release](https://img.shields.io/badge/latest_release_date-December_09,_2020-informational?style=flat-square)](BADGES_GUIDE.md#release-date) [![last commit](https://img.shields.io/badge/last_commit_date-December_10,_2021-informational?style=flat-square)](BADGES_GUIDE.md#commit-date)
+[![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/ololx/mooncake.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ololx/mooncake/context:java) [![Total alerts](https://img.shields.io/lgtm/alerts/g/ololx/mooncake.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ololx/mooncake/alerts/)
 
-[![license](https://img.shields.io/badge/license-Apache_2.0-informational?style=flat-square)](LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
+[![status](https://img.shields.io/badge/status-active-active)](BADGES_GUIDE.md#status) [![oss lifecycle](https://img.shields.io/badge/oss_lifecycle-active-important)](BADGES_GUIDE.md#oss-lifecycle) [![last release](https://img.shields.io/badge/latest_release_date-December_09,_2020-informational)](BADGES_GUIDE.md#release-date) [![last commit](https://img.shields.io/badge/last_commit_date-December_20,_2021-informational)](BADGES_GUIDE.md#commit-date)
 
-[![platform](https://img.shields.io/badge/java-1.8+-important?style=flat-square)](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)
+[![license](https://img.shields.io/badge/license-Apache_2.0-informational)](LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
+
+[![platform](https://img.shields.io/badge/java-1.8+-important)](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)
 
 ---
 
@@ -112,6 +114,7 @@ _Example of dependency for installing `cranberry-muffin` module with version `0.
     <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry-muffin</artifactId>
     <version>0.4.0</version>
+    <scope>provided</scope>
 </dependency>
 ```
 

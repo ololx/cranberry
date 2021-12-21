@@ -18,7 +18,7 @@ The Cranberry is a java library that allows to write less code - it's  automatic
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.ololx.cranberry/cranberry.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22)
 
-[![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/ololx/mooncake.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ololx/mooncake/context:java) [![Total alerts](https://img.shields.io/lgtm/alerts/g/ololx/mooncake.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ololx/mooncake/alerts/)
+[![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/ololx/cranberry.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ololx/cranberry/context:java) [![Total alerts](https://img.shields.io/lgtm/alerts/g/ololx/mooncake.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ololx/mooncake/alerts/)
 
 [![status](https://img.shields.io/badge/status-active-active)](BADGES_GUIDE.md#status) [![oss lifecycle](https://img.shields.io/badge/oss_lifecycle-active-important)](BADGES_GUIDE.md#oss-lifecycle) [![last release](https://img.shields.io/badge/latest_release_date-December_09,_2020-informational)](BADGES_GUIDE.md#release-date) [![last commit](https://img.shields.io/badge/last_commit_date-December_20,_2021-informational)](BADGES_GUIDE.md#commit-date)
 

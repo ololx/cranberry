@@ -23,6 +23,7 @@ The Cranberry is a java library that allows to write less code - it's  automatic
 [![status](https://img.shields.io/badge/status-active-active)](BADGES_GUIDE.md#status) [![oss lifecycle](https://img.shields.io/badge/oss_lifecycle-active-important)](BADGES_GUIDE.md#oss-lifecycle) [![last release](https://img.shields.io/badge/latest_release_date-December_09,_2020-informational)](BADGES_GUIDE.md#release-date) [![last commit](https://img.shields.io/badge/last_commit_date-December_20,_2021-informational)](BADGES_GUIDE.md#commit-date)
 
 [![license](https://img.shields.io/badge/license-Apache_2.0-informational)](LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fololx%2Fcranberry.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fololx%2Fcranberry?ref=badge_shield)
 
 [![platform](https://img.shields.io/badge/java-1.8+-important)](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)
 
@@ -190,3 +191,6 @@ For the versioning is used [Semantic Versioning](http://semver.org/). For the ve
 ## 🔏 Licensing
 
 This project is licensed under the Apache license version 2.0 - see the [lisence](LICENSE) document for details.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fololx%2Fcranberry.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fololx%2Fcranberry?ref=badge_large)

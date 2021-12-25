@@ -24,4 +24,4 @@ jobs:
           java-version: 11
           distribution: 'adopt'
       - name: Maven Package
-      run: mvn clean package -P develop      
+        run: mvn clean package -P develop

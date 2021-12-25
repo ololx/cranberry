@@ -1,4 +1,4 @@
-package org.cranberry.statement;
+package org.cranberry.statement.annotation;
 
 import org.cranberry.statement.annotation.NotNull;
 import org.cranberry.statement.internal.exception.NotNullStatementException;
@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("The test of NotNull annotation")
-public class AnnotationNotNullTest {
+public class NotNullTest {
 
     @Test
     @DisplayName("[negative]: test null param")

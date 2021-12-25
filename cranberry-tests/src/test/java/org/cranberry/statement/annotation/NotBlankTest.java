@@ -1,4 +1,4 @@
-package org.cranberry.statement;
+package org.cranberry.statement.annotation;
 
 import org.cranberry.statement.annotation.NotBlank;
 import org.cranberry.statement.internal.exception.NotBlankStatementException;
@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("The test of NotBlank annotation")
-public class AnnotationNotBlankTest {
+public class NotBlankTest {
 
     @Test
     @DisplayName("[negative]: test empty param")

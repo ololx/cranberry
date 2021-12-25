@@ -1,4 +1,4 @@
-package org.cranberry.statement;
+package org.cranberry.statement.annotation;
 
 import org.cranberry.statement.annotation.True;
 import org.cranberry.statement.internal.exception.TrueStatementException;
@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("The test of True annotation")
-public class AnnotationTrueTest {
+public class TrueTest {
 
     @Test
     @DisplayName("[negative]: test false param")

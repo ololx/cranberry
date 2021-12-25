@@ -47,10 +47,12 @@
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-statement</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-logging</artifactId>
+            <scope>provided</scope>
         </dependency>
         <!--cranberry-modules/>-->
     </dependencies>
@@ -81,35 +83,13 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.4</version>
+                <version>0.8.5</version>
                 <executions>
                     <execution>
-                        <id>default-instrument</id>
+                        <id>jacoco-report-aggregate</id>
+                        <phase>verify</phase>
                         <goals>
-                            <goal>instrument</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>default-restore-instrumented-classes</id>
-                        <goals>
-                            <goal>restore-instrumented-classes</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>prepare-agent</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                        <configuration>
-                            <excludes>
-                                <exclude>*</exclude>
-                            </excludes>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <goals>
-                            <goal>report</goal>
+                            <goal>report-aggregate</goal>
                         </goals>
                     </execution>
                 </executions>

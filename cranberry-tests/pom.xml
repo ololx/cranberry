@@ -5,12 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>io.github.ololx.cranberry</groupId>
+        <groupId>io.github.ololx</groupId>
         <artifactId>cranberry</artifactId>
         <version>${revision}${sha1}${changelist}</version>
         <relativePath>../</relativePath>
     </parent>
 
+    <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry-tests</artifactId>
     <name>cranberry-test</name>
     <description>
@@ -46,12 +47,12 @@
         <!--<cranberry-modules-->
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
-            <artifactId>cranberry-statement</artifactId>
+            <artifactId>cranberry-logging</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
-            <artifactId>cranberry-logging</artifactId>
+            <artifactId>cranberry-statement</artifactId>
             <scope>provided</scope>
         </dependency>
         <!--cranberry-modules/>-->

@@ -5,12 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>io.github.ololx.cranberry</groupId>
+        <groupId>io.github.ololx</groupId>
         <artifactId>cranberry</artifactId>
         <version>${revision}${sha1}${changelist}</version>
         <relativePath>../</relativePath>
     </parent>
 
+    <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry-logging</artifactId>
     <name>cranberry-logging</name>
     <description>

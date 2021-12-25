@@ -95,6 +95,30 @@
                 </executions>
             </plugin>
             <!--test>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-classes-to-test-module</id>
+                        <goals>
+                            <goal>testResources</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/../cranberry-statement/target/classes</directory>
+                                    <directory>${project.basedir}/../cranberry-logging/target/classes</directory>
+                                </resource>
+                            </resources>
+                            <outputDirectory>
+                                ${project.build.outputDirectory}
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>

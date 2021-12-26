@@ -20,7 +20,7 @@ public final class Statements {
      */
     //----->NOT NULL STATEMENTS
     public static void stateNotNull(Object obj, String message) {
-        NotNullStatement.check(obj, message /*== null ? Messages.NOT_NULL.toString() : message*/);
+        NotNullStatement.check(obj, message);
     }
 
     /**
@@ -40,7 +40,7 @@ public final class Statements {
      */
     //----->NOT EMPTY STATEMENTS
     public static void stateNotEmpty(String str, String message) {
-        NotEmptyStatement.check(str, message/* == null ? Messages.NOT_EMPTY.toString() : message*/);
+        NotEmptyStatement.check(str, message);
     }
 
     /**
@@ -117,7 +117,7 @@ public final class Statements {
      */
     //----->NOT BLANK STATEMENTS
     public static void stateNotBlank(String str, String message) {
-        NotBlankStatement.check(str, message/* == null ? Messages.NOT_BLANK.toString() : message*/);
+        NotBlankStatement.check(str, message);
     }
 
     /**

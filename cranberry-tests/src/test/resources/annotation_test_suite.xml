@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Annotation test suite">
+    <test name="NotBlank annotation tests">
+        <classes>
+            <class name="io.github.ololx.cranberry.statement.annotation.NotBlankAnnotationITest" />
+        </classes>
+    </test>
+</suite>

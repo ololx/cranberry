@@ -20,12 +20,19 @@
     </description>
 
     <properties>
+        <!--[dependencies-->
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
+        <maven.dependency.testng.version>7.1.0</maven.dependency.testng.version>
+        <!--dependencies]-->
+
+        <!--[plugins-->
+        <maven.plugin.failsafe.version>2.22.0</maven.plugin.failsafe.version>
+        <!--plugins]-->
     </properties>
 
     <dependencies>
-        <!--<test-->
-        <dependency>
+        <!--[test-->
+        <!--<dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit-jupiter.version}</version>
@@ -42,28 +49,46 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
+        </dependency>-->
+        <!--test]-->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${maven.dependency.testng.version}</version>
+            <scope>test</scope>
         </dependency>
-        <!--test/>-->
-        <!--<cranberry-modules-->
+        <!--[cranberry-modules-->
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-logging</artifactId>
-            <scope>provided</scope>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-statement</artifactId>
-            <scope>provided</scope>
+            <scope>test</scope>
         </dependency>
-        <!--cranberry-modules/>-->
+        <!--cranberry-modules]-->
     </dependencies>
 
     <build>
         <plugins>
+            <!--[compiler-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <!--compiler]-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.22.0</version>
+                <version>${maven.plugin.failsafe.version}</version>
             </plugin>
             <!--<test-->
             <plugin>
@@ -72,6 +97,14 @@
                 <version>3.0.0-M3</version>
                 <configuration>
                     <reportFormat>plain</reportFormat>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>
+                            ${project.basedir}/src/test/resources/annotation_test_suite.xml
+                        </suiteXmlFile>
+                        <suiteXmlFile>
+                            ${project.basedir}/src/test/resources/statements_test_suite.xml
+                        </suiteXmlFile>
+                    </suiteXmlFiles>
                     <includes>
                         <include>**Test*</include>
                     </includes>
@@ -110,7 +143,7 @@
                             <resources>
                                 <resource>
                                     <directory>${project.basedir}/../cranberry-statement/target/classes</directory>
-                                    <directory>${project.basedir}/../cranberry-logging/target/classes</directory>
+                                    <!--<directory>${project.basedir}/../cranberry-logging/target/classes</directory>-->
                                 </resource>
                             </resources>
                             <outputDirectory>

@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Statements test suite">
+    <test name="All statements tests">
+        <classes>
+            <class name="io.github.ololx.cranberry.statement.internal.util.StatementsUTest" />
+        </classes>
+    </test>
+</suite>

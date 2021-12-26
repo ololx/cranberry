@@ -10,6 +10,22 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - The new statement for the checking logial assertions.
 
+# [0.5.2-SNAPSHOT] - 2021-12-25
+
+### Changed
+
+- The test framework from `JUnit` to `TestNG`.
+
+### Fixed
+
+- Wrong exception for `NotBlankStatement.check()` method - was `NotEmptyStatementException`, but expected `NotBlankStatementException`.
+
+# [0.5.0-SNAPSHOT] - 2021-12-25
+
+### Changed
+
+- The project groupId and packages names.
+
 # [0.4.0] - 2021-12-09
 
 ### Changed
@@ -38,7 +54,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Added
 - Initial public release of the cranberry with the following modules:
-    - The module [cranberry engine](cranberry-engine/README.md) which provides a general realisation of simple tools and wrappers which are used in another cranberry modules for the automatically code generating during compilation;
-    - The module [cranberry statement](cranberry-statement/README.md) which provides an api for the statements validation (such as not null and e.t.c.). This module includes an annotations for the injecting methods of this api into code during compilation;
-    - The module [cranberry muffin](cranberry-statement/README.md) which is designed to combine the possibilities of thematically grouped modules into one common library;
+    - The module [cranberry engine](cranberry-engine/README.md) which provides a general realisation of simple tools and wrappers which are used in another cranberry modules for the automatically code generating during compilation.
+    - The module [cranberry statement](cranberry-statement/README.md) which provides an api for the statements validation (such as not null and e.t.c.). This module includes an annotations for the injecting methods of this api into code during compilation.
+    - The module [cranberry muffin](cranberry-statement/README.md) which is designed to combine the possibilities of thematically grouped modules into one common library.
     - The module [cranberry tests](cranberry-tests/README.md) which will contain the unit tests for the remaining modules of the cranberry project.

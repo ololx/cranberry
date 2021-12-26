@@ -472,7 +472,7 @@ public class StatementException extends IllegalArgumentException {
                         this.getExpected().getValueStringRepresentation(),
                         this.getActual().getValueStringRepresentation()
                 )
-                : new String();
+                : "";
     }
 
     /**
@@ -485,9 +485,7 @@ public class StatementException extends IllegalArgumentException {
     public String getMessage() {
         return !"".equals(super.getMessage())
                 ? super.getMessage()
-                : !"".equals(this.getDetail())
-                ? this.getDetail()
-                : new String();
+                : this.getDetail();
     }
 
     /**

@@ -33,7 +33,7 @@ class NotBlankStatement implements Statement {
      * @param actual the actual
      */
     static void check(String actual) {
-        NotEmptyStatement.check(actual);
+        NotBlankStatement.check(actual);
     }
 
     /**

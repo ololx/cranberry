@@ -79,6 +79,9 @@
                 <version>3.0.0-M3</version>
                 <configuration>
                     <reportFormat>plain</reportFormat>
+                    <systemPropertyVariables>
+                        <jacoco-agent.destfile>**/jacoco.exec</jacoco-agent.destfile>
+                    </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>
                             ${project.basedir}/src/test/resources/annotation_test_suite.xml
@@ -96,20 +99,31 @@
                     <excludedGroups></excludedGroups>
                 </configuration>
             </plugin>
-            <!--<plugin>
+            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.5</version>
                 <executions>
                     <execution>
-                        <id>jacoco-report-aggregate</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report-aggregate</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>report-aggregate</goal>
                         </goals>
+                        <configuration>
+                            <dataFileIncludes>
+                                <dataFileInclude>**/jacoco.exec</dataFileInclude>
+                            </dataFileIncludes>
+                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
             <!--test>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -43,12 +43,12 @@
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-logging</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-statement</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <!--cranberry-modules]-->
     </dependencies>
@@ -90,13 +90,6 @@
                             ${project.basedir}/src/test/resources/statements_test_suite.xml
                         </suiteXmlFile>
                     </suiteXmlFiles>
-                    <includes>
-                        <include>**Test*</include>
-                    </includes>
-                    <excludes>
-                        <exclude></exclude>
-                    </excludes>
-                    <excludedGroups></excludedGroups>
                 </configuration>
             </plugin>
             <plugin>

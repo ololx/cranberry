@@ -96,7 +96,7 @@
                     <excludedGroups></excludedGroups>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.5</version>
@@ -109,7 +109,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
             <!--test>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

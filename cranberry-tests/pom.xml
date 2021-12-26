@@ -79,6 +79,9 @@
                 <version>3.0.0-M3</version>
                 <configuration>
                     <reportFormat>plain</reportFormat>
+                    <systemPropertyVariables>
+                        <jacoco-agent.destfile>**/jacoco.exec</jacoco-agent.destfile>
+                    </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>
                             ${project.basedir}/src/test/resources/annotation_test_suite.xml
@@ -95,27 +98,9 @@
                 <version>0.8.5</version>
                 <executions>
                     <execution>
-                        <id>default-instrument</id>
-                        <goals>
-                            <goal>instrument</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>default-restore-instrumented-classes</id>
-                        <goals>
-                            <goal>restore-instrumented-classes</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
-                        <configuration>
-                            <excludes>
-                                <exclude>*</exclude>
-                            </excludes>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>report-aggregate</id>

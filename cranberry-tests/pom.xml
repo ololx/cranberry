@@ -43,12 +43,12 @@
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-logging</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-statement</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <!--cranberry-modules]-->
     </dependencies>
@@ -105,9 +105,27 @@
                 <version>0.8.5</version>
                 <executions>
                     <execution>
+                        <id>default-instrument</id>
+                        <goals>
+                            <goal>instrument</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-restore-instrumented-classes</id>
+                        <goals>
+                            <goal>restore-instrumented-classes</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+                        <configuration>
+                            <excludes>
+                                <exclude>*</exclude>
+                            </excludes>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>report-aggregate</id>

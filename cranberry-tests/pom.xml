@@ -79,9 +79,6 @@
                 <version>3.0.0-M3</version>
                 <configuration>
                     <reportFormat>plain</reportFormat>
-                    <systemPropertyVariables>
-                        <jacoco-agent.destfile>**/jacoco.exec</jacoco-agent.destfile>
-                    </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>
                             ${project.basedir}/src/test/resources/annotation_test_suite.xml
@@ -90,13 +87,6 @@
                             ${project.basedir}/src/test/resources/statements_test_suite.xml
                         </suiteXmlFile>
                     </suiteXmlFiles>
-                    <includes>
-                        <include>**Test*</include>
-                    </includes>
-                    <excludes>
-                        <exclude></exclude>
-                    </excludes>
-                    <excludedGroups></excludedGroups>
                 </configuration>
             </plugin>
             <plugin>

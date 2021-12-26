@@ -335,10 +335,17 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>report</id>
+                        <id>report-aggregate</id>
+                        <phase>verify</phase>
                         <goals>
-                            <goal>report</goal>
+                            <goal>report-aggregate</goal>
                         </goals>
+                        <configuration>
+                            <dataFileIncludes>
+                                <dataFileInclude>**/jacoco.exec</dataFileInclude>
+                            </dataFileIncludes>
+                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

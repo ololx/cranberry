@@ -16,8 +16,6 @@
  */
 package io.github.ololx.cranberry.statement.resources;
 
-import io.github.ololx.cranberry.statement.internal.exception.NotBlankStatementException;
-import io.github.ololx.cranberry.statement.internal.util.Statements;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -34,6 +32,11 @@ import static org.testng.Assert.assertTrue;
  */
 public class MessagesITest {
 
+    /**
+     * Locale values object [ ] [ ].
+     *
+     * @return the object [ ] [ ]
+     */
     @DataProvider(name = "localeValues")
     public static Object[][] localeValues() {
         return new Object[][] {
@@ -42,7 +45,13 @@ public class MessagesITest {
         };
     }
 
-   @Test(dataProvider = "localeValues")
+    /**
+     * Gets bundle when locale value is define then return resource bundle for this locale.
+     *
+     * @param clazz the clazz
+     * @param value the value
+     */
+    @Test(dataProvider = "localeValues")
     public void getBundle_whenLocaleValueIsDefine_thenReturnResourceBundleForThisLocale(Class<?> clazz, String value) {
        ResourceBundle resourceBundle = ResourceBundle.getBundle(
                "io.github.ololx.cranberry.statement.resources.messages",

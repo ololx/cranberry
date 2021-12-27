@@ -16,7 +16,6 @@
  */
 package io.github.ololx.cranberry.statement.internal.util;
 
-import io.github.ololx.cranberry.statement.internal.exception.NotBlankStatementException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

@@ -16,14 +16,8 @@
  */
 package io.github.ololx.cranberry.statement.internal.exception;
 
-import io.github.ololx.cranberry.statement.resources.messages_en;
-import io.github.ololx.cranberry.statement.resources.messages_ru;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 import static org.testng.Assert.assertTrue;
 
@@ -35,6 +29,11 @@ import static org.testng.Assert.assertTrue;
  */
 public class StatementExceptionUTest {
 
+    /**
+     * String values object [ ] [ ].
+     *
+     * @return the object [ ] [ ]
+     */
     @DataProvider(name = "customMessages")
     public static Object[][] stringValues() {
         return new Object[][] {
@@ -61,6 +60,12 @@ public class StatementExceptionUTest {
         };
     }
 
+    /**
+     * Gets message when exception is created with custom message then return exception custom message.
+     *
+     * @param expectedMessage the expected message
+     * @param exception       the exception
+     */
     @Test(dataProvider = "customMessages")
     public void getMessage_whenExceptionIsCreatedWithCustomMessage_thenReturnExceptionCustomMessage(String expectedMessage, StatementException exception) {
         String actualMessage = exception.getMessage();

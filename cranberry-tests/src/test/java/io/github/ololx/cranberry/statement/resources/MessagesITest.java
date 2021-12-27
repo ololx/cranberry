@@ -35,7 +35,7 @@ import static org.testng.Assert.assertTrue;
 public class MessagesITest {
 
     @DataProvider(name = "localeValues")
-    public static Object[][] stringValues() {
+    public static Object[][] localeValues() {
         return new Object[][] {
                 {messages_en.class, "en"},
                 {messages_ru.class, "ru"}
@@ -43,7 +43,7 @@ public class MessagesITest {
     }
 
    @Test(dataProvider = "localeValues")
-    public void stateNotBlank_whenStringValueIsBlank_thenThrowsException(Class<?> clazz, String value) {
+    public void getBundle_whenLocaleValueIsDefine_thenReturnResourceBundleForThisLocale(Class<?> clazz, String value) {
        ResourceBundle resourceBundle = ResourceBundle.getBundle(
                "io.github.ololx.cranberry.statement.resources.messages",
                new Locale(value)

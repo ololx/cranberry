@@ -2,7 +2,10 @@
 <suite name="Annotation test suite">
     <test name="NotBlank annotation tests">
         <classes>
-            <class name="io.github.ololx.cranberry.statement.annotation.NotBlankAnnotationITest" />
+            <class name="io.github.ololx.cranberry.statement.annotation.NotBlankAnnotationPositiveITest" />
+            <class name="io.github.ololx.cranberry.statement.annotation.NotBlankAnnotationNegativeITest" />
+            <class name="io.github.ololx.cranberry.statement.annotation.NotNullAnnotationPositiveITest" />
+            <class name="io.github.ololx.cranberry.statement.annotation.NotNullAnnotationNegativeITest" />
         </classes>
     </test>
 </suite>

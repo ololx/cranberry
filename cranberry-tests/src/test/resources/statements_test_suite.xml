@@ -3,6 +3,10 @@
     <test name="All statements tests">
         <classes>
             <class name="io.github.ololx.cranberry.statement.internal.util.StatementsUTest" />
+            <class name="io.github.ololx.cranberry.statement.internal.util.StatementsStateNotNullNegativeUTest" />
+            <class name="io.github.ololx.cranberry.statement.internal.util.StatementsStateNotNullPositiveUTest" />
+            <class name="io.github.ololx.cranberry.statement.internal.util.StatementsStateNotEmptyPositiveUTest" />
+            <class name="io.github.ololx.cranberry.statement.internal.util.StatementsStateNotEmptyNegativeUTest" />
         </classes>
     </test>
 </suite>

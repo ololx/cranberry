@@ -48,7 +48,7 @@ public class StatementsStateNotBlankPositiveUTest {
      * @param value the value
      */
     @Test(dataProvider = "stringValues")
-    public void stateNotEmpty_whenStringValueIsNotEmpty_thenDoNotThrowsException(String value) {
-        Statements.stateNotEmpty(value);
+    public void stateNotBlank_whenStringValueIsNotBlank_thenDoNotThrowsException(String value) {
+        Statements.stateNotBlank(value);
     }
 }

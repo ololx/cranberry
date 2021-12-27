@@ -17,12 +17,9 @@
 package io.github.ololx.cranberry.statement.internal.util;
 
 import io.github.ololx.cranberry.statement.internal.exception.NotBlankStatementException;
+import io.github.ololx.cranberry.statement.internal.exception.TrueStatementException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.*;
 
 /**
  * project cranberry
@@ -30,35 +27,30 @@ import java.util.*;
  *
  * @author Alexander A. Kropotin
  */
-public class StatementsStateNotBlankNegativeUTest {
+public class StatementsStateTrueNegativeUTest {
 
     /**
      * String values object [ ].
      *
      * @return the object [ ]
      */
-    @DataProvider(name = "stringValues")
+    @DataProvider(name = "booleanValues")
     public static Object[] stringValues() {
         return new Object[] {
-                "",
-                new StringBuffer().toString(),
-                new StringBuilder().toString(),
-                " ",
-                new StringBuffer(" ").toString(),
-                new StringBuilder(" ").toString()
+                false
         };
     }
 
     /**
-     * State not blank when string value is empty then throws exception.
+     * State true when string value is not empty then do not throws exception.
      *
      * @param value the value
      */
     @Test(
-            dataProvider = "stringValues",
-            expectedExceptions = NotBlankStatementException.class
+            dataProvider = "booleanValues",
+            expectedExceptions = TrueStatementException.class
     )
-    public void stateNotBlank_whenStringValueIsBlank_thenThrowsException(String value) {
-        Statements.stateNotBlank(value);
+    public void stateNotEmpty_whenBooleanValueIsNotTrue_thenDoNotThrowsException(Boolean value) {
+        Statements.stateTrue(value);
     }
 }

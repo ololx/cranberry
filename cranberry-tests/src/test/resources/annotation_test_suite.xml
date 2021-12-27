@@ -8,6 +8,8 @@
             <class name="io.github.ololx.cranberry.statement.annotation.NotNullAnnotationNegativeITest" />
             <class name="io.github.ololx.cranberry.statement.annotation.NotEmptyAnnotationPositiveITest" />
             <class name="io.github.ololx.cranberry.statement.annotation.NotEmptyAnnotationNegativeITest" />
+            <class name="io.github.ololx.cranberry.statement.annotation.TrueAnnotationPositiveITest" />
+            <class name="io.github.ololx.cranberry.statement.annotation.TrueAnnotationNegativeITest" />
         </classes>
     </test>
 </suite>

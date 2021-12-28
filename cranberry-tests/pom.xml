@@ -102,6 +102,26 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report-aggregate</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report-aggregate</goal>
+                        </goals>
+                        <configuration>
+                            <dataFileIncludes>
+                                <dataFileInclude>**/jacoco.exec</dataFileInclude>
+                            </dataFileIncludes>
+                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <!--test>-->
             <plugin>
@@ -117,7 +137,6 @@
                         <configuration>
                             <resources>
                                 <resource>
-                                    <directory>${project.basedir}/target/classes</directory>
                                     <directory>${project.basedir}/../cranberry-logging/target/classes</directory>
                                     <directory>${project.basedir}/../cranberry-statement/target/classes</directory>
                                 </resource>

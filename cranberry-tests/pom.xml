@@ -102,44 +102,6 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.5</version>
-                <executions>
-                    <execution>
-                        <id>default-instrument</id>
-                        <goals>
-                            <goal>instrument</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>default-restore-instrumented-classes</id>
-                        <goals>
-                            <goal>restore-instrumented-classes</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>prepare-agent</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                        <configuration>
-                            <excludes>
-                                <exclude>*</exclude>
-                            </excludes>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>report-aggregate</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>report-aggregate</goal>
-                        </goals>
-                        <configuration>
-                            <dataFileIncludes>
-                                <dataFileInclude>**/jacoco.exec</dataFileInclude>
-                            </dataFileIncludes>
-                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <!--test>-->
             <plugin>

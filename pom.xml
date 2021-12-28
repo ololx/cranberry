@@ -306,7 +306,7 @@
                 </executions>
             </plugin>
             <!--flatten pom>-->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.5</version>
@@ -348,7 +348,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 </project>

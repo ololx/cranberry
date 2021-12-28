@@ -4,64 +4,83 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!--[parent-->
     <parent>
         <groupId>io.github.ololx</groupId>
         <artifactId>cranberry</artifactId>
         <version>${revision}${sha1}${changelist}</version>
         <relativePath>../</relativePath>
     </parent>
+    <!--parent]-->
 
+    <!--[artifact-->
     <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry-logging</artifactId>
+    <packaging>jar</packaging>
+    <!--artifact]-->
+
+    <!--[info-->
     <name>cranberry-logging</name>
     <description>
         The cranberry logging is a module of cranberry library (see cranberry). This module provides an API for the
         displaying and displaying method parameters. This module includes an annotations for the injecting methods
         of this api into code during compilation.
     </description>
+    <!--info]-->
 
-    <packaging>jar</packaging>
-
+    <!--[dependencies-->
     <dependencies>
-        <!--<cranberry-commons-->
+        <!--[cranberry-commons-->
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-commons</artifactId>
             <scope>compile</scope>
         </dependency>
-        <!--cranberry-commons>-->
+        <!--cranberry-commons]-->
     </dependencies>
+    <!--dependencies]-->
 
+    <!--[build-->
     <build>
+        <!--[build module-->
         <plugins>
-            <!--<compiler-->
+            <!--[packaging to jar-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${plugin.maven-dependency-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>default-compile</id>
-                        <configuration>
-                            <compilerArgument>-proc:none</compilerArgument>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>compile-project</id>
-                        <phase>compile</phase>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
                         <goals>
-                            <goal>compile</goal>
-                            <goal>testCompile</goal>
+                            <goal>copy-dependencies</goal>
                         </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.directory}/libs
+                            </outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
-            <!--compiler>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${plugin.maven-jar-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>libs/</classpathPrefix>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!--packaging to jar]-->
         </plugins>
+        <!--build module]-->
     </build>
+    <!--build]-->
+
 </project>

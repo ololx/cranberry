@@ -4,44 +4,97 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!--[parent-->
     <parent>
         <groupId>io.github.ololx</groupId>
         <artifactId>cranberry</artifactId>
         <version>${revision}${sha1}${changelist}</version>
         <relativePath>../</relativePath>
     </parent>
+    <!--parent]-->
 
+    <!--[artifact-->
     <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry-muffin</artifactId>
+    <packaging>jar</packaging>
+    <!--artifact]-->
+
+    <!--[info-->
     <name>cranberry-muffin</name>
     <description>
         The cranberry muffin is a module of cranberry library and also java library is designed
         to combine the possibilities of thematically grouped modules into one common library.
     </description>
+    <!--info]-->
 
-    <packaging>jar</packaging>
+    <!--[properties-->
+    <properties>
+        <!--[plugins versions-->
+        <plugin.maven-shade-plugin.version>3.2.3</plugin.maven-shade-plugin.version>
+        <!--plugins versions]-->
+    </properties>
+    <!--properties]-->
 
+    <!--[dependencies-->
     <dependencies>
-        <!--<cranberry-statement-->
+        <!--[cranberry-statement-->
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-statement</artifactId>
         </dependency>
-        <!--cranberry-statement>-->
-        <!--<cranberry-logging-->
+        <!--cranberry-statement]-->
+        <!--[cranberry-logging-->
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-logging</artifactId>
         </dependency>
-        <!--cranberry-logging>-->
+        <!--cranberry-logging]-->
     </dependencies>
 
+    <!--[build-->
     <build>
+        <!--[build module-->
         <plugins>
+            <!--[packaging to jar-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${plugin.maven-dependency-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.directory}/libs
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${plugin.maven-jar-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>libs/</classpathPrefix>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!--packaging to jar]-->
+
+            <!--[include dependencies in fat jar-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.3</version>
+                <version>${plugin.maven-shade-plugin.version}</version>
                 <configuration>
                     <createDependencyReducedPom>false</createDependencyReducedPom>
                 </configuration>
@@ -55,6 +108,10 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--include dependencies in fat jar]-->
         </plugins>
+        <!--build module]-->
     </build>
+    <!--build]-->
+
 </project>

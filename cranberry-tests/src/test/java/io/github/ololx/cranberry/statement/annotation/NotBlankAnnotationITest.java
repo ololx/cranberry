@@ -1,28 +1,30 @@
 package io.github.ololx.cranberry.statement.annotation;
 
-import io.github.ololx.cranberry.statement.annotation.NotBlank;
-import io.github.ololx.cranberry.statement.internal.exception.NotBlankStatementException;
-import org.testng.annotations.Test;
+/**
+ * project cranberry
+ * created 2021-12-27 16:29
+ *
+ * @author Alexander A. Kropotin
+ */
+public abstract class NotBlankAnnotationITest {
 
-import static org.testng.Assert.assertTrue;
-
-public class NotBlankAnnotationITest {
-
-    @Test(expectedExceptions = NotBlankStatementException.class)
-    public void expectedNotBlankException() {
-        executeWithAnnotatedLocalVariable("  ");
-    }
-
-    @Test
-    public void unexpectedNotBlankException() {
-        executeWithAnnotatedLocalVariable("1");
-    }
-
-    private String executeWithAnnotatedParam(@NotBlank String param) {
+    /**
+     * Execute with annotated param string.
+     *
+     * @param param the param
+     * @return the string
+     */
+    protected String executeWithAnnotatedParam(@NotBlank String param) {
         return param;
     }
 
-    private String executeWithAnnotatedLocalVariable(String param) {
+    /**
+     * Execute with annotated local variable string.
+     *
+     * @param param the param
+     * @return the string
+     */
+    protected String executeWithAnnotatedLocalVariable(String param) {
         @NotBlank String variable = param;
 
         return param;

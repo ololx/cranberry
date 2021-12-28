@@ -11,7 +11,7 @@
     <packaging>pom</packaging>
     <!--artifact]-->
 
-    <!--[project info-->
+    <!--[info-->
     <name>cranberry</name>
     <description>
         The cranberry is a java library that allows to write less code - it's automatically
@@ -27,7 +27,7 @@
             <comments/>
         </license>
     </licenses>
-    <!--project info]-->
+    <!--info]-->
 
     <!--[developers and contributors-->
     <developers>
@@ -104,7 +104,7 @@
     <properties>
         <!--[project versions-->
         <revision>0.5.2</revision>
-        <changelist>-SNAPSHOT</changelist>
+        <changelist></changelist>
         <sha1/>
         <!--project versions]-->
 
@@ -120,10 +120,6 @@
         <java.version>1.8</java.version>
         <!--project specific]-->
 
-        <!--[dependencies versions-->
-        <maven.dependency.testng.version>7.1.0</maven.dependency.testng.version>
-        <!--dependencies versions]-->
-
         <!--[plugins versions-->
         <plugin.maven-checkstyle-plugin.version>2.17</plugin.maven-checkstyle-plugin.version>
         <plugin.versions-maven-plugin.version>2.5</plugin.versions-maven-plugin.version>
@@ -131,11 +127,10 @@
         <plugin.maven-verifier-plugin.version>1.1</plugin.maven-verifier-plugin.version>
         <plugin.flatten-maven-plugin.version>1.2.7</plugin.flatten-maven-plugin.version>
         <plugin.jacoco-maven-plugin.version>0.8.6</plugin.jacoco-maven-plugin.version>
+        <plugin.maven-clean-plugin.version>3.1.0</plugin.maven-clean-plugin.version>
         <plugin.maven-compiler-plugin.version>3.8.1</plugin.maven-compiler-plugin.version>
         <plugin.maven-jar-plugin.version>3.1.1</plugin.maven-jar-plugin.version>
-        <plugin.maven-clean-plugin.version>3.1.0</plugin.maven-clean-plugin.version>
-
-        <maven.plugin.failsafe.version>2.22.0</maven.plugin.failsafe.version>
+        <plugin.maven-dependency-plugin.version>3.1.1</plugin.maven-dependency-plugin.version>
         <!--plugins versions]-->
     </properties>
     <!--properties]-->

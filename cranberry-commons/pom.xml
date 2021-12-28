@@ -4,21 +4,71 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!--[parent-->
     <parent>
         <groupId>io.github.ololx</groupId>
         <artifactId>cranberry</artifactId>
         <version>${revision}${sha1}${changelist}</version>
         <relativePath>../</relativePath>
     </parent>
+    <!--parent]-->
 
+    <!--[artifact-->
     <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry-commons</artifactId>
+    <packaging>jar</packaging>
+    <!--artifact]-->
+
+    <!--[info-->
     <name>cranberry-commons</name>
     <description>
         The cranberry commons is a module of Cranberry library (see cranberry). This module provides a general realisation
         of simple tools and wrappers which are used in another cranberry modules for the automatically code
         generating during compilation.
     </description>
+    <!--info]-->
 
-    <packaging>jar</packaging>
+    <!--[build-->
+    <build>
+        <!--[build module-->
+        <plugins>
+            <!--[packaging to jar-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${plugin.maven-dependency-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.directory}/libs
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${plugin.maven-jar-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>libs/</classpathPrefix>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!--packaging to jar]-->
+        </plugins>
+        <!--build module]-->
+    </build>
+    <!--build]-->
+
 </project>

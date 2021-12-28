@@ -4,63 +4,70 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!--[parent-->
     <parent>
         <groupId>io.github.ololx</groupId>
         <artifactId>cranberry</artifactId>
         <version>${revision}${sha1}${changelist}</version>
         <relativePath>../</relativePath>
     </parent>
+    <!--parent]-->
 
+    <!--[artifact-->
     <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry-tests</artifactId>
+    <!--artifact]-->
+
+    <!--[info-->
     <name>cranberry-test</name>
     <description>
         The cranberry tests is a module of cranberry library (see cranberry). This module provides the unit tests
         for the remaining modules of the cranberry project.
     </description>
+    <!--info]-->
 
+    <!--[properties-->
     <properties>
-        <!--[dependencies-->
-        <junit-jupiter.version>5.5.2</junit-jupiter.version>
-        <maven.dependency.testng.version>7.1.0</maven.dependency.testng.version>
-        <!--dependencies]-->
+        <!--[dependencies versions-->
+        <dependency.testng.version>7.1.0</dependency.testng.version>
+        <!--dependencies versions]-->
 
-        <!--[plugins-->
-        <maven.plugin.failsafe.version>2.22.0</maven.plugin.failsafe.version>
-        <!--plugins]-->
+        <!--[plugins versions-->
+        <plugin.maven-shade-plugin.version>3.2.3</plugin.maven-shade-plugin.version>
+        <!--plugins versions]-->
     </properties>
+    <!--properties]-->
 
+    <!--[dependencies-->
     <dependencies>
         <!--[test-->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>${maven.dependency.testng.version}</version>
+            <version>${dependency.testng.version}</version>
             <scope>test</scope>
         </dependency>
         <!--test]-->
-        <!--[cranberry-modules-->
+
+        <!--[project modules-->
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-logging</artifactId>
-            <scope>provided</scope>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-statement</artifactId>
-            <scope>provided</scope>
+            <scope>test</scope>
         </dependency>
-        <!--cranberry-modules]-->
+        <!--project modules]-->
     </dependencies>
 
+    <!--[build-->
     <build>
+        <!--[build module-->
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven.plugin.failsafe.version}</version>
-            </plugin>
-            <!--<test-->
+            <!--[testing-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -88,6 +95,10 @@
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
+            <!--testing]-->
+
+            <!--[reporting code coverage-->
+            <!--used for codecov.io-->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -113,7 +124,9 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--test>-->
+            <!--reporting code coverage]-->
+
+            <!--[managing resources-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -138,6 +151,10 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--managing resources]-->
         </plugins>
+        <!--build module]-->
     </build>
+    <!--build]-->
+
 </project>

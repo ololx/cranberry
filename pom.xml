@@ -131,7 +131,9 @@
         <plugin.maven-verifier-plugin.version>1.1</plugin.maven-verifier-plugin.version>
         <plugin.flatten-maven-plugin.version>1.2.7</plugin.flatten-maven-plugin.version>
         <plugin.jacoco-maven-plugin.version>0.8.6</plugin.jacoco-maven-plugin.version>
-
+        <plugin.maven-compiler-plugin.version>3.8.1</plugin.maven-compiler-plugin.version>
+        <plugin.maven-jar-plugin.version>3.1.1</plugin.maven-jar-plugin.version>
+        <plugin.maven-clean-plugin.version>3.1.0</plugin.maven-clean-plugin.version>
 
         <maven.plugin.failsafe.version>2.22.0</maven.plugin.failsafe.version>
         <!--plugins versions]-->
@@ -410,6 +412,51 @@
                 </executions>
             </plugin>
             <!--reporting code coverage]-->
+
+            <!--[cleaning target-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${plugin.maven-clean-plugin.version}</version>
+            </plugin>
+            <!--cleaning target]-->
+
+            <!--[compiling source-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${plugin.maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-compile</id>
+                        <configuration>
+                            <compilerArgument>-proc:none</compilerArgument>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>compile-project</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--compiling source]-->
+
+            <!--[packaging to jar-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${plugin.maven-jar-plugin.version}</version>
+            </plugin>
+            <!--packaging to jar]-->
         </plugins>
         <!--build general]-->
     </build>

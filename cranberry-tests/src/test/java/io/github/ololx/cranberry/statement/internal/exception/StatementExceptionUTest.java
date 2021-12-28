@@ -35,7 +35,7 @@ public class StatementExceptionUTest {
      * @return the object [ ] [ ]
      */
     @DataProvider(name = "customMessages")
-    public static Object[][] stringValues() {
+    public static Object[][] customMessages() {
         return new Object[][] {
                 {
                     "StatementException",

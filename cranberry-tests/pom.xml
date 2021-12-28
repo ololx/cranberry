@@ -98,7 +98,7 @@
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.5</version>
@@ -122,9 +122,9 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
             <!--test>-->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.1.0</version>
@@ -137,8 +137,8 @@
                         <configuration>
                             <resources>
                                 <resource>
-                                    <!--<directory>${project.basedir}/target/classes</directory>
-                                    <directory>${project.basedir}/../cranberry-logging/target/classes</directory>-->
+                                    <directory>${project.basedir}/target/classes</directory>
+                                    <directory>${project.basedir}/../cranberry-logging/target/classes</directory>
                                     <directory>${project.basedir}/../cranberry-statement/target/classes</directory>
                                 </resource>
                             </resources>
@@ -148,7 +148,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 </project>

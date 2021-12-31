@@ -13,6 +13,7 @@ import com.sun.tools.javac.tree.JCTree.JCStatement;
 import com.sun.tools.javac.tree.JCTree.JCVariableDecl;
 import com.sun.tools.javac.tree.TreeMaker;
 import com.sun.tools.javac.util.List;
+import io.github.ololx.cranberry.commons.annotation.IncludeVarsLocal;
 import io.github.ololx.cranberry.commons.handler.EnterCompilationHandler;
 import io.github.ololx.cranberry.commons.scanner.VariableCompilationTreeScanner;
 import io.github.ololx.cranberry.commons.utils.TypeUtil;
@@ -50,6 +51,7 @@ public class StatementProcessor extends AbstractProcessor {
         add(NotEmpty.class);
         add(NotBlank.class);
         add(True.class);
+        add(IncludeVarsLocal.class);
     }};
 
     private JavacProcessingEnvironment javacProcessingEnv;

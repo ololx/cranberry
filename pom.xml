@@ -71,7 +71,7 @@
     </issueManagement>
     <ciManagement>
         <system>Github Actions</system>
-        <url>https://github.com/mapstruct/mapstruct/actions</url>
+        <url>https://github.com/ololx/cranberry/actions</url>
         <notifiers>
             <notifier>
                 <type>mail</type>
@@ -103,8 +103,8 @@
     <!--[properties-->
     <properties>
         <!--[project versions-->
-        <revision>0.5.2</revision>
-        <changelist></changelist>
+        <revision>0.5.3</revision>
+        <changelist>-SNAPSHOT</changelist>
         <sha1/>
         <!--project versions]-->
 

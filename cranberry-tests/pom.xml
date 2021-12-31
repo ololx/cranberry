@@ -95,6 +95,10 @@
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
             <!--testing]-->
 
             <!--[reporting code coverage-->

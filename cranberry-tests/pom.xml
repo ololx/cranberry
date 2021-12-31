@@ -19,7 +19,7 @@
     <!--artifact]-->
 
     <!--[info-->
-    <name>cranberry-test</name>
+    <name>${project.groupId}:${project.artifactId}</name>
     <description>
         The cranberry tests is a module of cranberry library (see cranberry). This module provides the unit tests
         for the remaining modules of the cranberry project.

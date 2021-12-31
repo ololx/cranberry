@@ -12,7 +12,7 @@
     <!--artifact]-->
 
     <!--[info-->
-    <name>cranberry</name>
+    <name>${project.groupId}:${project.artifactId}</name>
     <description>
         The cranberry is a java library that allows to write less code - it's automatically
         plugs into your project build and sweets up your java.
@@ -60,10 +60,9 @@
 
     <!--[ci info-->
     <scm>
-        <connection>scm:git:git@github.com:ololx/cranberry.git</connection>
-        <developerConnection>scm:git:git@github.com:ololx/cranberry.git</developerConnection>
-        <url>https://github.com/ololx/cranberry</url>
-        <tag>HEAD</tag>
+        <connection>scm:git:git://github.com/cranberry.git</connection>
+        <developerConnection>scm:git:ssh://github.com:ololx/cranberry.git</developerConnection>
+        <url>http://github.com/ololx/cranberry</url>
     </scm>
     <issueManagement>
         <system>GitHub</system>
@@ -71,7 +70,7 @@
     </issueManagement>
     <ciManagement>
         <system>Github Actions</system>
-        <url>https://github.com/mapstruct/mapstruct/actions</url>
+        <url>https://github.com/ololx/cranberry/actions</url>
         <notifiers>
             <notifier>
                 <type>mail</type>
@@ -103,7 +102,7 @@
     <!--[properties-->
     <properties>
         <!--[project versions-->
-        <revision>0.5.2</revision>
+        <revision>0.5.3</revision>
         <changelist></changelist>
         <sha1/>
         <!--project versions]-->

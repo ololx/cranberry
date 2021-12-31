@@ -10,6 +10,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - The new statement for the checking logial assertions.
 
+# [0.5.3] - 2021-12-31
+
+### Added
+
+- The new annotation `@IncludeVarsLocal` - for the processing local vars.
+
+### Changed
+
+- The `StatementAnnotationProcessor` for running on `@IncludeVarsLocal` too.
+
 # [0.5.2-SNAPSHOT] - 2021-12-25
 
 ### Changed

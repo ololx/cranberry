@@ -20,7 +20,7 @@
     <!--artifact]-->
 
     <!--[info-->
-    <name>cranberry-commons</name>
+    <name>${project.groupId}:${project.artifactId}</name>
     <description>
         The cranberry commons is a module of Cranberry library (see cranberry). This module provides a general realisation
         of simple tools and wrappers which are used in another cranberry modules for the automatically code

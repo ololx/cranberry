@@ -9,25 +9,26 @@
    00 v     00 0 * 0  000       000
       00 00     0 0     000   000
 ________________________________________
-             The Cranberry          
+The Cranberry          
 ```
 
 # cranberry
 
 The Cranberry is a java library that allows to write less code - it's  automatically plugs into your project build and sweets up your java.
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.ololx.cranberry/cranberry.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.ololx/cranberry.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22) [![Sonatype Snapshot](https://img.shields.io/nexus/s/io.github.ololx/cranberry?server=https%3A%2F%2Fs01.oss.sonatype.org)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22)
 
-[![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/ololx/cranberry.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ololx/cranberry/context:java) [![Total alerts](https://img.shields.io/lgtm/alerts/g/ololx/mooncake.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ololx/mooncake/alerts/)
+[![tag](https://img.shields.io/github/v/tag/ololx/cranberry?style=flat&include_prereleases&logo=github)](https://github.com/ololx/cranberry/tags) [![release](https://img.shields.io/github/v/release/ololx/cranberry?style=flat&include_prereleases&logo=github)](https://github.com/ololx/cranberry/releases)
 
-[![status](https://img.shields.io/badge/status-active-active)](BADGES_GUIDE.md#status) [![oss lifecycle](https://img.shields.io/badge/oss_lifecycle-active-important)](BADGES_GUIDE.md#oss-lifecycle) [![last release](https://img.shields.io/badge/latest_release_date-December_09,_2020-informational)](BADGES_GUIDE.md#release-date) [![last commit](https://img.shields.io/badge/last_commit_date-December_20,_2021-informational)](BADGES_GUIDE.md#commit-date)
+[![osslifecycle](https://img.shields.io/osslifecycle/ololx/cranberry?style=flat)](OSSMETADATA) [![last_commit](https://img.shields.io/github/last-commit/ololx/cranberry?style=flat&logo=github)](https://github.com/ololx/cranberry/commits) [![release_date](https://img.shields.io/github/release-date/ololx/cranberry?style=flat&logo=github)](https://github.com/ololx/cranberry/releases) 
 
-[![license](https://img.shields.io/badge/license-Apache_2.0-informational)](LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fololx%2Fcranberry.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fololx%2Fcranberry?ref=badge_shield)
+[![build](https://img.shields.io/github/workflow/status/ololx/cranberry/Build?label=build&logo=github-actions&style=flat)](https://github.com/ololx/cranberry/actions/workflows/build.yml) [![codeql](https://img.shields.io/github/workflow/status/ololx/cranberry/CodeQL?label=CodeQL&logo=github-actions&style=flat)](https://github.com/ololx/cranberry/actions/workflows/codeql.yml)  [![tests](https://img.shields.io/github/workflow/status/ololx/cranberry/Tests?label=tests&logo=github-actions&style=flat)](https://github.com/ololx/cranberry/actions/workflows/test.yml) [![codecov](https://codecov.io/gh/ololx/cranberry/branch/main/graph/badge.svg?token=ERMIS664SR)](https://codecov.io/gh/ololx/cranberry)  [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/ololx/cranberry.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ololx/cranberry/context:java) [![Total alerts](https://img.shields.io/lgtm/alerts/g/ololx/cranberry.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ololx/cranberry/alerts/) 
 
-[![platform](https://img.shields.io/badge/java-1.8+-important)](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)
+[![licence](https://img.shields.io/github/license/ololx/cranberry?style=flat)](LICENCE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg?style=flat)](CODE_OF_CONDUCT.md) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fololx%2Fcranberry.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fololx%2Fcranberry?ref=badge_shield)
 
----
+![repo_size](https://img.shields.io/github/repo-size/ololx/cranberry?style=flat&logo=github) ![languages_code_size](https://img.shields.io/github/languages/code-size/ololx/cranberry?style=flat&logo=github) ![languages_count](https://img.shields.io/github/languages/count/ololx/cranberry?style=flat&logo=github) ![languages_top](https://img.shields.io/github/languages/top/ololx/cranberry?style=flat&logo=github)
+
+[![requires_java](https://img.shields.io/badge/requires_java-1.8+-important)](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html) [![requires_maven](https://img.shields.io/badge/requires_maven-3.3.1+-important)](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)
 
 ## 📇 Table of Contents
 
@@ -55,7 +56,7 @@ Sometimes it wants frequently used code to be generated automatically. Especiall
 The cranberry project includes the follows modules:
 
 - [cranberry-muffin](cranberry-muffin/README.md) - this module provides a general realisation of simple tools and wrappers which are used in another cranberry modules for the automatically code generating during compilation;
-- [cranberry engine](cranberry-engine/README.md) - this module  is designed to combine the possibilities of thematically grouped modules into one common library;
+- [cranberry commons](cranberry-commons/README.md) - this module  is designed to combine the possibilities of thematically grouped modules into one common library;
 - [cranberry statement](cranberry-statement/README.md) - this module provides an api for the statements validation (such as not null and e.t.c.). This module includes an annotations for the injecting methods of this api into code during compilation;
 - [cranberry logging](cranberry-logging/README.md) - this module provides an api for the loggint method params;
 - [cranberry tests](cranberry-tests/README.md) - this module contains the unit tests for the remaining modules of the cranberry project.
@@ -108,13 +109,13 @@ In order to add cranberry to your project it is quite simple to:
 </dependency>
 ```
 
-_Example of dependency for installing `cranberry-muffin` module with version `0.4.0` is presented bellow_
+_Example of dependency for installing `cranberry-muffin` module with version `0.5.3` is presented bellow_
 
 ```xml
 <dependency>
     <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry-muffin</artifactId>
-    <version>0.4.0</version>
+    <version>0.5.3</version>
     <scope>provided</scope>
 </dependency>
 ```

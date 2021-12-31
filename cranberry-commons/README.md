@@ -1,58 +1,9 @@
-# cranberry engine
+# cranberry commons
 
 The cranberryengine is a module of cranberry library (see [cranberry](../README.md)). This module provides  a general realisation of simple tools and wrappers which are used in another cranberry modules for the automatically 
 code generating during compilation.
 
 Please, visit the project main [page](../README.md) for getting more information about contributing, versioning, licensing and e.t.c.
-
-## 🚦 Getting Started
-
-These instructions allow to get a copy of this project and run it on a local machine.
-
-### Installing
-
-#### Using Maven
-
-In order to add cranberry to your project it is quite simple to:
-
-1 - Add this repository to repositories in pom:
-
-```xml
-<repository>
-    <id>cranberry-repository</id>
-    <url>https://raw.github.com/ololx/cranberry/cranberry-repository/</url>
-    <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>always</updatePolicy>
-    </snapshots>
-</repository>
-```
-
-2 - Add this dependency to classpath in pom:
-
-```xml
-<dependency>
-    <groupId>org.cranberry</groupId>
-    <artifactId>cranberry-engine</artifactId>
-    <version>${version}</version>
-</dependency>
-```
-
-_Example of dependency for installing `cranberry-engine` module with version `0.1.0` is presented bellow_
-
-```xml
-<dependency>
-    <groupId>org.cranberry</groupId>
-    <artifactId>cranberry-engine</artifactId>
-    <version>0.1.0</version>
-</dependency>
-```
-
-3 - Execute this with goal
-
-```bash
-clean install
-```
 
 ### Using
 

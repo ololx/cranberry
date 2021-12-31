@@ -20,7 +20,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - The `StatementAnnotationProcessor` for running on `@IncludeVarsLocal` too.
 
-
 # [0.5.2-SNAPSHOT] - 2021-12-25
 
 ### Changed

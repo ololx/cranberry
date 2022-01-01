@@ -125,7 +125,7 @@
         <plugin.maven-enforcer-plugin.version>3.0.0-M2</plugin.maven-enforcer-plugin.version>
         <plugin.maven-verifier-plugin.version>1.1</plugin.maven-verifier-plugin.version>
         <plugin.flatten-maven-plugin.version>1.2.7</plugin.flatten-maven-plugin.version>
-        <plugin.jacoco-maven-plugin.version>0.8.6</plugin.jacoco-maven-plugin.version>
+        <plugin.jacoco-maven-plugin.version>0.8.5</plugin.jacoco-maven-plugin.version>
         <plugin.maven-clean-plugin.version>3.1.0</plugin.maven-clean-plugin.version>
         <plugin.maven-compiler-plugin.version>3.8.1</plugin.maven-compiler-plugin.version>
         <plugin.maven-jar-plugin.version>3.1.1</plugin.maven-jar-plugin.version>
@@ -333,6 +333,42 @@
             </plugin>
             <!--checking requires]-->
 
+            <!--[reporting code coverage-->
+            <!--used for codecov.io-->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${plugin.jacoco-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-prepare-agent-integration</id>
+                        <goals>
+                            <goal>prepare-agent-integration</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report-aggregate</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report-aggregate</goal>
+                        </goals>
+                        <configuration>
+                            <dataFileIncludes>
+                                <dataFileInclude>**/jacoco.exec</dataFileInclude>
+                            </dataFileIncludes>
+                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--reporting code coverage]-->
+
             <!--[flatten pom-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -360,61 +396,6 @@
             </plugin>
             <!--flatten pom>-->
 
-            <!--[reporting code coverage-->
-            <!--used for codecov.io-->
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${plugin.jacoco-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>default-instrument</id>
-                        <goals>
-                            <goal>instrument</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>default-restore-instrumented-classes</id>
-                        <goals>
-                            <goal>restore-instrumented-classes</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>prepare-agent</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                        <configuration>
-                            <excludes>
-                                <exclude>*</exclude>
-                            </excludes>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>report-aggregate</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>report-aggregate</goal>
-                        </goals>
-                        <configuration>
-                            <dataFileIncludes>
-                                <dataFileInclude>**/jacoco.exec</dataFileInclude>
-                            </dataFileIncludes>
-                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <!--reporting code coverage]-->
-
-            <!--[cleaning target-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>${plugin.maven-clean-plugin.version}</version>
-            </plugin>
-            <!--cleaning target]-->
-
             <!--[compiling source-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -425,24 +406,16 @@
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>default-compile</id>
-                        <configuration>
-                            <compilerArgument>-proc:none</compilerArgument>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>compile-project</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <!--compiling source]-->
+
+            <!--[cleaning target-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${plugin.maven-clean-plugin.version}</version>
+            </plugin>
+            <!--cleaning target]-->
 
             <!--[packaging to jar-->
             <plugin>

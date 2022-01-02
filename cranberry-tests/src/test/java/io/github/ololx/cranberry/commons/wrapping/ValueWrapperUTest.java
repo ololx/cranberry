@@ -16,10 +16,15 @@
  */
 package io.github.ololx.cranberry.commons.wrapping;
 
+import io.github.ololx.cranberry.statement.internal.exception.NotBlankStatementException;
+import io.github.ololx.cranberry.statement.internal.util.Statements;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+
+import static org.testng.Assert.assertTrue;
 
 /**
  * project cranberry
@@ -31,18 +36,66 @@ public class ValueWrapperUTest {
 
     @DataProvider(name = "values")
     public static Object[] values() {
-        return new Object[] {
-                new Object[]{" "},
-                new Boolean[]{true},
-                new Byte[]{1},
-                new Character[]{'a'},
-                new Integer[]{1},
-                new Long[]{1L},
-                new Float[]{.1f},
-                new Double[]{.1d},
-                new BigInteger[]{BigInteger.ONE},
-                new BigDecimal[]{BigDecimal.ONE},
-                new String[]{" "}
+        return new Object[][] {
+                {
+                    Boolean.TRUE,
+                        ValueWrapper.getInstance(Boolean.TRUE)
+                },
+                {
+                    Byte.MIN_VALUE,
+                        ValueWrapper.getInstance(Byte.MIN_VALUE)
+                },
+                {
+                    Character.MIN_VALUE,
+                        ValueWrapper.getInstance(Character.MIN_VALUE)
+                },
+                {
+                    Integer.MIN_VALUE,
+                        ValueWrapper.getInstance(Integer.MIN_VALUE)
+                },
+                {
+                    Long.MIN_VALUE,
+                        ValueWrapper.getInstance(Long.MIN_VALUE)
+                },
+                {
+                    BigDecimal.ZERO,
+                        ValueWrapper.getInstance(BigDecimal.ZERO)
+                },
+                {
+                    BigInteger.ZERO,
+                        ValueWrapper.getInstance(BigInteger.ZERO)
+                }
         };
+    }
+
+    @Test(dataProvider = "values")
+    public void getValue_whenValueWrappersCreatedFromOneValue_thenTheyValuesAreEquals(Object value, ValueWrapper expectedValueWrapper) {
+        ValueWrapper actualValueWrapper = ValueWrapper.getInstance(value);
+
+        assertTrue(
+                expectedValueWrapper.getValue().equals(actualValueWrapper.getValue()),
+                "The ValueWrapper instances have different values"
+        );
+    }
+
+    @Test(dataProvider = "values")
+    public void getType_whenValueWrappersCreatedFromOneValue_thenTheyTypesAreEquals(Object value, ValueWrapper expectedValueWrapper) {
+        ValueWrapper actualValueWrapper = ValueWrapper.getInstance(value);
+
+        assertTrue(
+                expectedValueWrapper.getType().equals(actualValueWrapper.getType()),
+                "The ValueWrapper instances have different types"
+        );
+    }
+
+    @Test(dataProvider = "values")
+    public void getValueStringRepresentation_whenValueWrappersCreatedFromOneValue_thenTheyValuesStringRepresentationAreEquals(Object value, ValueWrapper expectedValueWrapper) {
+        ValueWrapper actualValueWrapper = ValueWrapper.getInstance(value);
+
+        assertTrue(
+                expectedValueWrapper.getValueStringRepresentation()
+                        .equals(actualValueWrapper.getValueStringRepresentation()),
+                "The ValueWrapper instances are different"
+        );
     }
 }

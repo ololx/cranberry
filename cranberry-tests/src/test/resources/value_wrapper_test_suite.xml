@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="ValueWrapper test suite">
+    <test name="All ValueWrapper tests">
+        <classes>
+            <class name="io.github.ololx.cranberry.commons.wrapping.ValueWrapperUTest" />
+        </classes>
+    </test>
+</suite>

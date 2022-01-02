@@ -93,6 +93,9 @@
                         <suiteXmlFile>
                             ${project.basedir}/src/test/resources/exception_test_suite.xml
                         </suiteXmlFile>
+                        <suiteXmlFile>
+                            ${project.basedir}/src/test/resources/value_wrapper_test_suite.xml
+                        </suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

@@ -16,6 +16,8 @@
  */
 package io.github.ololx.cranberry.statement.internal.exception;
 
+import io.github.ololx.cranberry.commons.wrapping.ValueWrapper;
+
 /**
  * The type Not empty statement exception.
  * Thrown to indicate that a not empty statement has failed.

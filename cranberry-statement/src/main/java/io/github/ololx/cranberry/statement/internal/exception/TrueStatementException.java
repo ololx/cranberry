@@ -16,6 +16,8 @@
  */
 package io.github.ololx.cranberry.statement.internal.exception;
 
+import io.github.ololx.cranberry.commons.wrapping.ValueWrapper;
+
 /**
  * The type True statement exception.
  * Thrown to indicate that a true logical statement has failed.

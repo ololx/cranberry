@@ -102,8 +102,8 @@
     <!--[properties-->
     <properties>
         <!--[project versions-->
-        <revision>0.5.3</revision>
-        <changelist></changelist>
+        <revision>0.5.4</revision>
+        <changelist>-SNAPSHOT</changelist>
         <sha1/>
         <!--project versions]-->
 

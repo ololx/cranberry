@@ -1,5 +1,5 @@
 /**
- * Copyright 2021 the project cranberry authors
+ * Copyright 2022 the project cranberry authors
  * and the original author or authors annotated by {@author}
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,38 +14,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.ololx.cranberry.statement.internal.util;
+package io.github.ololx.cranberry.commons.wrapping;
 
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 /**
  * project cranberry
- * created 2021-12-27 16:29
+ * created 2022-01-02 13:51
  *
  * @author Alexander A. Kropotin
  */
-public class StatementsStateTruePositiveUTest {
+public class ValueWrapperUTest {
 
-    /**
-     * String values object [ ].
-     *
-     * @return the object [ ]
-     */
-    @DataProvider(name = "booleanValues")
-    public static Object[] stringValues() {
+    @DataProvider(name = "values")
+    public static Object[] values() {
         return new Object[] {
-                true
+                new Object[]{" "},
+                new Boolean[]{true},
+                new Byte[]{1},
+                new Character[]{'a'},
+                new Integer[]{1},
+                new Long[]{1L},
+                new Float[]{.1f},
+                new Double[]{.1d},
+                new BigInteger[]{BigInteger.ONE},
+                new BigDecimal[]{BigDecimal.ONE},
+                new String[]{" "}
         };
-    }
-
-    /**
-     * State true when string value is not empty then do not throws exception.
-     *
-     * @param value the value
-     */
-    @Test(dataProvider = "booleanValues")
-    public void stateTrue_whenBooleanValueIsTrue_thenDoNotThrowsException(Boolean value) {
-        Statements.stateTrue(value);
     }
 }

@@ -79,6 +79,68 @@ public class ValueWrapperUTest {
         };
     }
 
+    @DataProvider(name = "testTypeValues")
+    public static Object[] testTypeValues() {
+        return new Object[][] {
+                {
+                        null,
+                        false
+                },
+                {
+                        ValueWrapper.getInstance(null),
+                        false
+                },
+                {
+                        ValueWrapper.getInstance(Boolean.TRUE),
+                        true
+                },
+                {
+                        ValueWrapper.getInstance(Byte.MIN_VALUE),
+                        true
+                }
+        };
+    }
+
+    @Test(dataProvider = "testTypeValues")
+    public void isTypeDefined_whenValueWrapperCreatedFromValue_thenItHasATypeForThisValue(Object value,
+                                                                                          Boolean expectedTypeExistance) {
+        log.info(
+                String.format(
+                        "Start test running with params:\nvalue - %s\nexpectedTypeExistance - %s",
+                        value,
+                        expectedTypeExistance
+                )
+        );
+
+        Boolean actualTypeExistance = ValueWrapper.getInstance(value).isTypeDefined();
+        log.info(String.format("Got actual value:\nactualTypeExistance - %s", actualTypeExistance));
+
+        assertTrue(
+                expectedTypeExistance.equals(actualTypeExistance),
+                "The ValueWrapper has wrong type"
+        );
+    }
+
+    @Test(dataProvider = "testTypeValues")
+    public void isTypeUndefined_whenValueWrapperCreatedFromValue_thenItHasATypeForThisValue(Object value,
+                                                                                          Boolean expectedTypeExistance) {
+        log.info(
+                String.format(
+                        "Start test running with params:\nvalue - %s\nexpectedTypeExistance - %s",
+                        value,
+                        expectedTypeExistance
+                )
+        );
+
+        Boolean actualTypeExistance = ValueWrapper.getInstance(value).isTypeUndefined();
+        log.info(String.format("Got actual value:\nactualTypeExistance - %s", actualTypeExistance));
+
+        assertTrue(
+                expectedTypeExistance.equals(!actualTypeExistance),
+                "The ValueWrapper has wrong type"
+        );
+    }
+
     @Test(dataProvider = "values")
     public void getValue_whenValueWrappersCreatedFromOneValue_thenTheyValuesAreEquals(Object value,
                                                                                       ValueWrapper expectedValueWrapper) {

@@ -45,7 +45,7 @@ public class StatementsStateTruePositiveUTest {
      * @param value the value
      */
     @Test(dataProvider = "booleanValues")
-    public void stateNotEmpty_whenBooleanValueIsTrue_thenDoNotThrowsException(Boolean value) {
+    public void stateTrue_whenBooleanValueIsTrue_thenDoNotThrowsException(Boolean value) {
         Statements.stateTrue(value);
     }
 }

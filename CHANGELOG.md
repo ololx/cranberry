@@ -8,7 +8,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Added
 
-- The new statement for the checking logial assertions.
+- The new statement for the checking logical assertions.
+
+# [0.5.4] - 2022-01-03
+
+### Changed
+
+- Move `ValueWrapper` class in module `cranberry-commons`.
 
 # [0.5.3] - 2021-12-31
 

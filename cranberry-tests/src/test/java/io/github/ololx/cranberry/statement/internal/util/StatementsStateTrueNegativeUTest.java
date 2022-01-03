@@ -49,7 +49,7 @@ public class StatementsStateTrueNegativeUTest {
             dataProvider = "booleanValues",
             expectedExceptions = TrueStatementException.class
     )
-    public void stateNotEmpty_whenBooleanValueIsNotTrue_thenDoNotThrowsException(Boolean value) {
+    public void stateTrue_whenBooleanValueIsNotTrue_thenDoNotThrowsException(Boolean value) {
         Statements.stateTrue(value);
     }
 }

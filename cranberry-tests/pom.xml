@@ -76,7 +76,7 @@
                 <configuration>
                     <reportFormat>plain</reportFormat>
                     <parallel>methods</parallel>
-                    <threadCount>6</threadCount>
+                    <threadCount>12</threadCount>
                     <systemPropertyVariables>
                         <jacoco-agent.destfile>**/jacoco.exec</jacoco-agent.destfile>
                     </systemPropertyVariables>
@@ -92,6 +92,9 @@
                         </suiteXmlFile>
                         <suiteXmlFile>
                             ${project.basedir}/src/test/resources/exception_test_suite.xml
+                        </suiteXmlFile>
+                        <suiteXmlFile>
+                            ${project.basedir}/src/test/resources/value_wrapper_test_suite.xml
                         </suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
@@ -141,13 +144,12 @@
                         <configuration>
                             <resources>
                                 <resource>
+                                    <directory>${project.basedir}/../cranberry-commons/target/classes</directory>
                                     <directory>${project.basedir}/../cranberry-logging/target/classes</directory>
                                     <directory>${project.basedir}/../cranberry-statement/target/classes</directory>
                                 </resource>
                             </resources>
-                            <outputDirectory>
-                                ${project.build.outputDirectory}
-                            </outputDirectory>
+                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>

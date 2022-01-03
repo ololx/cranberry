@@ -16,6 +16,8 @@
  */
 package io.github.ololx.cranberry.statement.internal.exception;
 
+import io.github.ololx.cranberry.commons.wrapping.ValueWrapper;
+
 /**
  * The type Not null statement exception.
  * Thrown to indicate that a not null statement has failed.

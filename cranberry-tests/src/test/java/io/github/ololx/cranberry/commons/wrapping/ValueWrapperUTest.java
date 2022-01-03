@@ -141,6 +141,46 @@ public class ValueWrapperUTest {
         );
     }
 
+    @Test(dataProvider = "testTypeValues")
+    public void isValueDefined_whenValueWrapperCreatedFromValue_thenItHasATypeForThisValue(Object value,
+                                                                                          Boolean expectedTypeExistance) {
+        log.info(
+                String.format(
+                        "Start test running with params:\nvalue - %s\nexpectedTypeExistance - %s",
+                        value,
+                        expectedTypeExistance
+                )
+        );
+
+        Boolean actualTypeExistance = ValueWrapper.getInstance(value).isValueDefined();
+        log.info(String.format("Got actual value:\nactualTypeExistance - %s", actualTypeExistance));
+
+        assertTrue(
+                expectedTypeExistance.equals(actualTypeExistance),
+                "The ValueWrapper has wrong type"
+        );
+    }
+
+    @Test(dataProvider = "testTypeValues")
+    public void isValueUndefined_whenValueWrapperCreatedFromValue_thenItHasATypeForThisValue(Object value,
+                                                                                            Boolean expectedTypeExistance) {
+        log.info(
+                String.format(
+                        "Start test running with params:\nvalue - %s\nexpectedTypeExistance - %s",
+                        value,
+                        expectedTypeExistance
+                )
+        );
+
+        Boolean actualTypeExistance = ValueWrapper.getInstance(value).isValueUndefined();
+        log.info(String.format("Got actual value:\nactualTypeExistance - %s", actualTypeExistance));
+
+        assertTrue(
+                expectedTypeExistance.equals(!actualTypeExistance),
+                "The ValueWrapper has wrong type"
+        );
+    }
+
     @Test(dataProvider = "values")
     public void getValue_whenValueWrappersCreatedFromOneValue_thenTheyValuesAreEquals(Object value,
                                                                                       ValueWrapper expectedValueWrapper) {

@@ -219,6 +219,68 @@ public final class ValueWrapper implements Serializable {
     }
 
     /**
+     * Returns a hash code value for the object. This method is
+     * supported for the benefit of hash tables such as those provided by
+     * {@link java.util.HashMap}, {@link java.util.HashSet}.
+     *
+     * @return  a hash code value for this object.
+     * @see     java.lang.Object#equals(java.lang.Object)
+     * @see     java.lang.System#identityHashCode
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+
+        int result = 1;
+        result = prime * result + ((this.value == null) ? 0 : this.value.hashCode());
+        result = prime * result + ((this.type == null) ? 0 : this.type.hashCode());
+
+        return result;
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param   obj   the reference object with which to compare.
+     * @return  {@code true} if this object is the same as the obj
+     *          argument; {@code false} otherwise.
+     * @see     #hashCode()
+     * @see     java.util.HashMap
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof ValueWrapper)) {
+            return false;
+        }
+
+        ValueWrapper other = (ValueWrapper) obj;
+
+        boolean isValueEquals = false;
+        if (this.value == null || other.value == null) {
+            if (this.value == null && other.value == null) {
+                isValueEquals = true;
+            }
+        } else {
+            isValueEquals = this.value.equals(other.value);
+        }
+
+        boolean isTypeEquals = false;
+        if (this.type == null || other.type == null) {
+            if (this.type == null && other.type == null) {
+                isTypeEquals = true;
+            }
+        } else {
+            isTypeEquals = this.type.equals(other.type);
+        }
+
+        return isValueEquals && isTypeEquals;
+    }
+
+    /**
      * Returns the string representation of a value along with its type and
      * identity hash code.
      *

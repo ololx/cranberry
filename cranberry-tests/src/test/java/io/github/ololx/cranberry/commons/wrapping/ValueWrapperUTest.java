@@ -241,4 +241,44 @@ public class ValueWrapperUTest {
                 "The ValueWrapper instances are different"
         );
     }
+
+    @Test(dataProvider = "values")
+    public void equals_whenValueWrappersCreatedFromOneValue_thenTheyAreEquals(Object value,
+                                                                              ValueWrapper otherValueWrapper) {
+        log.info(
+                String.format(
+                        "Start test running with params:\nvalue - %s\notherValueWrapper - %s",
+                        value,
+                        otherValueWrapper
+                )
+        );
+
+        ValueWrapper actualValueWrapper = ValueWrapper.getInstance(value);
+        log.info(String.format("Got actual value:\nactualValueWrapper - %s", actualValueWrapper));
+
+        assertTrue(
+                otherValueWrapper.equals(actualValueWrapper),
+                "The ValueWrapper instances are not equals"
+        );
+    }
+
+    @Test(dataProvider = "values")
+    public void hashCode_whenValueWrappersCreatedFromOneValue_thenTheyAreEqualsHasCode(Object value,
+                                                                              ValueWrapper otherValueWrapper) {
+        log.info(
+                String.format(
+                        "Start test running with params:\nvalue - %s\notherValueWrapper - %s",
+                        value,
+                        otherValueWrapper
+                )
+        );
+
+        int actualValueWrapperHashCode = ValueWrapper.getInstance(value).hashCode();
+        log.info(String.format("Got actual value:\nactualValueWrapperHashCode - %s", actualValueWrapperHashCode));
+
+        assertTrue(
+                otherValueWrapper.hashCode() == actualValueWrapperHashCode,
+                "The ValueWrapper instances are not equals"
+        );
+    }
 }

@@ -18,6 +18,7 @@ package io.github.ololx.cranberry.commons.wrapping;
 
 import io.github.ololx.cranberry.statement.internal.exception.NotBlankStatementException;
 import io.github.ololx.cranberry.statement.internal.util.Statements;
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -63,6 +64,10 @@ public class ValueWrapperUTest {
                 {
                     Long.MIN_VALUE,
                         ValueWrapper.getInstance(Long.MIN_VALUE)
+                },
+                {
+                        0L,
+                        ValueWrapper.getInstance(0L)
                 },
                 {
                     BigDecimal.ZERO,
@@ -280,5 +285,10 @@ public class ValueWrapperUTest {
                 otherValueWrapper.hashCode() == actualValueWrapperHashCode,
                 "The ValueWrapper instances are not equals"
         );
+    }
+
+    @Test
+    public void equalsHashCodeContracts() {
+        EqualsVerifier.forClass(ValueWrapper.class).verify();
     }
 }

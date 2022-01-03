@@ -12,6 +12,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 # [0.5.4] - 2022-01-03
 
+### Added
+
+- The realizations of `equals()` and `hasCode()` methods for `ValueWrapper`.
+
 ### Changed
 
 - Move `ValueWrapper` class in module `cranberry-commons`.

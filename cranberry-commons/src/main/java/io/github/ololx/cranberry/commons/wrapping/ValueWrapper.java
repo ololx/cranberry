@@ -134,8 +134,10 @@ public final class ValueWrapper implements Serializable {
      * @param value the value to wrap; may be {@code null}.
      */
     private ValueWrapper(Object value) {
-        this.valueHashCode = System.identityHashCode(value);
         this.value = value;
+        this.valueHashCode = value == null
+                ? 0
+                : value.hashCode();
         this.type = value == null
                 ? null
                 : value.getClass();
@@ -232,6 +234,7 @@ public final class ValueWrapper implements Serializable {
         final int prime = 31;
 
         int result = 1;
+        result = prime * result + valueHashCode;
         result = prime * result + ((this.value == null) ? 0 : this.value.hashCode());
         result = prime * result + ((this.type == null) ? 0 : this.type.hashCode());
 
@@ -259,6 +262,8 @@ public final class ValueWrapper implements Serializable {
 
         ValueWrapper other = (ValueWrapper) obj;
 
+        boolean isValueHashCodeEquals = this.valueHashCode == other.valueHashCode;
+
         boolean isValueEquals = false;
         if (this.value == null || other.value == null) {
             if (this.value == null && other.value == null) {
@@ -277,7 +282,7 @@ public final class ValueWrapper implements Serializable {
             isTypeEquals = this.type.equals(other.type);
         }
 
-        return isValueEquals && isTypeEquals;
+        return isValueHashCodeEquals & isValueEquals && isTypeEquals;
     }
 
     /**

@@ -1,5 +1,6 @@
 package io.github.ololx.cranberry.statement.annotation;
 
+import io.github.ololx.cranberry.commons.wrapping.ValueWrapper;
 import io.github.ololx.cranberry.statement.internal.exception.TrueStatementException;
 import io.github.ololx.cranberry.statement.internal.util.Statements;
 

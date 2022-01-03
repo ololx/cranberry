@@ -30,6 +30,7 @@
     <properties>
         <!--[dependencies versions-->
         <dependency.testng.version>7.1.0</dependency.testng.version>
+        <dependency.equalsverifier.version>3.0.3</dependency.equalsverifier.version>
         <!--dependencies versions]-->
 
         <!--[plugins versions-->
@@ -46,6 +47,12 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${dependency.testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>nl.jqno.equalsverifier</groupId>
+            <artifactId>equalsverifier</artifactId>
+            <version>${dependency.equalsverifier.version}</version>
             <scope>test</scope>
         </dependency>
         <!--test]-->

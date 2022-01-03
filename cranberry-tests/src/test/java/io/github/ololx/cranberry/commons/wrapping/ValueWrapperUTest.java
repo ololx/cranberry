@@ -23,6 +23,7 @@ import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.logging.Logger;
 
 import static org.testng.Assert.assertTrue;
 
@@ -34,9 +35,15 @@ import static org.testng.Assert.assertTrue;
  */
 public class ValueWrapperUTest {
 
+    private final static Logger log = Logger.getLogger(ValueWrapperUTest.class.getName());
+
     @DataProvider(name = "values")
     public static Object[] values() {
         return new Object[][] {
+                {
+                        ValueWrapper.getInstance(Boolean.TRUE),
+                        ValueWrapper.getInstance(ValueWrapper.getInstance(Boolean.TRUE))
+                },
                 {
                     Boolean.TRUE,
                         ValueWrapper.getInstance(Boolean.TRUE)
@@ -64,13 +71,27 @@ public class ValueWrapperUTest {
                 {
                     BigInteger.ZERO,
                         ValueWrapper.getInstance(BigInteger.ZERO)
+                },
+                {
+                    0,
+                        ValueWrapper.getInstance(0)
                 }
         };
     }
 
     @Test(dataProvider = "values")
-    public void getValue_whenValueWrappersCreatedFromOneValue_thenTheyValuesAreEquals(Object value, ValueWrapper expectedValueWrapper) {
+    public void getValue_whenValueWrappersCreatedFromOneValue_thenTheyValuesAreEquals(Object value,
+                                                                                      ValueWrapper expectedValueWrapper) {
+        log.info(
+                String.format(
+                        "Start test running with params:\nvalue - %s\nexpectedValueWrapper - %s",
+                        value,
+                        expectedValueWrapper
+                )
+        );
+
         ValueWrapper actualValueWrapper = ValueWrapper.getInstance(value);
+        log.info(String.format("Got actual value:\nactualValueWrapper - %s", actualValueWrapper));
 
         assertTrue(
                 expectedValueWrapper.getValue().equals(actualValueWrapper.getValue()),
@@ -79,8 +100,18 @@ public class ValueWrapperUTest {
     }
 
     @Test(dataProvider = "values")
-    public void getType_whenValueWrappersCreatedFromOneValue_thenTheyTypesAreEquals(Object value, ValueWrapper expectedValueWrapper) {
+    public void getType_whenValueWrappersCreatedFromOneValue_thenTheyTypesAreEquals(Object value,
+                                                                                    ValueWrapper expectedValueWrapper) {
+        log.info(
+                String.format(
+                        "Start test running with params:\nvalue - %s\nexpectedValueWrapper - %s",
+                        value,
+                        expectedValueWrapper
+                )
+        );
+
         ValueWrapper actualValueWrapper = ValueWrapper.getInstance(value);
+        log.info(String.format("Got actual value:\nactualValueWrapper - %s", actualValueWrapper));
 
         assertTrue(
                 expectedValueWrapper.getType().equals(actualValueWrapper.getType()),
@@ -89,8 +120,18 @@ public class ValueWrapperUTest {
     }
 
     @Test(dataProvider = "values")
-    public void getValueStringRepresentation_whenValueWrappersCreatedFromOneValue_thenTheyValuesStringRepresentationAreEquals(Object value, ValueWrapper expectedValueWrapper) {
+    public void getValueStringRepresentation_whenValueWrappersCreatedFromOneValue_thenTheyValuesStringRepresentationAreEquals(Object value,
+                                                                                                                              ValueWrapper expectedValueWrapper) {
+        log.info(
+                String.format(
+                        "Start test running with params:\nvalue - %s\nexpectedValueWrapper - %s",
+                        value,
+                        expectedValueWrapper
+                )
+        );
+
         ValueWrapper actualValueWrapper = ValueWrapper.getInstance(value);
+        log.info(String.format("Got actual value:\nactualValueWrapper - %s", actualValueWrapper));
 
         assertTrue(
                 expectedValueWrapper.getValueStringRepresentation()

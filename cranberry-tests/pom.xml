@@ -76,7 +76,7 @@
                 <configuration>
                     <reportFormat>plain</reportFormat>
                     <parallel>methods</parallel>
-                    <threadCount>6</threadCount>
+                    <threadCount>12</threadCount>
                     <systemPropertyVariables>
                         <jacoco-agent.destfile>**/jacoco.exec</jacoco-agent.destfile>
                     </systemPropertyVariables>
@@ -149,9 +149,7 @@
                                     <directory>${project.basedir}/../cranberry-statement/target/classes</directory>
                                 </resource>
                             </resources>
-                            <outputDirectory>
-                                ${project.build.outputDirectory}
-                            </outputDirectory>
+                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!--[artifact-->
-    <groupId>io.github.ololx</groupId>
+    <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry</artifactId>
     <version>${revision}${sha1}${changelist}</version>
     <packaging>pom</packaging>
@@ -49,16 +49,6 @@
     </prerequisites>
     <!--prerequisites]-->
 
-    <!--[deploying modules-->
-    <modules>
-        <module>/cranberry-commons</module>
-        <module>/cranberry-statement</module>
-        <module>/cranberry-logging</module>
-        <module>cranberry-data</module>
-        <module>/cranberry-muffin</module>
-    </modules>
-    <!--deploying modules]-->
-
     <!--[ci info-->
     <scm>
         <connection>scm:git:git://github.com/cranberry.git</connection>
@@ -66,7 +56,7 @@
         <url>http://github.com/ololx/cranberry</url>
     </scm>
     <issueManagement>
-        <system>GitHub</system>
+        <system>GitHub Issues</system>
         <url>https://github.com/ololx/cranberry/issues</url>
     </issueManagement>
     <ciManagement>
@@ -103,7 +93,7 @@
     <!--[properties-->
     <properties>
         <!--[project versions-->
-        <revision>0.7.0</revision>
+        <revision>0.7.1</revision>
         <changelist>-SNAPSHOT</changelist>
         <sha1/>
         <!--project versions]-->
@@ -475,6 +465,13 @@
         <!--[distribution build-->
         <profile>
             <id>release</id>
+            <modules>
+                <module>/cranberry-muffin</module>
+                <module>/cranberry-commons</module>
+                <module>/cranberry-statement</module>
+                <module>/cranberry-logging</module>
+                <module>cranberry-data</module>
+            </modules>
             <build>
                 <plugins>
                     <plugin>
@@ -502,6 +499,9 @@
         <profile>
             <id>develop</id>
             <modules>
+                <module>/cranberry-muffin</module>
+                <module>/cranberry-commons</module>
+                <module>/cranberry-statement</module>
                 <module>/cranberry-tests</module>
             </modules>
         </profile>

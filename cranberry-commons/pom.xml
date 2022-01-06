@@ -6,7 +6,7 @@
 
     <!--[parent-->
     <parent>
-        <groupId>io.github.ololx</groupId>
+        <groupId>io.github.ololx.cranberry</groupId>
         <artifactId>cranberry</artifactId>
         <version>${revision}${sha1}${changelist}</version>
         <relativePath>../</relativePath>

@@ -6,7 +6,7 @@
 
     <!--[parent-->
     <parent>
-        <groupId>io.github.ololx</groupId>
+        <groupId>io.github.ololx.cranberry</groupId>
         <artifactId>cranberry</artifactId>
         <version>${revision}${sha1}${changelist}</version>
         <relativePath>../</relativePath>
@@ -36,6 +36,10 @@
         <plugin.maven-surefire-plugin.version>3.0.0-M3</plugin.maven-surefire-plugin.version>
         <plugin.maven-resources-plugin.version>3.1.0</plugin.maven-resources-plugin.version>
         <!--plugins versions]-->
+
+        <!--plugins settings-->
+        <maven.deploy.skip>false</maven.deploy.skip>
+        <!--plugins settings-->
     </properties>
     <!--properties]-->
 

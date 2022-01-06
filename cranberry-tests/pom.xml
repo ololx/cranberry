@@ -14,7 +14,6 @@
     <!--parent]-->
 
     <!--[artifact-->
-    <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry-tests</artifactId>
     <!--artifact]-->
 
@@ -66,6 +65,11 @@
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
             <artifactId>cranberry-statement</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.ololx.cranberry</groupId>
+            <artifactId>cranberry-data</artifactId>
             <scope>provided</scope>
         </dependency>
         <!--project modules]-->

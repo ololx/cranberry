@@ -3,10 +3,7 @@ package io.github.ololx.cranberry.statement.annotation;
 import io.github.ololx.cranberry.statement.internal.exception.NotBlankStatementException;
 import io.github.ololx.cranberry.statement.internal.util.Statements;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * Causes cranberry to generate a statements validation method invoking.
@@ -31,7 +28,8 @@ import java.lang.annotation.Target;
  * see {@link NotBlankStatementException}
  * see {@link Statements}
  */
-@Retention(RetentionPolicy.SOURCE)
+@Documented
+@Retention(RetentionPolicy.CLASS)
 @Target({
         ElementType.PARAMETER,
         ElementType.LOCAL_VARIABLE

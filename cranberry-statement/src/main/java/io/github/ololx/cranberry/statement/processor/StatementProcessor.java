@@ -13,6 +13,7 @@ import com.sun.tools.javac.tree.JCTree.JCStatement;
 import com.sun.tools.javac.tree.JCTree.JCVariableDecl;
 import com.sun.tools.javac.tree.TreeMaker;
 import com.sun.tools.javac.util.List;
+import com.sun.tools.javac.util.Log;
 import io.github.ololx.cranberry.commons.annotation.IncludeVarsLocal;
 import io.github.ololx.cranberry.commons.handler.EnterCompilationHandler;
 import io.github.ololx.cranberry.commons.scanner.VariableCompilationTreeScanner;
@@ -84,16 +85,20 @@ public class StatementProcessor extends AbstractProcessor {
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
+
         this.parser = Trees.instance(processingEnvironment);
         this.task = JavacTask.instance(processingEnvironment);
         this.scanner = new VariableCompilationTreeScanner(this.parser);
         this.scanner.setFilter(
-                (VariableElement element) ->
-                        SUPPORTED_ANNOTATIONS.stream()
+                (VariableElement element) -> {
+                        boolean isAnnotatedBySupportedAnnotations = SUPPORTED_ANNOTATIONS.stream()
                                 .map(eachAnnotation -> element.getAnnotation(eachAnnotation) != null)
                                 .filter(b -> b != false)
                                 .findAny()
-                                .orElse(false)
+                                .orElse(false);
+
+                        return isAnnotatedBySupportedAnnotations;
+                }
         );
 
         EnterCompilationHandler tListener = new EnterCompilationHandler();

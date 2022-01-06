@@ -15,7 +15,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.SOURCE)
 @Target({
         ElementType.METHOD,
-        ElementType.TYPE
+        ElementType.TYPE,
+        ElementType.ANNOTATION_TYPE
 })
 public @interface IncludeVarsLocal {
 }

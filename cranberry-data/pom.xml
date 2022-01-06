@@ -14,52 +14,64 @@
     <!--parent]-->
 
     <!--[artifact-->
-    <artifactId>cranberry-muffin</artifactId>
+    <artifactId>cranberry-data</artifactId>
     <packaging>jar</packaging>
     <!--artifact]-->
 
     <!--[info-->
     <name>${project.groupId}:${project.artifactId}</name>
     <description>
-        The cranberry muffin is a module of cranberry library and also java library is designed
-        to combine the possibilities of thematically grouped modules into one common library.
+        The cranberry data is a module of cranberry library (see cranberry). This module provides an api for the
+        data managing (modifiers, default values, e.t.c.). This module includes an annotations for the injecting methods
+        of this api into code during compilation.
     </description>
     <!--info]-->
 
-    <!--[properties-->
-    <properties>
-        <!--[plugins versions-->
-        <plugin.maven-shade-plugin.version>3.2.3</plugin.maven-shade-plugin.version>
-        <!--plugins versions]-->
-    </properties>
-    <!--properties]-->
-
     <!--[dependencies-->
     <dependencies>
-        <!--[cranberry-statement-->
+        <!--[cranberry-commons-->
         <dependency>
             <groupId>io.github.ololx.cranberry</groupId>
-            <artifactId>cranberry-statement</artifactId>
+            <artifactId>cranberry-commons</artifactId>
+            <scope>compile</scope>
         </dependency>
-        <!--cranberry-statement]-->
-        <!--[cranberry-logging-->
-        <dependency>
-            <groupId>io.github.ololx.cranberry</groupId>
-            <artifactId>cranberry-logging</artifactId>
-        </dependency>
-        <!--cranberry-logging]-->
-        <!--[cranberry-data-->
-        <dependency>
-            <groupId>io.github.ololx.cranberry</groupId>
-            <artifactId>cranberry-data</artifactId>
-        </dependency>
-        <!--cranberry-data]-->
+        <!--cranberry-commons]-->
     </dependencies>
+    <!--dependencies]-->
 
     <!--[build-->
     <build>
         <!--[build module-->
         <plugins>
+            <!--[compiling source-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${plugin.maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-compile</id>
+                        <configuration>
+                            <compilerArgument>-proc:none</compilerArgument>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>compile-project</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--compiling source]-->
+
             <!--[packaging to jar-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -92,26 +104,6 @@
                 </configuration>
             </plugin>
             <!--packaging to jar]-->
-
-            <!--[include dependencies in fat jar-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>${plugin.maven-shade-plugin.version}</version>
-                <configuration>
-                    <createDependencyReducedPom>false</createDependencyReducedPom>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>create-fat-jar</id>
-                        <phase>post-clean</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!--include dependencies in fat jar]-->
         </plugins>
         <!--build module]-->
     </build>

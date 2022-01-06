@@ -10,6 +10,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - The new statement for the checking logical assertions.
 
+# [0.7.0] - 2022-01-06
+
+### Changed
+
+- Migrate to new `groupId` for all submodules.
+
+# [0.6.0] - 2022-01-05
+
+### Added
+
+- The new module `cranberry-data` with annotation `Final` - for the finalizing local variables and params modifiers.
+
 # [0.5.4] - 2022-01-03
 
 ### Added

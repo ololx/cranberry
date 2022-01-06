@@ -23,7 +23,6 @@ import java.util.logging.Logger;
 /**
  * The interface Logging processor.
  *
- * @author Alexander A. Kropotin
  * project cranberry
  * created 2020-04-27 20:31
  * @author Alexander A. Kropotin

@@ -54,6 +54,7 @@
         <module>/cranberry-commons</module>
         <module>/cranberry-statement</module>
         <module>/cranberry-logging</module>
+        <module>cranberry-data</module>
         <module>/cranberry-muffin</module>
     </modules>
     <!--deploying modules]-->
@@ -102,7 +103,7 @@
     <!--[properties-->
     <properties>
         <!--[project versions-->
-        <revision>0.5.4</revision>
+        <revision>0.6.0</revision>
         <changelist>-SNAPSHOT</changelist>
         <sha1/>
         <!--project versions]-->
@@ -157,6 +158,11 @@
             <dependency>
                 <groupId>io.github.ololx.cranberry</groupId>
                 <artifactId>cranberry-logging</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.ololx.cranberry</groupId>
+                <artifactId>cranberry-data</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -451,6 +457,7 @@
                         </manifest>
                         <manifestEntries>
                             <Implementation-Version>${project.version}-${buildNumber}</Implementation-Version>
+                            <!--suppress UnresolvedMavenProperty -->
                             <Implementation-Build>${scmBranch}</Implementation-Build>
                         </manifestEntries>
                     </archive>
@@ -495,10 +502,6 @@
         <profile>
             <id>develop</id>
             <modules>
-                <module>/cranberry-commons</module>
-                <module>/cranberry-statement</module>
-                <module>/cranberry-logging</module>
-                <module>/cranberry-muffin</module>
                 <module>/cranberry-tests</module>
             </modules>
         </profile>

@@ -31,7 +31,7 @@
     <dependencies>
         <!--[cranberry-commons-->
         <dependency>
-            <groupId>io.github.ololx.cranberry</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>cranberry-commons</artifactId>
             <scope>compile</scope>
         </dependency>

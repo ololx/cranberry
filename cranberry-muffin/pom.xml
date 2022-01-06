@@ -38,19 +38,19 @@
     <dependencies>
         <!--[cranberry-statement-->
         <dependency>
-            <groupId>io.github.ololx.cranberry</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>cranberry-statement</artifactId>
         </dependency>
         <!--cranberry-statement]-->
         <!--[cranberry-logging-->
         <dependency>
-            <groupId>io.github.ololx.cranberry</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>cranberry-logging</artifactId>
         </dependency>
         <!--cranberry-logging]-->
         <!--[cranberry-data-->
         <dependency>
-            <groupId>io.github.ololx.cranberry</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>cranberry-data</artifactId>
         </dependency>
         <!--cranberry-data]-->

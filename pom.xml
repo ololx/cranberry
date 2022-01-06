@@ -103,7 +103,7 @@
     <!--[properties-->
     <properties>
         <!--[project versions-->
-        <revision>0.6.0</revision>
+        <revision>0.7.0</revision>
         <changelist>-SNAPSHOT</changelist>
         <sha1/>
         <!--project versions]-->
@@ -141,32 +141,32 @@
         <!--[project modules-->
         <dependencies>
             <dependency>
-                <groupId>io.github.ololx.cranberry</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>cranberry-muffin</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ololx.cranberry</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>cranberry-commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ololx.cranberry</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>cranberry-statement</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ololx.cranberry</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>cranberry-logging</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ololx.cranberry</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>cranberry-data</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ololx.cranberry</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>cranberry-tests</artifactId>
                 <version>${project.version}</version>
             </dependency>

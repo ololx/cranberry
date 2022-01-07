@@ -64,17 +64,17 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cranberry-logging</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cranberry-statement</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cranberry-data</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <!--project modules]-->
     </dependencies>

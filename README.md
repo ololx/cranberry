@@ -16,7 +16,7 @@ The Cranberry
 
 The Cranberry is a java library that allows to write less code - it's  automatically plugs into your project build and sweets up your java.
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.ololx/cranberry.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22) [![Sonatype Snapshot](https://img.shields.io/nexus/s/io.github.ololx/cranberry?server=https%3A%2F%2Fs01.oss.sonatype.org)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.ololx/cranberry.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22) [![Sonatype Snapshot](https://img.shields.io/nexus/s/io.github.ololx.cranberry/cranberry?server=https%3A%2F%2Fs01.oss.sonatype.org)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22)
 
 [![tag](https://img.shields.io/github/v/tag/ololx/cranberry?style=flat&include_prereleases&logo=github)](https://github.com/ololx/cranberry/tags) [![release](https://img.shields.io/github/v/release/ololx/cranberry?style=flat&include_prereleases&logo=github)](https://github.com/ololx/cranberry/releases)
 

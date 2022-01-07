@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Annotation test suite">
-    <test name="NotBlank annotation tests">
+    <test name="All annotation tests">
         <classes>
             <class name="io.github.ololx.cranberry.statement.annotation.NotBlankAnnotationPositiveITest" />
             <class name="io.github.ololx.cranberry.statement.annotation.NotBlankAnnotationNegativeITest" />
@@ -10,6 +10,7 @@
             <class name="io.github.ololx.cranberry.statement.annotation.NotEmptyAnnotationNegativeITest" />
             <class name="io.github.ololx.cranberry.statement.annotation.TrueAnnotationPositiveITest" />
             <class name="io.github.ololx.cranberry.statement.annotation.TrueAnnotationNegativeITest" />
+            <class name="io.github.ololx.cranberry.data.annotation.FinalAnnotationITest" />
         </classes>
     </test>
 </suite>

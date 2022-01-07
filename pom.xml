@@ -103,7 +103,7 @@
     <!--[properties-->
     <properties>
         <!--[project versions-->
-        <revision>0.7.0</revision>
+        <revision>0.8.0</revision>
         <changelist>-SNAPSHOT</changelist>
         <sha1/>
         <!--project versions]-->
@@ -321,7 +321,7 @@
                                     </message>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <version>1.8</version>
+                                    <version>${java.version}</version>
                                     <message>
                                         Invalid Maven version. It should be 1.8
                                     </message>

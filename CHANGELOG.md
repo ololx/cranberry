@@ -10,7 +10,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - The new statement for the checking logical assertions.
 
-# [0.7.0] - 2022-01-06
+# [0.8.0] - 2022-01-07
+
+### Added
+
+- Define the class `AbstractCranberryAnnotationProcessing` for the cranberry processing.
+
+# [0.7.1] - 2022-01-06
 
 ### Changed
 

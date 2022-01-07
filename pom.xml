@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!--[artifact-->
-    <groupId>io.github.ololx</groupId>
+    <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry</artifactId>
     <version>${revision}${sha1}${changelist}</version>
     <packaging>pom</packaging>
@@ -51,11 +51,11 @@
 
     <!--[deploying modules-->
     <modules>
+        <module>/cranberry-muffin</module>
         <module>/cranberry-commons</module>
         <module>/cranberry-statement</module>
         <module>/cranberry-logging</module>
         <module>cranberry-data</module>
-        <module>/cranberry-muffin</module>
     </modules>
     <!--deploying modules]-->
 
@@ -66,7 +66,7 @@
         <url>http://github.com/ololx/cranberry</url>
     </scm>
     <issueManagement>
-        <system>GitHub</system>
+        <system>GitHub Issues</system>
         <url>https://github.com/ololx/cranberry/issues</url>
     </issueManagement>
     <ciManagement>
@@ -103,7 +103,7 @@
     <!--[properties-->
     <properties>
         <!--[project versions-->
-        <revision>0.7.0</revision>
+        <revision>0.8.0</revision>
         <changelist>-SNAPSHOT</changelist>
         <sha1/>
         <!--project versions]-->
@@ -321,7 +321,7 @@
                                     </message>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <version>1.8</version>
+                                    <version>${java.version}</version>
                                     <message>
                                         Invalid Maven version. It should be 1.8
                                     </message>

@@ -6,7 +6,7 @@
 
     <!--[parent-->
     <parent>
-        <groupId>io.github.ololx</groupId>
+        <groupId>io.github.ololx.cranberry</groupId>
         <artifactId>cranberry</artifactId>
         <version>${revision}${sha1}${changelist}</version>
         <relativePath>../</relativePath>
@@ -36,6 +36,10 @@
         <plugin.maven-surefire-plugin.version>3.0.0-M3</plugin.maven-surefire-plugin.version>
         <plugin.maven-resources-plugin.version>3.1.0</plugin.maven-resources-plugin.version>
         <!--plugins versions]-->
+
+        <!--plugins settings-->
+        <maven.deploy.skip>false</maven.deploy.skip>
+        <!--plugins settings-->
     </properties>
     <!--properties]-->
 
@@ -60,17 +64,17 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cranberry-logging</artifactId>
-            <scope>provided</scope>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cranberry-statement</artifactId>
-            <scope>provided</scope>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cranberry-data</artifactId>
-            <scope>provided</scope>
+            <scope>test</scope>
         </dependency>
         <!--project modules]-->
     </dependencies>
@@ -158,6 +162,7 @@
                                     <directory>${project.basedir}/../cranberry-commons/target/classes</directory>
                                     <directory>${project.basedir}/../cranberry-logging/target/classes</directory>
                                     <directory>${project.basedir}/../cranberry-statement/target/classes</directory>
+                                    <directory>${project.basedir}/../cranberry-data/target/classes</directory>
                                 </resource>
                             </resources>
                             <outputDirectory>${project.build.outputDirectory}</outputDirectory>

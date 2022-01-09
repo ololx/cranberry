@@ -1,6 +1,6 @@
 # cranberry logging
 
-The cranberry statement is a module of cranberry library (see [Cranberry](../README.md)). This module provides an api for the checking statements (such as not null and e.t.c.). This module includes an annotations for the injecting methods of this api into code during compilation.
+The cranberry statement is a module of cranberry library (see [Cranberry](../README.md)). This module provides an api for the loggint method params. This module includes an annotations for the injecting methods of this api into code during compilation.
 
 Please, visit the project main [page](../README.md) for getting more information about contributing, versioning, licensing and e.t.c.
 

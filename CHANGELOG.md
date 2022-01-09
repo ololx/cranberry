@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - The new statement for the checking logical assertions.
 
+## [0.9.1] - 2022-01-09
+
+### Changed
+
+- Change the main POM - add auto plugin running for verifying dependencies.
+
 ## [0.9.1-SNAPSHOT] - 2022-01-09
 
 ### Fixed

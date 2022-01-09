@@ -15,3 +15,14 @@ public List<SomeDetail> findSomeDetailbyUidAndTypeCode(@NotNull Long uid,
 }
 ...
  ```
+
+ ```java
+ ...
+//Add the checking statements for method variables
+public List<SomeDetail> findSomeDetailbyUidAndTypeCode(Long uid, String typeCode) {
+   @NotEmpty("The Code must be not empty") String code = typeCode;
+  
+   return this.getArtefacts(processingArtefactRepository.selectAllWorkingForSurvey(uidSurvey, typeCode));
+}
+...
+ ```

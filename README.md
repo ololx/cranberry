@@ -55,10 +55,11 @@ Sometimes it wants frequently used code to be generated automatically. Especiall
 
 The cranberry project includes the follows modules:
 
-- [cranberry-muffin](cranberry-muffin/README.md) - this module provides a general realisation of simple tools and wrappers which are used in another cranberry modules for the automatically code generating during compilation;
-- [cranberry commons](cranberry-commons/README.md) - this module  is designed to combine the possibilities of thematically grouped modules into one common library;
+- [cranberry commons](cranberry-commons/README.md) - this module provides a general realisation of simple tools and wrappers which are used in another cranberry modules for the automatically code generating during compilation;
+- [cranberry muffin](cranberry-muffin/README.md) - this module  is designed to combine the possibilities of thematically grouped modules into one common library;
 - [cranberry statement](cranberry-statement/README.md) - this module provides an api for the statements validation (such as not null and e.t.c.). This module includes an annotations for the injecting methods of this api into code during compilation;
 - [cranberry logging](cranberry-logging/README.md) - this module provides an api for the loggint method params;
+- [cranberry data](cranberry-data/README.md) - this module provides an api for the java data manipulations: varianbles modifiers, default values, e.t.c. This module includes an annotations for the injecting methods of this api into code during compilation;
 - [cranberry tests](cranberry-tests/README.md) - this module contains the unit tests for the remaining modules of the cranberry project.
 
 ## 📸 Demo

@@ -291,6 +291,15 @@
                     <rulesUri>file://${user.dir}/check_dependency_versions_rules.xml</rulesUri>
                     <generateBackupPoms>false</generateBackupPoms>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>display-dependency-updates</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <!--checking dependencies versions]-->
 
@@ -309,13 +318,13 @@
                             <rules>
                                 <banDuplicatePomDependencyVersions />
                                 <requireMavenVersion>
-                                    <version>3.3.1</version>
+                                    <version>3.3.1,</version>
                                     <message>
-                                        Invalid Maven version. It should, at least, be 3.1.1
+                                        Invalid Maven version. It should, at least, be 3.3.1
                                     </message>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <version>${java.version}</version>
+                                    <version>1.8, 1.8</version>
                                     <message>
                                         Invalid Maven version. It should be 1.8
                                     </message>

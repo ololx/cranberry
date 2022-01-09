@@ -10,6 +10,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - The new statement for the checking logical assertions.
 
+## [0.9.0-SNAPSHOT] - 2022-01-09
+
+### Changed
+
+- Better processing local variables annotated by `Statement` annotations. Now there is no need
+for additional annotation of a method or class with an annotation `IncludeVarsLocal`
+so that the `Statement` annotation processor could to process local variables.
+
+### Deprecated
+
+- The `IncludeVarsLocal` annotation is deprecated now. Because new annotation processing
+could to scan local variables during `ENTER` compilation phase.
+
 # [0.8.0] - 2022-01-07
 
 ### Added

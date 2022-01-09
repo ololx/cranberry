@@ -29,7 +29,7 @@ import java.lang.annotation.*;
  * see {@link Statements}
  */
 @Documented
-@Retention(RetentionPolicy.CLASS)
+@Retention(RetentionPolicy.SOURCE)
 @Target({
         ElementType.PARAMETER,
         ElementType.LOCAL_VARIABLE

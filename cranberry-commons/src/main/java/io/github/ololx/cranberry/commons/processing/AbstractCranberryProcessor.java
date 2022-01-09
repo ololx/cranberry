@@ -16,6 +16,8 @@
  */
 package io.github.ololx.cranberry.commons.processing;
 
+import io.github.ololx.cranberry.commons.annotation.IncludeVarsLocal;
+
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.AnnotationMirror;
@@ -144,6 +146,8 @@ public abstract class AbstractCranberryProcessor implements Processor {
                     })
                     .collect(Collectors.toSet());
         }
+
+        //annotationTypes.add(IncludeVarsLocal.class.getCanonicalName());
 
         return annotationTypes;
     }

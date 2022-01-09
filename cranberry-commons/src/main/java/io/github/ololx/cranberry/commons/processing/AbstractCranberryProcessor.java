@@ -163,20 +163,20 @@ public abstract class AbstractCranberryProcessor implements Processor {
      *         <ul>
      *             <li>
      *                 Returns the source version in the annotation,
-     *                 if the specified {@link SourceVersion} >= {@link SourceVersion#RELEASE_8}
+     *                 if the specified {@link SourceVersion} more or equals {@link SourceVersion#RELEASE_8}
      *             </li>
      *             <li>
      *                 Returns the source version {@link SourceVersion#RELEASE_8},
-     *                 if the specified {@link SourceVersion} >= {@link SourceVersion#RELEASE_8}
+     *                 if the specified {@link SourceVersion} more or equals {@link SourceVersion#RELEASE_8}
      *             </li>
      *         </ul>
      *         If the processor class is annotated with {@link SupportedSourceVersion},
-     *         and specified {@link SourceVersion} >= {@link SourceVersion#RELEASE_8}
+     *         and specified {@link SourceVersion} more or equals {@link SourceVersion#RELEASE_8}
      *         return the source version in the annotation.
      *     </li>
      *     <li>
      *         If the processor class is annotated with {@link SupportedSourceVersion},
-     *         and specified {@link SourceVersion} >= {@link SourceVersion#RELEASE_8}
+     *         and specified {@link SourceVersion} more or equals {@link SourceVersion#RELEASE_8}
      *         return the source version in the annotation.
      *     </li>
      *     <li>

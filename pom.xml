@@ -98,7 +98,7 @@
     <properties>
         <!--[project versions-->
         <revision>0.9.1</revision>
-        <changelist>-SNAPSHOT</changelist>
+        <changelist></changelist>
         <sha1/>
         <!--project versions]-->
 

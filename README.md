@@ -28,7 +28,7 @@ The Cranberry is a java library that allows to write less code - it's  automatic
 
 ![repo_size](https://img.shields.io/github/repo-size/ololx/cranberry?style=flat&logo=github) ![languages_code_size](https://img.shields.io/github/languages/code-size/ololx/cranberry?style=flat&logo=github) ![languages_count](https://img.shields.io/github/languages/count/ololx/cranberry?style=flat&logo=github) ![languages_top](https://img.shields.io/github/languages/top/ololx/cranberry?style=flat&logo=github)
 
-[![requires_java](https://img.shields.io/badge/requires_java-1.8+-important)](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html) [![requires_maven](https://img.shields.io/badge/requires_maven-3.3.1+-important)](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)
+[![requires_java](https://img.shields.io/badge/requires_java-1.8+-important)](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)
 
 ## 📇 Table of Contents
 

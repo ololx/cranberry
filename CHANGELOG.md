@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - The new statement for the checking logical assertions.
 
+## [0.9.1-SNAPSHOT] - 2022-01-09
+
+### Fixed
+
+- Fix `NullPointerException` in the method `getSupportedSourceVersion()` of the `CranberryAbstractProcessor`.
+
 ## [0.9.0-SNAPSHOT] - 2022-01-09
 
 ### Changed

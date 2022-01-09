@@ -196,7 +196,7 @@ public abstract class AbstractCranberryProcessor implements Processor {
         );
 
         SourceVersion sourceVersion = SourceVersion.RELEASE_8;
-        if (supportedSourceVersion == null) {
+        if (supportedSourceVersion != null) {
             sourceVersion = supportedSourceVersion.value().compareTo(sourceVersion) <= 0
                     ? sourceVersion
                     : supportedSourceVersion.value();

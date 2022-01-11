@@ -6,28 +6,49 @@ Please, visit the project main [page](../README.md) for getting more information
 
 ### Using
 
+#### Using @Final
+
+The @Final could be used as the modifier of a local variable or a param. The local variable or param will be made final. This feature works on local variables and params only.
+
+##### With Cranberry
  ```java
- ...
-/**
- * The example of {@code @Final} annotation usage on {@code List<String> param}.
- * <p>
- * When this method is called, the parameters will be final;
- */
-public static void runWithCustomMessage(@Final List<String> param) {
-    ...
+package io.github.cranberry.examples;
+
+import io.github.ololx.cranberry.data.modifier.annotation.Final;
+
+import java.util.Set;
+
+public class FinalExample {
+
+    public int finalLocalVariableExample() {
+        @Final Set<Integer> finalLocalVariable = Set.of(1, 2, 3, 4);
+
+        return finalLocalVariable.stream().reduce(Integer::sum).orElse(0);
+    }
+
+    public int finalMethodParamExample(@Final Set<Integer> finalMethodParam) {
+        return finalMethodParam.stream().reduce(Integer::sum).orElse(0);
+    }
 }
-...
  ```
 
+##### Without Cranberry
+
  ```java
- ...
-/**
- * The example of {@code @Final} annotation usage on {@code List<String> variable}.
- * <p>
- * When this method is called, the variable will be final;
- */
-public static void runWithCustomMessage(List<String> param) {
-   @Final List<String> valuable = param;
+package io.github.cranberry.examples;
+
+import java.util.Set;
+
+public class FinalExample {
+
+    public int finalLocalVariableExample() {
+        final Set<Integer> finalLocalVariable = Set.of(1, 2, 3, 4);
+
+        return finalLocalVariable.stream().reduce(Integer::sum).orElse(0);
+    }
+
+    public int finalMethodParamExample(final Set<Integer> finalMethodParam) {
+        return finalMethodParam.stream().reduce(Integer::sum).orElse(0);
+    }
 }
-...
  ```

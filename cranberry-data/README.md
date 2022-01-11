@@ -8,7 +8,7 @@ Please, visit the project main [page](../README.md) for getting more information
 
 #### Using @Final
 
-The @Final could be used as the modifier of a local variable or a param. The local variable or param will be made final. This feature works on local variables and params only.
+The `@Final` could be used as the modifier of a local variable or a param. The local variable or param will be made final. This feature works on local variables and params only.
 
 ##### With Cranberry
  ```java

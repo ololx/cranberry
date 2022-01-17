@@ -4,29 +4,34 @@ The cranberry statement is a module of cranberry library (see [Cranberry](../REA
 
 Please, visit the project main [page](../README.md) for getting more information about contributing, versioning, licensing and e.t.c.
 
-### Using
+## Using
 
-#### Using @NotNull
+### @NotNull
 
-@NotNull can be used as a constraint verifier of a local variable or parameter. The local variable or parameter will be checked against the `NotNUll` constraint (assertion) and will throw an exception if the check fails. This function only works with local variables and parameters.
+`@NotNull` can be used as a constraint verifier of a local variable or parameter. The local variable or parameter will be checked against the `NotNUll` constraint (assertion) and will throw an exception if the check fails. This function only works with local variables and parameters.
+
+#### For local variables
+
+The `@NotNull` annotation could be used for a state on local variables. 
 
 ##### With Cranberry
  ```java
-package io.github.ololx.cranberry.examples;
-
 import io.github.ololx.cranberry.statement.annotation.NotNull;
 
-public final class NotNullExamples {
+public final class NotNullLocalVariableExamples {
 
-    public int notNullLocalVariableExample(Integer number) {
+    public Object notNullObjectVariableDefaultExample(Object object) {
         @NotNull
-        Integer notNullLocalVariable = number;
+        Object notNullLocalVariable = object;
 
         return notNullLocalVariable;
     }
 
-    public int notNullMethodParamExample(@NotNull(message = "The notNullMethodParam value is null, Bro") Integer notNullMethodParam) {
-        return notNullMethodParam;
+    public Object notNullObjectVariableCustomMessageExample(Object object) {
+        @NotNull(message = "The variable is empty, Bro =)")
+        Object notNullLocalVariable = object;
+
+        return notNullLocalVariable;
     }
 }
  ```
@@ -34,14 +39,12 @@ public final class NotNullExamples {
 ##### Without Cranberry
 
  ```java
-package io.github.ololx.cranberry.examples;
+ import io.github.ololx.cranberry.statement.annotation.NotNull;
 
-import io.github.ololx.cranberry.statement.annotation.NotNull;
+public final class NotNullLocalVariableExamples {
 
-public final class NotNullExamples {
-
-    public int notNullLocalVariableExample(Integer number) {
-        Integer notNullLocalVariable = number;
+    public Object notNullObjectVariableDefaultExample(Object object) {
+        Object notNullLocalVariable = object;
         if (notNullLocalVariable == null) {
             throw new NotNullStatementException("'Not null' is expected but actually was 'null'");
         }
@@ -49,17 +52,69 @@ public final class NotNullExamples {
         return notNullLocalVariable;
     }
 
-    public int notNullMethodParamExample(Integer notNullMethodParam) {
-        if (notNullMethodParam == null) {
-            throw new NotNullStatementException("The notNullMethodParam value is null, Bro");
+    public Object notNullObjectVariableCustomMessageExample(Object object) {
+        Object notNullLocalVariable = object;
+        if (notNullLocalVariable == null) {
+            throw new NotNullStatementException("The variable is empty, Bro =)");
         }
-    
+        
+        return notNullLocalVariable;
+    }
+}
+```
+
+#### For method params
+
+The `@NotNull` annotation could be used for a state on method params. 
+
+##### With Cranberry
+
+```java
+package io.github.ololx.cranberry.examples.statement;
+
+import io.github.ololx.cranberry.statement.annotation.NotNull;
+
+public final class NotNullMethodParamExamples {
+
+    public Object notNullObjectParamDefaultExample(@NotNull Object notNullMethodParam) {
+        return notNullMethodParam;
+    }
+
+    public Object notNullObjectParamCustomMessageExample(
+            @NotNull(message = "The variable is empty, Bro =)") Object notNullMethodParam) {
+        return notNullMethodParam;
+    }
+}
+```
+
+##### Without Cranberry
+
+```java
+package io.github.ololx.cranberry.examples.statement;
+
+import io.github.ololx.cranberry.statement.annotation.NotNull;
+
+public final class NotNullMethodParamExamples {
+
+    public Object notNullObjectParamDefaultExample(Object notNullMethodParam) {
+        if (notNullMethodParam == null) {
+            throw new NotNullStatementException("'Not null' is expected but actually was 'null'");
+        }
+        
+        return notNullMethodParam;
+    }
+
+    public Object notNullObjectParamCustomMessageExample(Object notNullMethodParam) {
+        if (notNullMethodParam == null) {
+            throw new NotNullStatementException("The variable is empty, Bro =)");
+        }
+        
         return notNullMethodParam;
     }
 }
  ```
  
-#### Using @NotEmpty
+### Using @NotEmpty
 
 @NotEmpty can be used as a constraint verifier of a local variable or parameter. The local variable or parameter will be checked against the `NotEmpty` constraint (assertion) and will throw an exception if the check fails. This function only works with local variables and parameters.
 

@@ -1,0 +1,74 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: navigation_sidebar
+  product: The Cranberry
+  version:
+  folders:
+
+  - title: Overview
+    output: web
+    folderitems:
+
+    - title: About
+      url: /index.html
+      output: web
+      type: homepage
+
+    - title: Features
+      url: /index.html#features
+      output: web
+      type: homepage
+
+    - title: Getting Started
+      url: /index.html#getting-started
+      output: web
+      type: homepage
+
+  - title: Contribuiting
+    output: web
+    folderitems:
+
+    - title: Getting Started
+      url: /index.html#getting-started
+      output: web
+
+    - title: Code of Conduct
+      url: /index.html#code-of-conduct
+      output: web
+
+    - title: Versioning
+      url: /index.html#versioning
+      output: web
+
+    - title: Authors
+      url: /index.html#authors
+      output: web
+
+    - title: Licensing
+      url: /index.html#Licensing
+      output: web     
+
+  - title: Modules
+    output: web
+    folderitems:
+
+    - title: Cranberry statement
+      url: /cranberry-statement.html
+      output: web   
+
+    - title: Cranberry logging
+      url: /cranberry-loggin.html
+      output: web
+
+    - title: Cranberry Data
+      url: /cranberry-data.html
+      output: web
+
+    - title: Cranberry muffin
+      url: /cranberry-muffin.html
+      output: web
+
+    - title: Cranberry commons
+      url: /cranberry-commons.html
+      output: web            

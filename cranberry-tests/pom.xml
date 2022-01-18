@@ -38,7 +38,7 @@
         <!--plugins versions]-->
 
         <!--plugins settings-->
-        <maven.deploy.skip>false</maven.deploy.skip>
+        <maven.deploy.skip>true</maven.deploy.skip>
         <!--plugins settings-->
     </properties>
     <!--properties]-->

@@ -5,8 +5,8 @@ topnav:
   items:
     - title: GitHub
       external_url: https://github.com/ololx/cranberry
-    - title: TODO
-      url: /TODO
+    - title:
+      external_url: https://github.com/ololx/cranberry/TODO
 
 #Topnav dropdowns
 topnav_dropdowns:
@@ -14,11 +14,11 @@ topnav_dropdowns:
   folders:
     - title: Modules
       folderitems:
-        - title: Cranberry Satement
-          url: /cranberry-statement
-        - title: Cranberry Logging
-          url: /cranberry-loging
-        - title: Cranberry Data
-          url: /cranberry-data 
-        - title: Cranberry Muffin
-          url: /cranberry-muffin   
+        - title:
+          external_url: https://github.com/ololx/cranberry/cranberry-statement
+        - title:
+          external_url: https://github.com/ololx/cranberry/cranberry-loging
+        - title:
+          external_url: https://github.com/ololx/cranberry/cranberry-data 
+        - title:
+          external_url: https://github.com/ololx/cranberry/cranberry-muffin   

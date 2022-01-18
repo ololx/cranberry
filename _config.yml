@@ -6,16 +6,16 @@ repository: ololx/cranberry
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title: The Cranberry Documentation
+topnav_title: The Cranberry
 # this appears on the top navigation bar next to the home button
 
-site_title: The Cranberry Documentation
+site_title: The Cranberry
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
 company_name: Copyright 2022 ololx
 # this appears in the footer
 
-github_editme_path: ololx/cranberry/blob/gh-pages/
+github_editme_path:
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
 google_analytics:
@@ -70,7 +70,7 @@ defaults:
       type: "pages"
     values:
       layout: "page"
-      comments: true
+      comments: false
       # if you don't want to use Commento.io and just hide comments, change true to false wherever you see the comments property
       search: true
       sidebar: home_sidebar
@@ -114,6 +114,3 @@ description: "Intended as a documentation theme based on Jekyll for technical wr
 
 
 github: [metadata]
-
-
-# Copyright 2021 Google LLC

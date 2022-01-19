@@ -1,4 +1,18 @@
-# cranberry muffin
+```
+             ___/\\ /\  
+            / _//| \ /  
+           / / / |/ \__ 000   000
+           |/ /  / /  000       000
+      00 00 _/   |/ 000       ^   000
+   00 ^     00   | 000     <  *  > 000  
+  00< * >    00 0 0 000       v   000
+   00 v     00 0 * 0  000       000
+      00 00     0 0     000   000
+________________________________________
+The Cranberry Muffin          
+```
+
+# Cranberry Muffin
 
 The cranberry muffin is a module of cranberry library (see [cranberry](../README.md)) and also java library is designed to combine the possibilities of thematically grouped modules into one common library.
 

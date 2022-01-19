@@ -8,7 +8,7 @@ search_enabled: true
 # Aux links for the upper right navigation
 aux_links:
   "Home page":
-    - "https:ololx.githib.io"
+    - "https://ololx.github.io"
   "View on GitHub":
     - "https://github.com/ololx/cranberry"
     

@@ -1,16 +1,28 @@
-# cranberry data
+```
+             ___/\\ /\  
+            / _//| \ /  
+           / / / |/ \__ 000   000
+           |/ /  / /  000       000
+      00 00 _/   |/ 000       ^   000
+   00 ^     00   | 000     <  *  > 000  
+  00< * >    00 0 0 000       v   000
+   00 v     00 0 * 0  000       000
+      00 00     0 0     000   000
+________________________________________
+The Cranberry Data          
+```
 
-The cranberry data is a module of cranberry library (see [Cranberry](../README.md)). This module provides an api for the java data manipulations: varianbles modifiers, default values, e.t.c. This module includes an annotations for the injecting methods of this api into code during compilation.
+# Cranberry Data
+
+The cranberry data is a module of cranberry library. This module provides an api for the java data manipulations: varianbles modifiers, default values, e.t.c. This module includes an annotations for the injecting methods of this api into code during compilation.
 
 Please, visit the project main [page](../README.md) for getting more information about contributing, versioning, licensing and e.t.c.
 
-### Using
-
-#### Using @Final
+## `@Final`
 
 The `@Final` could be used as the modifier of a local variable or a param. The local variable or param will be made final. This feature works on local variables and params only.
 
-##### With Cranberry
+#### With Cranberry
  ```java
 package io.github.cranberry.examples;
 
@@ -32,7 +44,7 @@ public class FinalExample {
 }
  ```
 
-##### Without Cranberry
+#### Without Cranberry
 
  ```java
 package io.github.cranberry.examples;

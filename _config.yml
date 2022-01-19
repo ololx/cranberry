@@ -9,7 +9,7 @@ search_enabled: true
 aux_links:
   "Home page":
     - "https:ololx.githib.io"
-   "View on GitHub":
+  "View on GitHub":
     - "https://github.com/ololx/cranberry"
     
 # Makes Aux links open in a new tab. Default is false

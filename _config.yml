@@ -7,10 +7,31 @@ search_enabled: true
 
 # Aux links for the upper right navigation
 aux_links:
-  "View on GitHub":
+  "Modules":
+    "Cranberry statement":
+      - "https://github.com/ololx/cranberry-statement"
+    "Cranberry logging":
+      - "https://github.com/ololx/cranberry-logging"  
+  "Home page":
+    - "https:ololx.githib.io"
+   "View on GitHub":
     - "https://github.com/ololx/cranberry"
-  "Home":
-    - "https://github.com/ololx.githib.io"  
     
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: true
+
+# left slides
+---
+layout: default
+title: Modules
+nav_order: 1
+has_children: true
+has_toc: false
+---
+---
+layout: default
+title: Cranberry statement
+parent: Modules
+nav_order: 2
+has_children: true
+---

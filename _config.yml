@@ -14,3 +14,19 @@ aux_links:
     
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: true
+
+# left slides
+---
+layout: default
+title: Modules
+nav_order: 1
+has_children: true
+has_toc: false
+---
+---
+layout: default
+title: Cranberry statement
+parent: Modules
+nav_order: 2
+has_children: false
+---

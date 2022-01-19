@@ -28,5 +28,5 @@ layout: default
 title: Cranberry statement
 parent: Modules
 nav_order: 2
-has_children: true
+has_children: false
 ---

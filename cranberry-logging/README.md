@@ -74,23 +74,3 @@ public final class LogParamMethodExamples {
     }
 }
 ```
-
-### Using
-
- ```java
- ...
-/**
- * The example of {@code @LogParam} annotation usage on {@code List<String> param}.
- * <p>
- * When this method is called, the parameters will be displayed in the log;
- * Messages in the log will label the format {@char "message param"} for each parameter.
- */
-@LogParam(message = "Start execution with param =")
-public static void runWithCustomMessage(List<String> param) {
-    param.stream()
-            .forEach(eachParam -> {
-                System.out.println(eachParam);
-            });
-}
-...
- ```

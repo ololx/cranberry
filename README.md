@@ -17,7 +17,7 @@ The Cranberry
 The Cranberry is a java library that allows to write less routine code. It's automatically plugs into you build during compilation and sweets up your project.
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.ololx.cranberry/cranberry.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22) [![Sonatype Nexus Release](https://img.shields.io/nexus/r/io.github.ololx.cranberry/cranberry?label=Nexus%20Release&nexusVersion=2&server=https%3A%2F%2Fs01.oss.sonatype.org)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22)
-[![Sonatype Nexus Snapshot](https://img.shields.io/nexus/s/io.github.ololx.cranberry/cranberry?server=https%3A%2F%2Fs01.oss.sonatype.org)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22)
+[![Sonatype Nexus Snapshot](https://img.shields.io/nexus/s/io.github.ololx.cranberry/cranberry?label=Nexus%20Snapshot&server=https%3A%2F%2Fs01.oss.sonatype.org)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22)
 
 [![tag](https://img.shields.io/github/v/tag/ololx/cranberry?style=flat&include_prereleases&logo=github)](https://github.com/ololx/cranberry/tags) [![release](https://img.shields.io/github/v/release/ololx/cranberry?style=flat&include_prereleases&logo=github)](https://github.com/ololx/cranberry/releases)
 

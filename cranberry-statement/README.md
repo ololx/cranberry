@@ -500,7 +500,7 @@ public final class NotEmptyMethodParamExamples {
 }    
  ```
  
- ## `@NotNull`
+ ## `@NotBlank`
 
 The `@NotBlank` annotation could be used as a constraint verifier of a local variable or parameter. The local variable or parameter will be checked against the `not blank` constraint (assertion) and will throw an exception if the check fails. This annotation only works with local variables and parameters.
 
@@ -562,7 +562,7 @@ public final class NotBlankLocalVariableExamples {
 
 ### Method params
 
-The `@NotNull` annotation could be used for a state on method params. 
+The `@NotBlank` annotation could be used for a state on method params. 
 
 #### With Cranberry
 

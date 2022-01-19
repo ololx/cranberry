@@ -35,25 +35,25 @@ so that the `Statement` annotation processor could to process local variables.
 - The `IncludeVarsLocal` annotation is deprecated now. Because new annotation processing
 could to scan local variables during `ENTER` compilation phase.
 
-# [0.8.0] - 2022-01-07
+## [0.8.0] - 2022-01-07
 
 ### Added
 
 - Define the class `AbstractCranberryAnnotationProcessing` for the cranberry processing.
 
-# [0.7.1] - 2022-01-06
+## [0.7.1] - 2022-01-06
 
 ### Changed
 
 - Migrate to new `groupId` for all submodules.
 
-# [0.6.0] - 2022-01-05
+## [0.6.0] - 2022-01-05
 
 ### Added
 
 - The new module `cranberry-data` with annotation `Final` - for the finalizing local variables and params modifiers.
 
-# [0.5.4] - 2022-01-03
+## [0.5.4] - 2022-01-03
 
 ### Added
 
@@ -63,7 +63,7 @@ could to scan local variables during `ENTER` compilation phase.
 
 - Move `ValueWrapper` class in module `cranberry-commons`.
 
-# [0.5.3] - 2021-12-31
+## [0.5.3] - 2021-12-31
 
 ### Added
 
@@ -73,7 +73,7 @@ could to scan local variables during `ENTER` compilation phase.
 
 - The `StatementAnnotationProcessor` for running on `@IncludeVarsLocal` too.
 
-# [0.5.2-SNAPSHOT] - 2021-12-25
+## [0.5.2-SNAPSHOT] - 2021-12-25
 
 ### Changed
 
@@ -83,13 +83,13 @@ could to scan local variables during `ENTER` compilation phase.
 
 - Wrong exception for `NotBlankStatement.check()` method - was `NotEmptyStatementException`, but expected `NotBlankStatementException`.
 
-# [0.5.0-SNAPSHOT] - 2021-12-25
+## [0.5.0-SNAPSHOT] - 2021-12-25
 
 ### Changed
 
 - The project groupId and packages names.
 
-# [0.4.0] - 2021-12-09
+## [0.4.0] - 2021-12-09
 
 ### Changed
 

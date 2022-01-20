@@ -1,3 +1,5 @@
+# Cranberry Statement
+
 ```
              ___/\\ /\  
             / _//| \ /  
@@ -11,8 +13,6 @@
 ________________________________________
 The Cranberry Statement          
 ```
-
-# Cranberry Statement
 
 The cranberry statement is a module of cranberry library. This module provides an api for the checking statements (such as not null and e.t.c.). This module includes an annotations for the injecting methods of this api into code during compilation.
 

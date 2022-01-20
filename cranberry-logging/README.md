@@ -1,3 +1,5 @@
+# Cranberry Logging
+
 ```
              ___/\\ /\  
             / _//| \ /  
@@ -11,8 +13,6 @@
 ________________________________________
 The Cranberry Logging          
 ```
-
-# Cranberry Logging
 
 The cranberry loging is a module of cranberry library. This module provides an api for the loggint method params. This module includes an annotations for the injecting methods of this api into code during compilation.
 

@@ -1,3 +1,5 @@
+# Cranberry Data
+
 ```
              ___/\\ /\  
             / _//| \ /  
@@ -11,8 +13,6 @@
 ________________________________________
 The Cranberry Data          
 ```
-
-# Cranberry Data
 
 The cranberry data is a module of cranberry library. This module provides an api for the java data manipulations: varianbles modifiers, default values, e.t.c. This module includes an annotations for the injecting methods of this api into code during compilation.
 

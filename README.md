@@ -1,3 +1,5 @@
+# Cranberry
+
 ```
              ___/\\ /\  
             / _//| \ /  
@@ -11,8 +13,6 @@
 ________________________________________
 The Cranberry          
 ```
-
-# cranberry
 
 The Cranberry is a java library that allows to write less routine code. It's automatically plugs into you build during compilation and sweets up your project.
 

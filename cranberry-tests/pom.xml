@@ -33,7 +33,7 @@
         <!--dependencies versions]-->
 
         <!--[plugins versions-->
-        <plugin.maven-surefire-plugin.version>3.0.0-M3</plugin.maven-surefire-plugin.version>
+        <plugin.maven-surefire-plugin.version>3.0.0-M5</plugin.maven-surefire-plugin.version>
         <plugin.maven-resources-plugin.version>3.1.0</plugin.maven-resources-plugin.version>
         <!--plugins versions]-->
 

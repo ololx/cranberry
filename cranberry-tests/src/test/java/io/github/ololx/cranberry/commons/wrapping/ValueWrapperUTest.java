@@ -66,7 +66,7 @@ public class ValueWrapperUTest {
                         ValueWrapper.getInstance(Long.MIN_VALUE)
                 },
                 {
-                        0L,
+                    0L,
                         ValueWrapper.getInstance(0L)
                 },
                 {

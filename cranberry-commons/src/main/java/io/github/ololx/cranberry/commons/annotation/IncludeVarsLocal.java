@@ -8,10 +8,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * CMarks a class or method so that the cranberry can run the annotation processor when only local variables are annotated.
+ * CMarks a class or method so that the cranberry can run the annotation
+ * processor when only local variables are annotated.
  *
- * The cranberry is able to find annotated local variables at the stage of parsing the code,
- * but cannot process them if no cranberry annotations were specified for non-local variables.
+ * The cranberry is able to find annotated local variables at the stage
+ * of parsing the code, but cannot process them if no cranberry annotations
+ * were specified for non-local variables.
  *
  */
 @ForRemoval(since = "0.10.0")

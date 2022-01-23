@@ -234,7 +234,7 @@ public abstract class AbstractCranberryProcessor implements CranberryProcessor {
      * @see javax.annotation.processing.Processor#process
      */
     @Override
-    public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+    public final boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         //Always returns false
         return false;
     }
@@ -275,7 +275,7 @@ public abstract class AbstractCranberryProcessor implements CranberryProcessor {
      * @return {@code true} if {@link #init} was invoked for this processor,
      * {@code false} otherwise.
      */
-    protected synchronized boolean isUsableReady() {
+    protected final synchronized boolean isUsableReady() {
         return this.processingEnv != null;
     }
 }

@@ -1,7 +1,7 @@
 package io.github.ololx.cranberry.statement.processing;
 
 import com.sun.source.util.JavacTask;
-import io.github.ololx.cranberry.commons.processing.AbstractCranberryProcessor;
+import io.github.ololx.cranberry.commons.engine.AbstractTrickyProcessor;
 import io.github.ololx.cranberry.statement.annotation.NotBlank;
 import io.github.ololx.cranberry.statement.annotation.NotEmpty;
 import io.github.ololx.cranberry.statement.annotation.NotNull;
@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  * @author Alexander A. Kropotin
  */
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
-public final class StatementProcessor extends AbstractCranberryProcessor {
+public final class StatementProcessor extends AbstractTrickyProcessor {
 
     public static final Set<Class> SUPPORTED_ANNOTATIONS = new HashSet<Class>() {
         {

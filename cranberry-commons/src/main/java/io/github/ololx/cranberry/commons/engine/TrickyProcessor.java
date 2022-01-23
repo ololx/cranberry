@@ -14,9 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.ololx.cranberry.commons.processing;
+package io.github.ololx.cranberry.commons.engine;
 
 import javax.annotation.processing.Processor;
+import java.lang.annotation.Annotation;
+import java.util.Set;
 
 /**
  * project cranberry
@@ -24,5 +26,7 @@ import javax.annotation.processing.Processor;
  *
  * @author Alexander A. Kropotin
  */
-public interface CranberryProcessor extends Processor {
+public interface TrickyProcessor extends Processor {
+
+    Set<Class<? extends Annotation>> getTargetAnnotationTypes();
 }

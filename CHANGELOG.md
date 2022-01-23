@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - The new statement for the checking logical assertions.
 
-## [0.10.0] - 2022-01-23
+## [0.10.0-SNAPSHOT] - 2022-01-23
 
 ### Added
 

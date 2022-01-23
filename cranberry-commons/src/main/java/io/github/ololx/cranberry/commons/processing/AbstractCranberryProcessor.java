@@ -16,8 +16,6 @@
  */
 package io.github.ololx.cranberry.commons.processing;
 
-import io.github.ololx.cranberry.commons.annotation.IncludeVarsLocal;
-
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.AnnotationMirror;
@@ -47,7 +45,7 @@ import java.util.stream.Collectors;
  * @author Alexander A. Kropotin
  * @since 0.8.0
  */
-public abstract class AbstractCranberryProcessor implements Processor {
+public abstract class AbstractCranberryProcessor implements CranberryProcessor {
 
     /**
      * An annotation processing tool framework.
@@ -236,7 +234,7 @@ public abstract class AbstractCranberryProcessor implements Processor {
      * @see javax.annotation.processing.Processor#process
      */
     @Override
-    public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+    public final boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         //Always returns false
         return false;
     }
@@ -277,7 +275,7 @@ public abstract class AbstractCranberryProcessor implements Processor {
      * @return {@code true} if {@link #init} was invoked for this processor,
      * {@code false} otherwise.
      */
-    protected synchronized boolean isUsableReady() {
+    protected final synchronized boolean isUsableReady() {
         return this.processingEnv != null;
     }
 }

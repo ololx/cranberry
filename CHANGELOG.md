@@ -10,6 +10,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - The new statement for the checking logical assertions.
 
+## [0.10.0-SNAPSHOT] - 2022-01-23
+
+### Added
+
+- Internal informing annotations for the marking program elements like:
+    - unstable;
+    - for removal;
+    - for experimental usage.
+
 ## [0.9.1] - 2022-01-09
 
 ### Changed

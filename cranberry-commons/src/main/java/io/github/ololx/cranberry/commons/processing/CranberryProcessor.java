@@ -14,18 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.ololx.cranberry.data.modifier.annotation;
+package io.github.ololx.cranberry.commons.processing;
 
-import java.lang.annotation.*;
+import javax.annotation.processing.Processor;
 
 /**
- * The interface Final.
+ * project cranberry
+ * created 2022-01-22 17:57
+ *
+ * @author Alexander A. Kropotin
  */
-@Documented
-@Retention(RetentionPolicy.SOURCE)
-@Target({
-        ElementType.PARAMETER,
-        ElementType.LOCAL_VARIABLE
-})
-public @interface Final {
+public interface CranberryProcessor extends Processor {
 }

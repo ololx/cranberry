@@ -30,10 +30,10 @@
     <!--[info-->
     <name>${project.groupId}:${project.artifactId}</name>
     <description>
-        The cranberry is a java library that allows to write less code - it's automatically
-        plugs into your project build and sweets up your java.
+        The Cranberry is a java library that allows to write less routine code.
+        It's automatically plugs into you build during compilation and sweets up your project.
     </description>
-    <url>https://ololx.github.io/CRANBERRY</url>
+    <url>https://ololx.github.io/cranberry</url>
     <inceptionYear>2019</inceptionYear>
     <licenses>
         <license>
@@ -113,7 +113,7 @@
     <!--[properties-->
     <properties>
         <!--[project versions-->
-        <revision>0.9.1</revision>
+        <revision>0.10.0</revision>
         <changelist></changelist>
         <sha1/>
         <!--project versions]-->

@@ -1,6 +1,6 @@
 package io.github.ololx.cranberry.commons.annotation;
 
-import io.github.ololx.cranberry.commons.marks.ForRemoval;
+import io.github.ololx.cranberry.commons.informing.ForRemoval;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -16,7 +16,10 @@ import java.lang.annotation.Target;
  * were specified for non-local variables.
  *
  */
-@ForRemoval(since = "0.10.0")
+@ForRemoval(
+        since = "0.10.0",
+        till = "0.12.0"
+)
 @Deprecated
 @Retention(RetentionPolicy.SOURCE)
 @Target({

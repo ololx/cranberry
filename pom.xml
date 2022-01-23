@@ -114,7 +114,7 @@
     <properties>
         <!--[project versions-->
         <revision>0.10.0</revision>
-        <changelist></changelist>
+        <changelist>-SNAPSHOT</changelist>
         <sha1/>
         <!--project versions]-->
 

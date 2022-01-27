@@ -2,6 +2,7 @@ package io.github.ololx.cranberry.statement.processing;
 
 import com.sun.source.util.JavacTask;
 import io.github.ololx.cranberry.commons.engine.AbstractTrickyProcessor;
+import io.github.ololx.cranberry.commons.engine.TargetAnnotationTypes;
 import io.github.ololx.cranberry.statement.annotation.NotBlank;
 import io.github.ololx.cranberry.statement.annotation.NotEmpty;
 import io.github.ololx.cranberry.statement.annotation.NotNull;
@@ -22,22 +23,18 @@ import java.util.stream.Collectors;
  *
  * @author Alexander A. Kropotin
  */
+@TargetAnnotationTypes({
+        NotNull.class,
+        NotEmpty.class,
+        NotBlank.class,
+        True.class
+})
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public final class StatementProcessor extends AbstractTrickyProcessor {
 
-    public static final Set<Class> SUPPORTED_ANNOTATIONS = new HashSet<Class>() {
-        {
-            add(NotNull.class);
-            add(NotEmpty.class);
-            add(NotBlank.class);
-            add(True.class);
-        }
-    };
-
-
     @Override
     public Set<String> getSupportedAnnotationTypes() {
-        return SUPPORTED_ANNOTATIONS.stream()
+        return getTargetAnnotationTypes().stream()
                 .map(eachAnnotation -> eachAnnotation.getCanonicalName())
                 .collect(Collectors.toSet());
     }
@@ -47,7 +44,7 @@ public final class StatementProcessor extends AbstractTrickyProcessor {
         super.init(processingEnv);
 
         CranberryStatementTaskListener task = new CranberryStatementTaskListener();
-        task.init(processingEnv, SUPPORTED_ANNOTATIONS);
+        task.init(processingEnv, this.getTargetAnnotationTypes());
 
         JavacTask.instance(processingEnv).addTaskListener(task);
     }

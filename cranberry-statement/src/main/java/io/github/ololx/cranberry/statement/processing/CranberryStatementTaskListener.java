@@ -38,6 +38,7 @@ import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.element.*;
 import javax.lang.model.util.Types;
 import javax.tools.Diagnostic;
+import java.lang.annotation.Annotation;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -84,7 +85,7 @@ final class CranberryStatementTaskListener implements TaskListener {
      * @param processingEnvironment the processing environment
      * @param scanningAnnotations   the scanning annotations
      */
-    public void init(ProcessingEnvironment processingEnvironment, Set<Class> scanningAnnotations) {
+    public void init(ProcessingEnvironment processingEnvironment, Set<Class<? extends Annotation>> scanningAnnotations) {
         if (scanningAnnotations != null) {
             this.scanningAnnotations.addAll(scanningAnnotations);
         }

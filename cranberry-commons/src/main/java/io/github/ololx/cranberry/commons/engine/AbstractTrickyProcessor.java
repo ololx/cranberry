@@ -322,7 +322,7 @@ public abstract class AbstractTrickyProcessor implements TrickyProcessor {
      * @return {@code true} if {@link #init} was invoked for this processor,
      * {@code false} otherwise.
      */
-    private final synchronized boolean isUsableReady() {
+    private synchronized boolean isUsableReady() {
         return this.processingEnv != null;
     }
 }

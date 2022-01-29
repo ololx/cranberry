@@ -16,8 +16,6 @@
  */
 package io.github.ololx.cranberry.commons.utils;
 
-import sun.util.logging.PlatformLogger;
-
 import java.util.Optional;
 import java.util.logging.Logger;
 

@@ -173,11 +173,12 @@ public abstract class AbstractTrickyProcessor implements TrickyProcessor {
      */
     @Override
     public Set<String> getSupportedAnnotationTypes() {
+        boolean isNeededToStripPrefix = this.isUsableReady()
+                && this.processingEnv.getSourceVersion().compareTo(SourceVersion.RELEASE_8) <= 0;
+
         SupportedAnnotationTypes supportedAnnotationTypes = this.getClass().getAnnotation(
                 SupportedAnnotationTypes.class
         );
-        boolean isNeededToStripPrefix = this.isUsableReady()
-                && this.processingEnv.getSourceVersion().compareTo(SourceVersion.RELEASE_8) <= 0;
 
         Set<String> annotationTypes = Collections.emptySet();
         if (supportedAnnotationTypes != null) {

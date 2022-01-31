@@ -257,8 +257,8 @@ final class CranberryStatementTaskListener implements TaskListener {
 
         if (injection.isEmpty() || source.containsAll(injection)) return source;
 
+        int firstPosition = source.get(0).toString().contains("super") ? 1 : 0;
         List<JCTree.JCStatement> statements = List.nil();
-
         for (JCTree.JCStatement statement : source.reverse()) {
             if (currentElement.getKind() == ElementKind.LOCAL_VARIABLE
                     && statement.getKind() == Tree.Kind.VARIABLE
@@ -268,8 +268,9 @@ final class CranberryStatementTaskListener implements TaskListener {
             statements = statements.prepend(statement);
 
             if (currentElement.getKind() == ElementKind.PARAMETER
-                    && statement.equals(source.get(0)))
+                    && statement.equals(source.get(firstPosition))) {
                 statements = statements.prependList(injection);
+            }
         }
 
         return statements;

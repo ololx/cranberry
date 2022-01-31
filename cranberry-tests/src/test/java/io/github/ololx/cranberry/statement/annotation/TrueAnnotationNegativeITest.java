@@ -65,4 +65,12 @@ public class TrueAnnotationNegativeITest extends TrueAnnotationITest {
     public void localVariableTrue_whenBooleanValueIsNotTrue_thenDoNotThrowsException(Boolean value) {
         this.executeWithAnnotatedLocalVariable(value);
     }
+
+    @Test(
+            dataProvider = "booleanValues",
+            expectedExceptions = TrueStatementException.class
+    )
+    public void constructorParamTrue_whenBooleanValueIsNotTrue_thenDoNotThrowsException(Boolean value) {
+        new AnnotatedParamOfConstructor(value);
+    }
 }

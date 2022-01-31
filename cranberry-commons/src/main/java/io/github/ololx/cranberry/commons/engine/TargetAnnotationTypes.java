@@ -28,7 +28,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * An annotation used to indicate what annotation types an annotation
- * processor supports.  The {@link TrickyProcessor#getSupportedAnnotationTypes}
+ * processor supports.  The {@link AbstractTrickyProcessor#getSupportedAnnotationTypes}
  * method can construct its result from the value of this annotation,
  * as done by {@link AbstractTrickyProcessor#getSupportedAnnotationTypes}.
  *

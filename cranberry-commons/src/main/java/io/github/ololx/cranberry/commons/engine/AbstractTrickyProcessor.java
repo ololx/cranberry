@@ -170,11 +170,13 @@ public abstract class AbstractTrickyProcessor implements Processor {
      *         <ul>
      *             <li>
      *                 Returns the source version in the annotation,
-     *                 if the specified {@link SourceVersion} more or equals {@link SourceVersion#RELEASE_8}
+     *                 if the specified {@link SourceVersion} more
+     *                 or equals {@link SourceVersion#RELEASE_8}
      *             </li>
      *             <li>
      *                 Returns the source version {@link SourceVersion#RELEASE_8},
-     *                 if the specified {@link SourceVersion} more or equals {@link SourceVersion#RELEASE_8}
+     *                 if the specified {@link SourceVersion} more
+     *                 or equals {@link SourceVersion#RELEASE_8}
      *             </li>
      *         </ul>
      *         If the processor class is annotated with {@link SupportedSourceVersion},
@@ -284,7 +286,7 @@ public abstract class AbstractTrickyProcessor implements Processor {
      * @return {@code true} if {@link #init} was invoked for this processor,
      * {@code false} otherwise.
      */
-    private synchronized boolean isUsableReady() {
+    protected boolean isUsableReady() {
         return this.processingEnv != null;
     }
 

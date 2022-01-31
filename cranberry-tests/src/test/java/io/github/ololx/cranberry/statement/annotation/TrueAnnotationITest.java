@@ -8,6 +8,15 @@ package io.github.ololx.cranberry.statement.annotation;
  */
 public abstract class TrueAnnotationITest {
 
+    protected class AnnotatedParamOfConstructor {
+
+        Boolean param;
+
+        protected AnnotatedParamOfConstructor(@True boolean param) {
+            this.param = param;
+        }
+    }
+
     /**
      * Execute with annotated param object.
      *

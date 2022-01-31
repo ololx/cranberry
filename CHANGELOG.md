@@ -10,7 +10,20 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - The new statement for the checking logical assertions.
 
-## [0.10.0-SNAPSHOT] - 2022-01-23
+## [0.11.1] - 2022-01-31
+
+### Fixed
+
+- Fatal: super() could be on a first place #18. An error occurs when using an annotation
+from a statement package in a constructor. The error is related to the fact that the super() keyword
+must be the first one in the constructor.
+
+## Added
+
+- Init new AbstractTrickyProcessor for the providing simplest way for tricky processing
+(using task listeners instead #process method)
+
+## [0.10.0] - 2022-01-23
 
 ### Added
 
@@ -25,13 +38,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - Change the main POM - add auto plugin running for verifying dependencies.
 
-## [0.9.1-SNAPSHOT] - 2022-01-09
-
 ### Fixed
 
 - Fix `NullPointerException` in the method `getSupportedSourceVersion()` of the `CranberryAbstractProcessor`.
 
-## [0.9.0-SNAPSHOT] - 2022-01-09
+## [0.9.0] - 2022-01-09
 
 ### Changed
 
@@ -82,7 +93,7 @@ could to scan local variables during `ENTER` compilation phase.
 
 - The `StatementAnnotationProcessor` for running on `@IncludeVarsLocal` too.
 
-## [0.5.2-SNAPSHOT] - 2021-12-25
+## [0.5.2] - 2021-12-25
 
 ### Changed
 
@@ -92,7 +103,7 @@ could to scan local variables during `ENTER` compilation phase.
 
 - Wrong exception for `NotBlankStatement.check()` method - was `NotEmptyStatementException`, but expected `NotBlankStatementException`.
 
-## [0.5.0-SNAPSHOT] - 2021-12-25
+## [0.5.0] - 2021-12-25
 
 ### Changed
 

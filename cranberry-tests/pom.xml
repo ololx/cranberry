@@ -107,7 +107,7 @@
                 <configuration>
                     <reportFormat>plain</reportFormat>
                     <parallel>methods</parallel>
-                    <threadCount>12</threadCount>
+                    <threadCount>4</threadCount>
                     <systemPropertyVariables>
                         <jacoco-agent.destfile>**/jacoco.exec</jacoco-agent.destfile>
                     </systemPropertyVariables>

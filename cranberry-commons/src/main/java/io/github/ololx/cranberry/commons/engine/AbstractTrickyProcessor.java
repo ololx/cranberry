@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.ololx.cranberry.commons.processing;
+package io.github.ololx.cranberry.commons.engine;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
@@ -22,9 +22,11 @@ import javax.lang.model.element.AnnotationMirror;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.TypeElement;
+import java.lang.annotation.Annotation;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * An abstract annotation processor designed to be a convenient
@@ -45,7 +47,16 @@ import java.util.stream.Collectors;
  * @author Alexander A. Kropotin
  * @since 0.8.0
  */
-public abstract class AbstractCranberryProcessor implements CranberryProcessor {
+public abstract class AbstractTrickyProcessor implements Processor {
+
+    /**
+     * The Processed elements.
+     */
+    protected static volatile Map<Element, Set<Class<?>>> processedElements;
+
+    static {
+        processedElements = new ConcurrentHashMap<Element, Set<Class<?>>>();
+    }
 
     /**
      * An annotation processing tool framework.
@@ -53,18 +64,18 @@ public abstract class AbstractCranberryProcessor implements CranberryProcessor {
     protected ProcessingEnvironment processingEnv;
 
     /**
-     * The Processed elements.
+     * The set of target annotation types.
      */
-    protected volatile static Map<Element, Set<Class<?>>> processedElements;
+    private Set<Class<? extends Annotation>> targetAnnotationsTypes;
 
-    static {
-        processedElements = new ConcurrentHashMap<Element, Set<Class<?>>>();
+    {
+        this.targetAnnotationsTypes = Collections.emptySet();
     }
 
     /**
      * Constructor for subclasses to call.
      */
-    protected AbstractCranberryProcessor() {}
+    protected AbstractTrickyProcessor() {}
 
     /**
      * Returns the options recognized by this processor.
@@ -79,8 +90,7 @@ public abstract class AbstractCranberryProcessor implements CranberryProcessor {
      *     </li>
      * </ul>
      *
-     * @return the options recognized by this processor or an
-     * empty collection if none
+     * @return the options recognized by this processor or an empty collection if none
      * @see javax.annotation.processing.SupportedOptions
      * @see Processor#getSupportedOptions
      */
@@ -124,11 +134,12 @@ public abstract class AbstractCranberryProcessor implements CranberryProcessor {
      */
     @Override
     public Set<String> getSupportedAnnotationTypes() {
+        boolean isNeededToStripPrefix = this.isUsableReady()
+                && this.processingEnv.getSourceVersion().compareTo(SourceVersion.RELEASE_8) <= 0;
+
         SupportedAnnotationTypes supportedAnnotationTypes = this.getClass().getAnnotation(
                 SupportedAnnotationTypes.class
         );
-        boolean isNeededToStripPrefix = this.isUsableReady()
-                && this.processingEnv.getSourceVersion().compareTo(SourceVersion.RELEASE_8) <= 0;
 
         Set<String> annotationTypes = Collections.emptySet();
         if (supportedAnnotationTypes != null) {
@@ -145,9 +156,7 @@ public abstract class AbstractCranberryProcessor implements CranberryProcessor {
                     .collect(Collectors.toSet());
         }
 
-        //annotationTypes.add(IncludeVarsLocal.class.getCanonicalName());
-
-        return annotationTypes;
+        return Collections.unmodifiableSet(annotationTypes);
     }
 
     /**
@@ -161,11 +170,13 @@ public abstract class AbstractCranberryProcessor implements CranberryProcessor {
      *         <ul>
      *             <li>
      *                 Returns the source version in the annotation,
-     *                 if the specified {@link SourceVersion} more or equals {@link SourceVersion#RELEASE_8}
+     *                 if the specified {@link SourceVersion} more
+     *                 or equals {@link SourceVersion#RELEASE_8}
      *             </li>
      *             <li>
      *                 Returns the source version {@link SourceVersion#RELEASE_8},
-     *                 if the specified {@link SourceVersion} more or equals {@link SourceVersion#RELEASE_8}
+     *                 if the specified {@link SourceVersion} more
+     *                 or equals {@link SourceVersion#RELEASE_8}
      *             </li>
      *         </ul>
      *         If the processor class is annotated with {@link SupportedSourceVersion},
@@ -275,7 +286,44 @@ public abstract class AbstractCranberryProcessor implements CranberryProcessor {
      * @return {@code true} if {@link #init} was invoked for this processor,
      * {@code false} otherwise.
      */
-    protected final synchronized boolean isUsableReady() {
+    protected boolean isUsableReady() {
         return this.processingEnv != null;
+    }
+
+    /**
+     * Returns the instances of the classes {@code Class} of the annotation
+     * types supported by this processor.
+     *
+     * <ul>
+     *     <li>
+     *         If the processor class is annotated with {@link TargetAnnotationTypes},
+     *         return an unmodifiable set with the instances of the classes
+     *         {@code Class} of the annotation.
+     *     </li>
+     *     <li>
+     *         In other cases an empty set is returned.
+     *     </li>
+     * </ul>
+     *
+     * @return the instances of the classes {@code Class} of the annotation
+     * types supported by this processor, or an empty set if none
+     * @see io.github.ololx.cranberry.commons.engine.TargetAnnotationTypes
+     */
+    protected Set<Class<? extends Annotation>> getTargetAnnotationTypes() {
+        if (!this.targetAnnotationsTypes.isEmpty()) {
+            return Collections.unmodifiableSet(this.targetAnnotationsTypes);
+        }
+
+        TargetAnnotationTypes targetAnnotationTypes = this.getClass().getAnnotation(
+                TargetAnnotationTypes.class
+        );
+
+        if (targetAnnotationTypes != null) {
+            this.targetAnnotationsTypes = Arrays.stream(targetAnnotationTypes.value())
+                    .parallel()
+                    .collect(Collectors.toSet());
+        }
+
+        return Collections.unmodifiableSet(this.targetAnnotationsTypes);
     }
 }

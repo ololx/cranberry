@@ -38,6 +38,7 @@ import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.element.*;
 import javax.lang.model.util.Types;
 import javax.tools.Diagnostic;
+import java.lang.annotation.Annotation;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -84,7 +85,7 @@ final class CranberryStatementTaskListener implements TaskListener {
      * @param processingEnvironment the processing environment
      * @param scanningAnnotations   the scanning annotations
      */
-    public void init(ProcessingEnvironment processingEnvironment, Set<Class> scanningAnnotations) {
+    public void init(ProcessingEnvironment processingEnvironment, Set<Class<? extends Annotation>> scanningAnnotations) {
         if (scanningAnnotations != null) {
             this.scanningAnnotations.addAll(scanningAnnotations);
         }
@@ -256,8 +257,8 @@ final class CranberryStatementTaskListener implements TaskListener {
 
         if (injection.isEmpty() || source.containsAll(injection)) return source;
 
+        int firstPosition = source.get(0).toString().contains("super") ? 1 : 0;
         List<JCTree.JCStatement> statements = List.nil();
-
         for (JCTree.JCStatement statement : source.reverse()) {
             if (currentElement.getKind() == ElementKind.LOCAL_VARIABLE
                     && statement.getKind() == Tree.Kind.VARIABLE
@@ -267,8 +268,9 @@ final class CranberryStatementTaskListener implements TaskListener {
             statements = statements.prepend(statement);
 
             if (currentElement.getKind() == ElementKind.PARAMETER
-                    && statement.equals(source.get(0)))
+                    && statement.equals(source.get(firstPosition))) {
                 statements = statements.prependList(injection);
+            }
         }
 
         return statements;

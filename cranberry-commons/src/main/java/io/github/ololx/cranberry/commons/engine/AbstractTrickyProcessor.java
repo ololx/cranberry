@@ -47,7 +47,7 @@ import java.util.stream.Stream;
  * @author Alexander A. Kropotin
  * @since 0.8.0
  */
-public abstract class AbstractTrickyProcessor implements TrickyProcessor {
+public abstract class AbstractTrickyProcessor implements Processor {
 
     /**
      * The Processed elements.
@@ -76,45 +76,6 @@ public abstract class AbstractTrickyProcessor implements TrickyProcessor {
      * Constructor for subclasses to call.
      */
     protected AbstractTrickyProcessor() {}
-
-    /**
-     * Returns the instances of the classes {@code Class} of the annotation
-     * types supported by this processor.
-     *
-     * <ul>
-     *     <li>
-     *         If the processor class is annotated with {@link TargetAnnotationTypes},
-     *         return an unmodifiable set with the instances of the classes
-     *         {@code Class} of the annotation.
-     *     </li>
-     *     <li>
-     *         In other cases an empty set is returned.
-     *     </li>
-     * </ul>
-     *
-     * @return the instances of the classes {@code Class} of the annotation
-     * types supported by this processor, or an empty set if none
-     * @see io.github.ololx.cranberry.commons.engine.TargetAnnotationTypes
-     * @see TrickyProcessor#getTargetAnnotationTypes
-     */
-    @Override
-    public Set<Class<? extends Annotation>> getTargetAnnotationTypes() {
-        if (!this.targetAnnotationsTypes.isEmpty()) {
-            return Collections.unmodifiableSet(this.targetAnnotationsTypes);
-        }
-
-        TargetAnnotationTypes targetAnnotationTypes = this.getClass().getAnnotation(
-                TargetAnnotationTypes.class
-        );
-
-        if (targetAnnotationTypes != null) {
-            this.targetAnnotationsTypes = Arrays.stream(targetAnnotationTypes.value())
-                    .parallel()
-                    .collect(Collectors.toSet());
-        }
-
-        return Collections.unmodifiableSet(this.targetAnnotationsTypes);
-    }
 
     /**
      * Returns the options recognized by this processor.
@@ -325,5 +286,42 @@ public abstract class AbstractTrickyProcessor implements TrickyProcessor {
      */
     private synchronized boolean isUsableReady() {
         return this.processingEnv != null;
+    }
+
+    /**
+     * Returns the instances of the classes {@code Class} of the annotation
+     * types supported by this processor.
+     *
+     * <ul>
+     *     <li>
+     *         If the processor class is annotated with {@link TargetAnnotationTypes},
+     *         return an unmodifiable set with the instances of the classes
+     *         {@code Class} of the annotation.
+     *     </li>
+     *     <li>
+     *         In other cases an empty set is returned.
+     *     </li>
+     * </ul>
+     *
+     * @return the instances of the classes {@code Class} of the annotation
+     * types supported by this processor, or an empty set if none
+     * @see io.github.ololx.cranberry.commons.engine.TargetAnnotationTypes
+     */
+    protected Set<Class<? extends Annotation>> getTargetAnnotationTypes() {
+        if (!this.targetAnnotationsTypes.isEmpty()) {
+            return Collections.unmodifiableSet(this.targetAnnotationsTypes);
+        }
+
+        TargetAnnotationTypes targetAnnotationTypes = this.getClass().getAnnotation(
+                TargetAnnotationTypes.class
+        );
+
+        if (targetAnnotationTypes != null) {
+            this.targetAnnotationsTypes = Arrays.stream(targetAnnotationTypes.value())
+                    .parallel()
+                    .collect(Collectors.toSet());
+        }
+
+        return Collections.unmodifiableSet(this.targetAnnotationsTypes);
     }
 }

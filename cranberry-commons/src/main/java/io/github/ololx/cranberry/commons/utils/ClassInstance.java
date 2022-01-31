@@ -34,9 +34,9 @@ public final class ClassInstance {
         log = Logger.getLogger(ClassInstance.class.getCanonicalName());
     }
 
-    public static Optional<Class<?>> newInstance(String className) {
+    public static<T> Optional<Class<T>> newClassForName(String className) {
         try {
-            final Class<?> clazz = Class.forName(className);
+            final Class<T> clazz = (Class<T>) Class.forName(className);
             log.fine("Get .class - " + clazz + " for name - " + className);
 
             return Optional.ofNullable(clazz);

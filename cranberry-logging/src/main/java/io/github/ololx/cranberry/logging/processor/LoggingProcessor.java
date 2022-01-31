@@ -81,10 +81,7 @@ public class LoggingProcessor extends AbstractProcessor {
         this.scanner.setFilter(
                 (element) ->
                         SUPPORTED_ANNOTATIONS.stream()
-                                .map(eachAnnotation -> element.getAnnotation(eachAnnotation) != null)
-                                .filter(b -> b != false)
-                                .findAny()
-                                .orElse(false)
+                                .anyMatch(eachAnnotation -> element.getAnnotation(eachAnnotation) != null)
         );
 
         EnterCompilationHandler tListener = new EnterCompilationHandler();

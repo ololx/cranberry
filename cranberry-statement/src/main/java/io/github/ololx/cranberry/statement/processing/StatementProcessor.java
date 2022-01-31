@@ -34,7 +34,7 @@ public final class StatementProcessor extends AbstractTrickyProcessor {
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {
-        return getTargetAnnotationTypes().stream()
+        return this.getTargetAnnotationTypes().stream()
                 .map(eachAnnotation -> eachAnnotation.getCanonicalName())
                 .collect(Collectors.toSet());
     }

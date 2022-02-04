@@ -18,7 +18,7 @@ The cranberry statement is a module of cranberry library. This module provides a
 
 Please, visit the project main [page](../README.md) for getting more information about contributing, versioning, licensing and e.t.c.
 
-# `@NotNull`
+## `@NotNull`
 
 The `@NotNull` annotation could be used as a constraint verifier of a local variable or parameter. The local variable or parameter will be checked against the `not null` constraint (assertion) and will throw an exception if the check fails. This annotation only works with local variables and parameters.
 
@@ -27,7 +27,7 @@ The `@NotNull` annotation could be used as a constraint verifier of a local vari
 The `@NotNull` annotation could be used for a state on local variables. 
 
 #### With Cranberry
- ```java
+```java
 import io.github.ololx.cranberry.statement.annotation.NotNull;
 
 public final class NotNullLocalVariableExamples {
@@ -46,13 +46,11 @@ public final class NotNullLocalVariableExamples {
         return notNullLocalVariable;
     }
 }
- ```
+```
 
 #### Without Cranberry
 
- ```java
- import io.github.ololx.cranberry.statement.annotation.NotNull;
-
+```java
 public final class NotNullLocalVariableExamples {
 
     public Object notNullObjectVariableDefaultExample(Object object) {
@@ -82,8 +80,6 @@ The `@NotNull` annotation could be used for a state on method params.
 #### With Cranberry
 
 ```java
-package io.github.ololx.cranberry.examples.statement;
-
 import io.github.ololx.cranberry.statement.annotation.NotNull;
 
 public final class NotNullMethodParamExamples {
@@ -102,10 +98,6 @@ public final class NotNullMethodParamExamples {
 #### Without Cranberry
 
 ```java
-package io.github.ololx.cranberry.examples.statement;
-
-import io.github.ololx.cranberry.statement.annotation.NotNull;
-
 public final class NotNullMethodParamExamples {
 
     public Object notNullObjectParamDefaultExample(Object notNullMethodParam) {
@@ -124,7 +116,7 @@ public final class NotNullMethodParamExamples {
         return notNullMethodParam;
     }
 }
- ```
+```
  
 ### Class constructor params
 
@@ -133,6 +125,8 @@ The `@NotNull` annotation could be used for a state on class constructor params.
 #### With Cranberry
 
 ```java
+import io.github.ololx.cranberry.statement.annotation.NotNull;
+
 public class NotNullConstructorParamExamples {
 
     class NotNullObjectParamDefaultExample {
@@ -192,7 +186,7 @@ public class NotNullConstructorParamExamples {
 }
 ```
 
-# `@NotEmpty`
+## `@NotEmpty`
 
 The `@NotEmpty` annotation can be used as a constraint verifier of a local variable or parameter. The local variable or parameter will be checked against the `NotEmpty` constraint (assertion) and will throw an exception if the check fails. This function only works with local variables and parameters.
 
@@ -202,8 +196,6 @@ The `@NotEmpty` annotation could be used for a state on local variables.
 
 #### With Cranberry
 ```java
-package io.github.ololx.cranberry.examples.statement;
-
 import io.github.ololx.cranberry.statement.annotation.NotEmpty;
 
 import java.util.List;
@@ -282,10 +274,6 @@ public final class NotEmptyLocalVariableExamples {
 #### Without Cranberry
 
 ```java
-package io.github.ololx.cranberry.examples.statement;
-
-import io.github.ololx.cranberry.statement.annotation.NotEmpty;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -390,8 +378,6 @@ The `@NotEmpty` annotation could be used for a state on method params.
 
 #### With Cranberry
 ```java
-package io.github.ololx.cranberry.examples.statement;
-
 import io.github.ololx.cranberry.statement.annotation.NotEmpty;
 
 import java.util.List;
@@ -455,29 +441,6 @@ public final class NotEmptyMethodParamExamples {
 #### Without Cranberry
 
 ```java
-package io.github.ololx.cranberry.examples.statement;
-
-import io.github.ololx.cranberry.statement.annotation.NotEmpty;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-public final class NotEmptyLocalVariableExamples {
-
-    public String notEmptyStringVariableDefaultExample(String str) {
-        String notEmptyLocalVariable = str;
-        if (notEmptyLocalVariable == null || notEmptyLocalVariable.length() == 0) {
-            throw new NotEmptyStatementException("'Not empty' is expected but actually was '" + notEmptyLocalVariable + "'");
-        }
-
-        return notEmptyLocalVariable;
-    }
-
-package io.github.ololx.cranberry.examples.statement;
-
-import io.github.ololx.cranberry.statement.annotation.NotEmpty;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -566,7 +529,7 @@ public final class NotEmptyMethodParamExamples {
 }    
 ```
  
- # `@NotBlank`
+ ## `@NotBlank`
 
 The `@NotBlank` annotation could be used as a constraint verifier of a local variable or parameter. The local variable or parameter will be checked against the `not blank` constraint (assertion) and will throw an exception if the check fails. This annotation only works with local variables and parameters.
 
@@ -576,8 +539,6 @@ The `@NotBlank` annotation could be used for a state on local variables.
 
 #### With Cranberry
 ```java
-package io.github.ololx.cranberry.examples.statement;
-
 import io.github.ololx.cranberry.statement.annotation.NotBlank;
 
 public final class NotBlankLocalVariableExamples {
@@ -600,10 +561,6 @@ public final class NotBlankLocalVariableExamples {
 #### Without Cranberry
 
 ```java
-package io.github.ololx.cranberry.examples.statement;
-
-import io.github.ololx.cranberry.statement.annotation.NotBlank;
-
 public final class NotBlankLocalVariableExamples {
 
     public String notBlankStringVariableDefaultExample(String str) {
@@ -633,8 +590,6 @@ The `@NotBlank` annotation could be used for a state on method params.
 #### With Cranberry
 
 ```java
-package io.github.ololx.cranberry.examples.statement;
-
 import io.github.ololx.cranberry.statement.annotation.NotBlank;
 
 public final class NotBlankMethodParamExamples {
@@ -653,10 +608,6 @@ public final class NotBlankMethodParamExamples {
 #### Without Cranberry
 
 ```java
-package io.github.ololx.cranberry.examples.statement;
-
-import io.github.ololx.cranberry.statement.annotation.NotBlank;
-
 public final class NotBlankMethodParamExamples {
 
     public String notBlankStringParamDefaultExample(String notBlankMethodParam) {

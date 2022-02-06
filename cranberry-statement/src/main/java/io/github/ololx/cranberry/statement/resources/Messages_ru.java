@@ -3,14 +3,14 @@ package io.github.ololx.cranberry.statement.resources;
 import java.util.ListResourceBundle;
 
 /**
- * The type Messages en.
+ * The type Messages ru.
  */
-public final class messages_en extends ListResourceBundle {
+public final class Messages_ru extends ListResourceBundle {
 
     @Override
     protected final Object[][] getContents() {
         return new Object[][] {
-                { "detail.default", "'%s' is expected but actually was '%s'" }
+                { "detail.default", "Ожидается '%s', но получили '%s'" }
         };
     }
 }

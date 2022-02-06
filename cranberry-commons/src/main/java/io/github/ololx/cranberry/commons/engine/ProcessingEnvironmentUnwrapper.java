@@ -32,19 +32,19 @@ public interface ProcessingEnvironmentUnwrapper {
 
     static ProcessingEnvironment unwrap(ProcessingEnvironment processingEnv) {
         if (processingEnv == null) {
-            throw new NullPointerException("The annotation processing tools must be not null");
+            throw new NullPointerException("The processing environment must be defined");
         }
 
         if (!Proxy.isProxyClass(processingEnv.getClass())) {
             return processingEnv;
         }
 
-        Optional<ProcessingEnvironment> unwrapedProcessingEnv = FieldInstance.getFieldValue(
+        Optional<ProcessingEnvironment> originProcessingEnv = FieldInstance.getFieldValue(
                 Proxy.getInvocationHandler(processingEnv),
                 "val$delegateTo"
         );
 
-        return unwrapedProcessingEnv.orElse(null);
+        return originProcessingEnv.orElse(null);
     }
 
 }

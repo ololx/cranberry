@@ -58,7 +58,7 @@ public abstract class AbstractTrickyProcessor implements Processor {
     }
 
     /**
-     * An annotation processing tool framework.
+     * The processing environment used in this processor.
      */
     protected ProcessingEnvironment processingEnv;
 

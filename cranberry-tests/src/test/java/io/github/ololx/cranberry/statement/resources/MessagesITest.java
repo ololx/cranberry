@@ -40,8 +40,12 @@ public class MessagesITest {
     @DataProvider(name = "localeValues")
     public static Object[][] localeValues() {
         return new Object[][] {
-                {messages_en.class, "en"},
-                {messages_ru.class, "ru"}
+                {
+                    Messages_en.class, "en"
+                },
+                {
+                    Messages_ru.class, "ru"
+                }
         };
     }
 
@@ -54,7 +58,7 @@ public class MessagesITest {
     @Test(dataProvider = "localeValues")
     public void getBundle_whenLocaleValueIsDefine_thenReturnResourceBundleForThisLocale(Class<?> clazz, String value) {
        ResourceBundle resourceBundle = ResourceBundle.getBundle(
-               "io.github.ololx.cranberry.statement.resources.messages",
+               "io.github.ololx.cranberry.statement.resources.Messages",
                new Locale(value)
        );
 

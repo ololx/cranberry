@@ -63,7 +63,7 @@ public class StatementException extends IllegalArgumentException {
      * 
      */
     public static final ResourceBundle LOCALE_DETAIL_MESSAGE_PATTERNS = ResourceBundle.getBundle(
-            "io.github.ololx.cranberry.statement.resources.messages",
+            "io.github.ololx.cranberry.statement.resources.Messages",
             new Locale(System.getProperty(
                     "user.language",
                     "en"

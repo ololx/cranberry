@@ -26,7 +26,6 @@ import java.lang.annotation.Annotation;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * An abstract annotation processor designed to be a convenient
@@ -38,7 +37,7 @@ import java.util.stream.Stream;
  * subtypes.
  *
  * Subclasses are free to override the implementation and
- * specification of any of the methods in this class as long as the
+ * specification any of the methods in this class as long as the
  * general {@link javax.annotation.processing.Processor Processor}
  * contract for that method is obeyed.
  *
@@ -59,7 +58,7 @@ public abstract class AbstractTrickyProcessor implements Processor {
     }
 
     /**
-     * An annotation processing tool framework.
+     * The processing environment used in this processor.
      */
     protected ProcessingEnvironment processingEnv;
 

@@ -36,7 +36,11 @@ import static org.testng.Assert.assertTrue;
  */
 public class ValueWrapperUTest {
 
-    private final static Logger log = Logger.getLogger(ValueWrapperUTest.class.getName());
+    private final static Logger log;
+
+    static {
+        log = Logger.getLogger(ValueWrapperUTest.class.getName());
+    }
 
     @DataProvider(name = "values")
     public static Object[] values() {

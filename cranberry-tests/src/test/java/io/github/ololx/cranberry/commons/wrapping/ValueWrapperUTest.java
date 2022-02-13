@@ -16,8 +16,6 @@
  */
 package io.github.ololx.cranberry.commons.wrapping;
 
-import io.github.ololx.cranberry.statement.internal.exception.NotBlankStatementException;
-import io.github.ololx.cranberry.statement.internal.util.Statements;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

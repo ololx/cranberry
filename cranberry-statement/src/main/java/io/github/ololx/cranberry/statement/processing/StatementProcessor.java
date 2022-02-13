@@ -2,19 +2,11 @@ package io.github.ololx.cranberry.statement.processing;
 
 import com.sun.source.util.JavacTask;
 import io.github.ololx.cranberry.commons.engine.AbstractTrickyProcessor;
-import io.github.ololx.cranberry.commons.engine.TargetAnnotationTypes;
-import io.github.ololx.cranberry.statement.annotation.NotBlank;
-import io.github.ololx.cranberry.statement.annotation.NotEmpty;
-import io.github.ololx.cranberry.statement.annotation.NotNull;
-import io.github.ololx.cranberry.statement.annotation.True;
 
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * The type State processor.

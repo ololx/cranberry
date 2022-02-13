@@ -42,7 +42,6 @@ import java.lang.annotation.Annotation;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentSkipListSet;
 
 import static com.sun.source.util.TaskEvent.Kind.ANNOTATION_PROCESSING_ROUND;
 import static com.sun.source.util.TaskEvent.Kind.ENTER;

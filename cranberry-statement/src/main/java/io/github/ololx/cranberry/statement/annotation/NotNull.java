@@ -1,6 +1,5 @@
 package io.github.ololx.cranberry.statement.annotation;
 
-import io.github.ololx.cranberry.commons.annotation.IncludeVarsLocal;
 import io.github.ololx.cranberry.statement.internal.exception.NotNullStatementException;
 import io.github.ololx.cranberry.statement.internal.util.Statements;
 

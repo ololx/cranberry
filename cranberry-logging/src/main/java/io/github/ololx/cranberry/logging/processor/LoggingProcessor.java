@@ -12,7 +12,6 @@ import com.sun.tools.javac.tree.JCTree.JCStatement;
 import com.sun.tools.javac.tree.JCTree.JCVariableDecl;
 import com.sun.tools.javac.tree.TreeMaker;
 import com.sun.tools.javac.util.List;
-
 import io.github.ololx.cranberry.commons.handler.EnterCompilationHandler;
 import io.github.ololx.cranberry.commons.scanner.MethodCompilationTreeScanner;
 import io.github.ololx.cranberry.commons.utils.TypeUtil;

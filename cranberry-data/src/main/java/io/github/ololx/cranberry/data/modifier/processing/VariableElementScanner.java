@@ -23,7 +23,6 @@ import com.sun.source.util.Trees;
 import com.sun.tools.javac.tree.JCTree;
 import io.github.ololx.cranberry.data.modifier.annotation.Final;
 
-import javax.annotation.processing.Messager;
 import javax.lang.model.element.Element;
 import java.util.HashSet;
 import java.util.Map;

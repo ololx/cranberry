@@ -16,6 +16,8 @@
  */
 package io.github.ololx.cranberry.commons.engine;
 
+import io.github.ololx.cranberry.commons.utils.ClassUtils;
+
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.AnnotationMirror;
@@ -54,22 +56,13 @@ public abstract class AbstractTrickyProcessor implements Processor {
     protected static volatile Map<Element, Set<Class<?>>> processedElements;
 
     static {
-        processedElements = new ConcurrentHashMap<Element, Set<Class<?>>>();
+        processedElements = new ConcurrentHashMap<>();
     }
 
     /**
      * The processing environment used in this processor.
      */
     protected ProcessingEnvironment processingEnv;
-
-    /**
-     * The set of target annotation types.
-     */
-    private Set<Class<? extends Annotation>> targetAnnotationsTypes;
-
-    {
-        this.targetAnnotationsTypes = Collections.emptySet();
-    }
 
     /**
      * Constructor for subclasses to call.
@@ -295,9 +288,9 @@ public abstract class AbstractTrickyProcessor implements Processor {
      *
      * <ul>
      *     <li>
-     *         If the processor class is annotated with {@link TargetAnnotationTypes},
-     *         return an unmodifiable set with the instances of the classes
-     *         {@code Class} of the annotation.
+     *          If the processor class is annotated with {@link SupportedAnnotationTypes}
+     *          return an unmodifiable set with the possible instances of the classes
+     *          {@code Class} of the annotation.
      *     </li>
      *     <li>
      *         In other cases an empty set is returned.
@@ -306,23 +299,21 @@ public abstract class AbstractTrickyProcessor implements Processor {
      *
      * @return the instances of the classes {@code Class} of the annotation
      * types supported by this processor, or an empty set if none
-     * @see io.github.ololx.cranberry.commons.engine.TargetAnnotationTypes
+     * @see #getSupportedAnnotationTypes
+     * @see SupportedAnnotationTypes
      */
     protected Set<Class<? extends Annotation>> getTargetAnnotationTypes() {
-        if (!this.targetAnnotationsTypes.isEmpty()) {
-            return Collections.unmodifiableSet(this.targetAnnotationsTypes);
+        Set<String> supportedAnnotationsTypes = this.getSupportedAnnotationTypes();
+        if (supportedAnnotationsTypes == null) {
+            return Collections.emptySet();
         }
 
-        TargetAnnotationTypes targetAnnotationTypes = this.getClass().getAnnotation(
-                TargetAnnotationTypes.class
-        );
+        Set<Class<? extends Annotation>> targetAnnotationTypes = supportedAnnotationsTypes.stream()
+                .parallel()
+                .map(sat -> ClassUtils.<Annotation>newClassForName(sat).orElse(null))
+                .filter(Objects::nonNull)
+                .collect(Collectors.toSet());
 
-        if (targetAnnotationTypes != null) {
-            this.targetAnnotationsTypes = Arrays.stream(targetAnnotationTypes.value())
-                    .parallel()
-                    .collect(Collectors.toSet());
-        }
-
-        return Collections.unmodifiableSet(this.targetAnnotationsTypes);
+        return Collections.unmodifiableSet(targetAnnotationTypes);
     }
 }

@@ -9,6 +9,7 @@ import io.github.ololx.cranberry.statement.annotation.NotNull;
 import io.github.ololx.cranberry.statement.annotation.True;
 
 import javax.annotation.processing.ProcessingEnvironment;
+import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import java.util.HashSet;
@@ -23,21 +24,14 @@ import java.util.stream.Collectors;
  *
  * @author Alexander A. Kropotin
  */
-@TargetAnnotationTypes({
-        NotNull.class,
-        NotEmpty.class,
-        NotBlank.class,
-        True.class
+@SupportedAnnotationTypes({
+        "io.github.ololx.cranberry.statement.annotation.NotNull",
+        "io.github.ololx.cranberry.statement.annotation.NotEmpty",
+        "io.github.ololx.cranberry.statement.annotation.NotBlank",
+        "io.github.ololx.cranberry.statement.annotation.True"
 })
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public final class StatementProcessor extends AbstractTrickyProcessor {
-
-    @Override
-    public Set<String> getSupportedAnnotationTypes() {
-        return this.getTargetAnnotationTypes().stream()
-                .map(eachAnnotation -> eachAnnotation.getCanonicalName())
-                .collect(Collectors.toSet());
-    }
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {

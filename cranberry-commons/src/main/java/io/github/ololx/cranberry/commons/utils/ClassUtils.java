@@ -16,35 +16,30 @@
  */
 package io.github.ololx.cranberry.commons.utils;
 
-import java.lang.reflect.Field;
 import java.util.Optional;
 import java.util.logging.Logger;
 
 /**
- * project cranberry
- * created 05.02.2022 22:35
+ * created 2022-01-27 21:04
  *
  * @author Alexander A. Kropotin
+ * @since
  */
-public final class FieldInstance {
+public final class ClassUtils {
 
     private static final Logger log;
 
     static {
-        log = Logger.getLogger(ClassInstance.class.getCanonicalName());
+        log = Logger.getLogger(ClassUtils.class.getCanonicalName());
     }
 
-    public static<T, S> Optional<T> getFieldValue(S obj, String fieldName) {
+    public static<T> Optional<Class<T>> newClassForName(String className) {
         try {
-            Field field = obj.getClass().getDeclaredField(fieldName);
-            log.fine("Get field - " + field + " for name - " + fieldName);
+            final Class<T> clazz = (Class<T>) Class.forName(className);
+            log.fine("Get .class - " + clazz + " for name - " + className);
 
-            field.setAccessible(true);
-            T value = (T) field.get(obj);
-            log.fine("Get value - " + value);
-
-            return Optional.ofNullable(value);
-        } catch (IllegalAccessException | NoSuchFieldException e) {
+            return Optional.ofNullable(clazz);
+        } catch (ClassNotFoundException e) {
             log.severe("Catch exception - " + e.getLocalizedMessage());
 
             return Optional.empty();

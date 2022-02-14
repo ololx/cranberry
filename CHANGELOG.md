@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - The new statement for the checking logical assertions.
 
+## [0.12.1] - 2022-02-14
+
+### Fixed
+
+- The JDK 16+ compilation problems - add compilation args to export `jdk.compiler`.
+
 ## [0.12.0] - 2022-02-13
 
 ### Removed

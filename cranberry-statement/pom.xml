@@ -37,9 +37,9 @@
     <!--[info-->
     <name>${project.groupId}:${project.artifactId}</name>
     <description>
-        The cranberry statement is a module of cranberry library (see cranberry). This module provides an api for the
-        statements validation (such as not null and e.t.c.). This module includes an annotations for the injecting methods
-        of this api into code during compilation.
+        The cranberry statement is a module of cranberry library (see cranberry). This module provides an api for
+        statements validation (such as not null and e.t.c.). This module includes an annotations
+        for the injecting methods of this api into code during compilation.
     </description>
     <!--info]-->
 

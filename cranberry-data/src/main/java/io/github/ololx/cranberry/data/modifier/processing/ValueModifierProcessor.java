@@ -22,8 +22,7 @@ import com.sun.source.util.TaskListener;
 import com.sun.source.util.Trees;
 import com.sun.tools.javac.processing.JavacProcessingEnvironment;
 import com.sun.tools.javac.tree.TreeMaker;
-import io.github.ololx.cranberry.commons.engine.AbstractTrickyProcessor;
-import io.github.ololx.cranberry.data.modifier.annotation.Final;
+import io.github.ololx.cranberry.commons.engine.AbstractProcessor;
 
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
@@ -40,7 +39,7 @@ import static com.sun.source.util.TaskEvent.Kind.ENTER;
  */
 @SupportedAnnotationTypes({"io.github.ololx.cranberry.data.modifier.annotation.Final"})
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
-public final class ValueModifierProcessor extends AbstractTrickyProcessor {
+public final class ValueModifierProcessor extends AbstractProcessor {
 
     @Override
     public synchronized void init(ProcessingEnvironment env) {

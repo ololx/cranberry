@@ -48,7 +48,7 @@ import java.util.stream.Collectors;
  * @author Alexander A. Kropotin
  * @since 0.8.0
  */
-public abstract class AbstractTrickyProcessor implements Processor {
+public abstract class AbstractProcessor implements Processor {
 
     /**
      * The Processed elements.
@@ -67,7 +67,7 @@ public abstract class AbstractTrickyProcessor implements Processor {
     /**
      * Constructor for subclasses to call.
      */
-    protected AbstractTrickyProcessor() {}
+    protected AbstractProcessor() {}
 
     /**
      * Returns the options recognized by this processor.
@@ -126,27 +126,27 @@ public abstract class AbstractTrickyProcessor implements Processor {
      */
     @Override
     public Set<String> getSupportedAnnotationTypes() {
-        boolean isNeededToStripPrefix = this.isUsableReady()
-                && this.processingEnv.getSourceVersion().compareTo(SourceVersion.RELEASE_8) <= 0;
-
         SupportedAnnotationTypes supportedAnnotationTypes = this.getClass().getAnnotation(
                 SupportedAnnotationTypes.class
         );
 
-        Set<String> annotationTypes = Collections.emptySet();
-        if (supportedAnnotationTypes != null) {
-            annotationTypes = Arrays.stream(supportedAnnotationTypes.value())
-                    .parallel()
-                    .map(s -> {
-                        int prefixIndex = s.indexOf('/');
-                        if (prefixIndex < 0 || !isNeededToStripPrefix) {
-                            return s;
-                        }
-
-                        return s.substring(prefixIndex + 1);
-                    })
-                    .collect(Collectors.toSet());
+        if (supportedAnnotationTypes == null) {
+            Collections.unmodifiableSet(Collections.emptySet());
         }
+
+        boolean isNeededToStripPrefix = this.isUsableReady()
+                && this.processingEnv.getSourceVersion().compareTo(SourceVersion.RELEASE_8) <= 0;
+        Set<String> annotationTypes = Arrays.stream(supportedAnnotationTypes.value())
+                .parallel()
+                .map(s -> {
+                    int prefixIndex = s.indexOf('/');
+                    if (prefixIndex < 0 || !isNeededToStripPrefix) {
+                        return s;
+                    }
+
+                    return s.substring(prefixIndex + 1);
+                })
+                .collect(Collectors.toSet());
 
         return Collections.unmodifiableSet(annotationTypes);
     }
@@ -218,7 +218,10 @@ public abstract class AbstractTrickyProcessor implements Processor {
             return;
         }
 
-        Objects.requireNonNull(processingEnv, "The annotation processing tools couldn't be null");
+        Objects.requireNonNull(
+                processingEnv,
+                "The annotation processing tools must be presented"
+        );
         this.processingEnv = processingEnv;
     }
 

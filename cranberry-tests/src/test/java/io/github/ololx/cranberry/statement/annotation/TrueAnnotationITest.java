@@ -10,10 +10,18 @@ public abstract class TrueAnnotationITest {
 
     protected class AnnotatedParamOfConstructor {
 
-        Boolean param;
+        Boolean param1;
+
+        boolean param2;
 
         protected AnnotatedParamOfConstructor(@True boolean param) {
-            this.param = param;
+            this.param1 = param;
+        }
+
+        protected AnnotatedParamOfConstructor(@True @NotNull boolean param1,
+                                              @True @NotNull boolean param2) {
+            this.param1 = param1;
+            this.param2 = param2;
         }
     }
 

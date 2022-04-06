@@ -43,8 +43,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import static com.sun.source.util.TaskEvent.Kind.ANNOTATION_PROCESSING_ROUND;
-import static com.sun.source.util.TaskEvent.Kind.ENTER;
+import static com.sun.source.util.TaskEvent.Kind.*;
 
 /**
  * project cranberry
@@ -252,11 +251,19 @@ final class CranberryStatementTaskListener implements TaskListener {
 
     private List<JCTree.JCStatement> injectStatementIntoBody(List<JCTree.JCStatement> source, List<JCTree.JCStatement> injection, Element currentElement) {
 
-        if (source.isEmpty()) return injection;
+        if (source.isEmpty()) {
+            return injection;
+        }
 
-        if (injection.isEmpty() || source.containsAll(injection)) return source;
+        if (injection.isEmpty() || source.toString().contains(injection.toString())) {
+            return source;
+        }
 
-        int firstPosition = source.get(0).toString().contains("super") ? 1 : 0;
+        int pointer = 0;
+        while (pointer < source.length() && source.get(pointer).toString().contains("super")) {
+            pointer++;
+        }
+
         List<JCTree.JCStatement> statements = List.nil();
         for (JCTree.JCStatement statement : source.reverse()) {
             if (currentElement.getKind() == ElementKind.LOCAL_VARIABLE
@@ -267,7 +274,7 @@ final class CranberryStatementTaskListener implements TaskListener {
             statements = statements.prepend(statement);
 
             if (currentElement.getKind() == ElementKind.PARAMETER
-                    && statement.equals(source.get(firstPosition))) {
+                    && statement.equals(source.get(pointer))) {
                 statements = statements.prependList(injection);
             }
         }

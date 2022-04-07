@@ -131,7 +131,7 @@ public abstract class AbstractProcessor implements Processor {
         );
 
         if (supportedAnnotationTypes == null) {
-            Collections.unmodifiableSet(Collections.emptySet());
+            return Collections.unmodifiableSet(Collections.emptySet());
         }
 
         boolean isNeededToStripPrefix = this.isUsableReady()

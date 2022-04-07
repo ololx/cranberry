@@ -53,6 +53,8 @@ import static com.sun.source.util.TaskEvent.Kind.*;
  */
 final class CranberryStatementTaskListener implements TaskListener {
 
+    public static final String SUPER_KEYWORD = "super";
+
     private final Set<Class> scanningAnnotations;
 
     private JavacProcessingEnvironment javacProcessingEnv;
@@ -260,7 +262,7 @@ final class CranberryStatementTaskListener implements TaskListener {
         }
 
         int pointer = 0;
-        while (pointer < source.length() && source.get(pointer).toString().contains("super")) {
+        while (pointer < source.length() && source.get(pointer).toString().contains(SUPER_KEYWORD)) {
             pointer++;
         }
 

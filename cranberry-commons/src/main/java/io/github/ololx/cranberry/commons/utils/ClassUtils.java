@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  * created 2022-01-27 21:04
  *
  * @author Alexander A. Kropotin
- * @since
+ * @since 13
  */
 public final class ClassUtils {
 

@@ -16,6 +16,7 @@ Cranberry
 
 The Cranberry is a java library that allows to write less routine code. It's automatically plugs into you build during compilation and sweets up your project.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/aeee174d80734f238ca3843c4c40bc68)](https://app.codacy.com/gh/ololx/cranberry?utm_source=github.com&utm_medium=referral&utm_content=ololx/cranberry&utm_campaign=Badge_Grade_Settings)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.ololx.cranberry/cranberry.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22) [![Sonatype Nexus Release](https://img.shields.io/nexus/r/io.github.ololx.cranberry/cranberry?label=Nexus%20Release&nexusVersion=2&server=https%3A%2F%2Fs01.oss.sonatype.org)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22)
 [![Sonatype Nexus Snapshot](https://img.shields.io/nexus/s/io.github.ololx.cranberry/cranberry?label=Nexus%20Snapshot&server=https%3A%2F%2Fs01.oss.sonatype.org)](https://search.maven.org/search?q=g:%22io.github.ololx.cranberry%22) [![javadoc](https://javadoc.io/badge2/io.github.ololx.cranberry/cranberry/javadoc.svg?logo=java)](https://javadoc.io/doc/io.github.ololx.cranberry) 
 

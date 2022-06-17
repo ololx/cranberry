@@ -55,9 +55,7 @@ final class CranberryStatementTaskListener implements TaskListener {
 
     public static final String SUPER_KEYWORD = "super";
 
-    private final Set<Class> scanningAnnotations;
-
-    private JavacProcessingEnvironment javacProcessingEnv;
+    private final Set<Class<?>> scanningAnnotations;
 
     private TreeMaker treeMaker;
 
@@ -65,13 +63,7 @@ final class CranberryStatementTaskListener implements TaskListener {
 
     private JavacElements elements;
 
-    private Types types;
-
-    private Trees trees;
-
     private TypeUtil typeUtil;
-
-    private Names names;
 
     private VariableCompilationTreeScanner scanner;
 
@@ -90,17 +82,17 @@ final class CranberryStatementTaskListener implements TaskListener {
             this.scanningAnnotations.addAll(scanningAnnotations);
         }
 
-        this.trees = Trees.instance(processingEnvironment);
-        this.javacProcessingEnv = (JavacProcessingEnvironment) processingEnvironment;
+        Trees trees = Trees.instance(processingEnvironment);
+        JavacProcessingEnvironment javacProcessingEnv = (JavacProcessingEnvironment) processingEnvironment;
         this.treeMaker = TreeMaker.instance(javacProcessingEnv.getContext());
         this.messager = processingEnvironment.getMessager();
         this.elements = ((JavacProcessingEnvironment) processingEnvironment).getElementUtils();
-        this.types = ((JavacProcessingEnvironment) processingEnvironment).getTypeUtils();
-        this.trees = Trees.instance(this.javacProcessingEnv);
+        Types types = ((JavacProcessingEnvironment) processingEnvironment).getTypeUtils();
+        trees = Trees.instance(javacProcessingEnv);
         this.typeUtil = new TypeUtil(types, elements);
-        this.names = Names.instance(javacProcessingEnv.getContext());
+        Names names = Names.instance(javacProcessingEnv.getContext());
 
-        this.scanner = new VariableCompilationTreeScanner(this.trees);
+        this.scanner = new VariableCompilationTreeScanner(trees);
         this.scanner.setFilter(
                 (VariableElement element) -> scanningAnnotations.stream()
                         .anyMatch(eachAnnotation -> element.getAnnotation(eachAnnotation) != null)
@@ -131,7 +123,7 @@ final class CranberryStatementTaskListener implements TaskListener {
      */
     public boolean process(Element element) {
         for (AnnotationMirror annotationMirror : element.getAnnotationMirrors()) {
-            for (Class processingAnnotation : scanningAnnotations) {
+            for (Class<?> processingAnnotation : scanningAnnotations) {
                 if (!this.typeUtil.isSame(annotationMirror.getAnnotationType(),
                         this.typeUtil.getType(processingAnnotation)))
                     continue;

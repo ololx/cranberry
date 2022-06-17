@@ -66,7 +66,6 @@
         <module>/cranberry-statement</module>
         <module>/cranberry-logging</module>
         <module>/cranberry-data</module>
-        <module>/cranberry-tests</module>
     </modules>
     <!--deploying modules]-->
 
@@ -115,7 +114,7 @@
     <properties>
         <!--[project versions-->
         <revision>0.13.0</revision>
-        <changelist>-SNAPSHOT</changelist>
+        <changelist></changelist>
         <sha1/>
         <!--project versions]-->
 
@@ -537,6 +536,11 @@
         <profile>
             <id>develop</id>
             <modules>
+                <module>/cranberry-muffin</module>
+                <module>/cranberry-commons</module>
+                <module>/cranberry-statement</module>
+                <module>/cranberry-logging</module>
+                <module>/cranberry-data</module>
                 <module>/cranberry-tests</module>
             </modules>
         </profile>

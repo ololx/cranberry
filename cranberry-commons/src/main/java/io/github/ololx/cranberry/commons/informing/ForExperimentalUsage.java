@@ -38,10 +38,10 @@ import static java.lang.annotation.ElementType.*;
  * this element indicates the version in which the annotated program element
  * will be implemented like a release.
  *
- * @apiNote
- * If element instability is also implied (may be changed without backwards
+ * Note:
+ * <p>If element instability is also implied (may be changed without backwards
  * compatibility), then it is recommended recommended to annotate a programming
- * element in conjunction with the {@code @Unstable} annotation.
+ * element in conjunction with the {@code @Unstable} annotation.</p>
  *
  * It is recommended that a {@code since} value be provided with all newly
  * annotated program elements.

@@ -35,9 +35,9 @@ import static java.lang.annotation.ElementType.*;
  * this element indicates the version in which the annotated program element
  * will be removed.
  *
- * @apiNote
- * It is highly recommended to annotate a programming element in conjunction
- * with the {@code @Deprecated} annotation.
+ * Note:
+ * <p>It is highly recommended to annotate a programming element in conjunction
+ * with the {@code @Deprecated} annotation.</p>
  *
  * It is recommended that a {@code since} value be provided with all newly
  * annotated program elements.

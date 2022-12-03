@@ -28,9 +28,6 @@ import java.lang.annotation.*;
  */
 @Documented
 @Retention(RetentionPolicy.SOURCE)
-@Target({
-        ElementType.PARAMETER,
-        ElementType.LOCAL_VARIABLE
-})
+@Target({ElementType.LOCAL_VARIABLE})
 public @interface Static {
 }

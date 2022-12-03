@@ -27,7 +27,7 @@ import com.sun.tools.javac.tree.TreeTranslator;
  *
  * @author Alexander A. Kropotin
  */
-final class VariableElementTranslator extends TreeTranslator {
+final class FinalElementTranslator extends TreeTranslator {
 
     private final TreeMaker treeMaker;
 
@@ -36,7 +36,7 @@ final class VariableElementTranslator extends TreeTranslator {
      *
      * @param treeMaker the tree maker
      */
-    public VariableElementTranslator(final TreeMaker treeMaker) {
+    public FinalElementTranslator(final TreeMaker treeMaker) {
         this.treeMaker = treeMaker;
     }
 

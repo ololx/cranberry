@@ -113,7 +113,7 @@
     <!--[properties-->
     <properties>
         <!--[project versions-->
-        <revision>0.13.0</revision>
+        <revision>0.13.1</revision>
         <changelist></changelist>
         <sha1/>
         <!--project versions]-->

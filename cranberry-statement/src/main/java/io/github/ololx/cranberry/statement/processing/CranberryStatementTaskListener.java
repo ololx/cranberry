@@ -43,7 +43,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import static com.sun.source.util.TaskEvent.Kind.*;
+import static com.sun.source.util.TaskEvent.Kind.ANNOTATION_PROCESSING_ROUND;
+import static com.sun.source.util.TaskEvent.Kind.ENTER;
 
 /**
  * project cranberry

@@ -37,9 +37,12 @@ import static com.sun.source.util.TaskEvent.Kind.ENTER;
  *
  * @author Alexander A. Kropotin
  */
-@SupportedAnnotationTypes({"io.github.ololx.cranberry.data.modifier.annotation.Final"})
+@SupportedAnnotationTypes({
+        "io.github.ololx.cranberry.data.modifier.annotation.Final",
+        "io.github.ololx.cranberry.data.modifier.annotation.Static",
+})
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
-public final class ValueModifierProcessor extends AbstractProcessor {
+public final class VarModifierProcessor extends AbstractProcessor {
 
     @Override
     public synchronized void init(ProcessingEnvironment env) {
@@ -59,14 +62,33 @@ public final class ValueModifierProcessor extends AbstractProcessor {
             @Override
             public void finished(TaskEvent taskEvent) {
                 if (taskEvent.getKind() == ENTER) {
-                    new VariableElementScanner(
+                    new FinalAnnotatedElementScanner(
                             trees,
-                            new VariableElementTranslator(treeMaker),
+                            new FinalElementTranslator(treeMaker),
                             processedElements
                     ).scan(taskEvent.getCompilationUnit(), null);
                 }
             }
 
+        });
+
+        JavacTask.instance(env).addTaskListener(new TaskListener() {
+
+            @Override
+            public void started(TaskEvent taskEvent) {
+                // Nothing to do on task started event.
+            }
+
+            @Override
+            public void finished(TaskEvent taskEvent) {
+                if (taskEvent.getKind() == ENTER) {
+                    new StaticAnnotatedElementScanner(
+                            trees,
+                            new StaticElementTranslator(treeMaker),
+                            processedElements
+                    ).scan(taskEvent.getCompilationUnit(), null);
+                }
+            }
         });
     }
 }

@@ -19,19 +19,18 @@ package io.github.ololx.cranberry.data.modifier.annotation;
 import java.lang.annotation.*;
 
 /**
- * The interface Final.
+ * The interface Static.
  *
  * project cranberry
- * created 2022-01-04 16:54
+ * created 2022-12-03 22:07
  *
  * @author Alexander A. Kropotin
  */
 @Documented
 @Retention(RetentionPolicy.SOURCE)
 @Target({
-        ElementType.FIELD,
-        ElementType.PARAMETER,
-        ElementType.LOCAL_VARIABLE
+        ElementType.TYPE,
+        ElementType.FIELD
 })
-public @interface Final {
+public @interface Static {
 }

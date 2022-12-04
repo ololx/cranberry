@@ -34,7 +34,7 @@ import java.util.Set;
  *
  * @author Alexander A. Kropotin
  */
-final class VariableElementScanner extends TreePathScanner<Void, Void> {
+final class FinalAnnotatedElementScanner extends TreePathScanner<Void, Void> {
 
     private final Map<Element, Set<Class<?>>> processedElements;
 
@@ -42,7 +42,7 @@ final class VariableElementScanner extends TreePathScanner<Void, Void> {
 
     //private final TreeMaker treeMaker;
 
-    private VariableElementTranslator variableElementTranslator;
+    private FinalElementTranslator variableElementTranslator;
 
 
     /**
@@ -52,12 +52,11 @@ final class VariableElementScanner extends TreePathScanner<Void, Void> {
      * @param variableElementTranslator
      * @param processedElements the processed elements
      */
-    public VariableElementScanner(Trees trees,
-            /*TreeMaker treeMaker,*/
-                                  VariableElementTranslator variableElementTranslator,
-                                  Map<Element, Set<Class<?>>> processedElements) {
+    public FinalAnnotatedElementScanner(Trees trees,
+                                        FinalElementTranslator variableElementTranslator,
+                                        Map<Element, Set<Class<?>>> processedElements
+    ) {
         this.trees = trees;
-        //this.treeMaker = treeMaker;
         this.processedElements = processedElements;
         this.variableElementTranslator = variableElementTranslator;
     }
@@ -65,11 +64,6 @@ final class VariableElementScanner extends TreePathScanner<Void, Void> {
     @Override
     public Void visitVariable(VariableTree tree, Void aVoid) {
         super.visitVariable(tree, aVoid);
-        // This method might be invoked in case of
-        //  1. method field definition
-        //  2. method parameter
-        //  3. local variable declaration
-        // Therefore you have to filter out somehow what you don't need.
         if (tree.getKind() != Tree.Kind.VARIABLE && tree.getKind() != Tree.Kind.PARAMETERIZED_TYPE) {
             return aVoid;
         }
@@ -79,9 +73,6 @@ final class VariableElementScanner extends TreePathScanner<Void, Void> {
         if (annotation == null) {
             return aVoid;
         }
-
-        // Here we have your annotation.
-        // We can process it now.
 
         Set<Class<?>> processedAnnotations = processedElements.getOrDefault(variable, new HashSet<>());
         if (processedAnnotations.contains(Final.class)) {

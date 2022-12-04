@@ -543,6 +543,14 @@
                 <module>/cranberry-data</module>
                 <module>/cranberry-tests</module>
             </modules>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
         <!--develop build]-->
     </profiles>

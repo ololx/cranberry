@@ -25,7 +25,7 @@
         <groupId>io.github.ololx.cranberry</groupId>
         <artifactId>cranberry</artifactId>
         <version>${revision}${sha1}${changelist}</version>
-        <relativePath>../</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <!--parent]-->
 

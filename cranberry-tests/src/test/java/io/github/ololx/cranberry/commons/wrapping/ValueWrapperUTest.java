@@ -41,7 +41,7 @@ public class ValueWrapperUTest {
     }
 
     @DataProvider(name = "values")
-    public static Object[] values() {
+    public static Object[][] values() {
         return new Object[][] {
                 {
                         ValueWrapper.getInstance(Boolean.TRUE),
@@ -82,12 +82,16 @@ public class ValueWrapperUTest {
                 {
                     0,
                         ValueWrapper.getInstance(0)
+                },
+                {
+                    new Integer[] {0, 1, 2},
+                        ValueWrapper.getInstance(new Integer[] {0, 1, 2})
                 }
         };
     }
 
     @DataProvider(name = "testTypeValues")
-    public static Object[] testTypeValues() {
+    public static Object[][] testTypeValues() {
         return new Object[][] {
                 {
                         null,

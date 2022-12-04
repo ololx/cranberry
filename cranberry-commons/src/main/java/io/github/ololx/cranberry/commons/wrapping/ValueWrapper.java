@@ -16,6 +16,8 @@
  */
 package io.github.ololx.cranberry.commons.wrapping;
 
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -113,16 +115,18 @@ public final class ValueWrapper implements Serializable {
      * @return a string representation for the supplied value; never {@code null}
      */
     public static String getValueStringRepresentation(Object value, String nullStringRepresentation) {
-        if (value == null)
+        if (value == null) {
             return String.valueOf(nullStringRepresentation);
+        }
 
-        if (value.getClass().isArray())
+        if (value.getClass().isArray() && !value.getClass().getComponentType().isPrimitive()) {
             return String.format(
                     "[%s]",
                     Arrays.stream((Object[]) value)
-                            .map(element -> String.valueOf(element))
+                            .map(String::valueOf)
                             .collect(Collectors.joining(", "))
             );
+        }
 
         return String.valueOf(value);
     }
@@ -175,7 +179,24 @@ public final class ValueWrapper implements Serializable {
      * @return a string representation for the wrapper value; never {@code null}
      */
     public String getValueStringRepresentation() {
-        return ValueWrapper.getValueStringRepresentation(this.getValue(), null);
+        if (value == null) {
+            return "null";
+        }
+
+        if (this.type.isArray()) {
+            if (this.type.getComponentType().isPrimitive()) {
+                return String.valueOf(value);
+            }
+
+            return String.format(
+                    "[%s]",
+                    Arrays.stream((Object[]) value)
+                            .map(String::valueOf)
+                            .collect(Collectors.joining(", "))
+            );
+        }
+
+        return String.valueOf(value);
     }
 
     /**

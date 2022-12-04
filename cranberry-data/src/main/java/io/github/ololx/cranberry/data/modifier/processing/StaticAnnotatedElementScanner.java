@@ -63,7 +63,7 @@ final class StaticAnnotatedElementScanner extends TreePathScanner<Void, Void> {
     public Void visitVariable(VariableTree tree, Void aVoid) {
         super.visitVariable(tree, aVoid);
         
-        if (tree.getKind() != Tree.Kind.VARIABLE && tree.getKind() != Tree.Kind.PARAMETERIZED_TYPE) {
+        if (tree.getKind() != Tree.Kind.VARIABLE && tree.getKind() != Tree.Kind.CLASS) {
             return aVoid;
         }
 

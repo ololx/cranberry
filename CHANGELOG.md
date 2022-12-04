@@ -11,6 +11,12 @@ adheres to [Semantic Versioning](http://semver.org/).
 
 - The new statement for the checking logical assertions.
 
+## [0.14.0] - 2022-01-31
+
+## Added
+
+- Init new annotation for static modifiers.
+
 ## [0.13.1] - 2022-06-17
 
 ### Fixed

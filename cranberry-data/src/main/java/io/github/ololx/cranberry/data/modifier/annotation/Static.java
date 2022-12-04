@@ -28,6 +28,9 @@ import java.lang.annotation.*;
  */
 @Documented
 @Retention(RetentionPolicy.SOURCE)
-@Target({ElementType.LOCAL_VARIABLE})
+@Target({
+        ElementType.TYPE,
+        ElementType.FIELD
+})
 public @interface Static {
 }

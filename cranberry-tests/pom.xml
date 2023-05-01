@@ -44,7 +44,7 @@
     <!--[properties-->
     <properties>
         <!--[dependencies versions-->
-        <dependency.testng.version>7.6.1</dependency.testng.version>
+        <dependency.testng.version>7.7.0</dependency.testng.version>
         <dependency.equalsverifier.version>3.11.1</dependency.equalsverifier.version>
         <!--dependencies versions]-->
 

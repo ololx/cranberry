@@ -222,7 +222,7 @@ public class StatementException extends IllegalArgumentException {
      * actual/expected values (which could not be {@code null}).
      */
     public String getDetail() {
-        return (this.expected.isValueDefined() && this.actual.isValueDefined())
+        return (this.expected.isEmpty() && this.actual.isEmpty())
                 ? String.format(
                         StatementException.LOCALE_DETAIL_MESSAGE_PATTERNS.getString("detail.default"),
                         this.getExpected().getValueStringRepresentation(),

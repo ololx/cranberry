@@ -342,12 +342,12 @@
                                         Invalid Maven version. It should, at least, be 3.3.1
                                     </message>
                                 </requireMavenVersion>
-                                <requireJavaVersion>
+                                <!--<requireJavaVersion>
                                     <version>1.8, 1.8</version>
                                     <message>
                                         Invalid Maven version. It should be 1.8
                                     </message>
-                                </requireJavaVersion>
+                                </requireJavaVersion>-->
                             </rules>
                         </configuration>
                     </execution>
@@ -454,20 +454,6 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
-                    <fork>true</fork>
-                    <compilerArgs combine.children="append">
-                        <!-- required by errorprone -->
-                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
-                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
-                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
-                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>
-                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
-                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
-                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
-                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
-                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
-                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
-                    </compilerArgs>
                 </configuration>
             </plugin>
             <!--compiling source]-->

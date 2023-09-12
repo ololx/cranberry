@@ -49,13 +49,6 @@ public final class ValueWrapper implements Serializable {
     private static final long serialVersionUID = -309177L;
 
     /**
-     * The wrapped value hash code; see {@link #toString()}.
-     *
-     * @serial
-     */
-    private final int valueHashCode;
-
-    /**
      * The wrapped value type; see {@link #toString()}, {@link #getType()}.
      *
      * @serial
@@ -113,16 +106,18 @@ public final class ValueWrapper implements Serializable {
      * @return a string representation for the supplied value; never {@code null}
      */
     public static String getValueStringRepresentation(Object value, String nullStringRepresentation) {
-        if (value == null)
+        if (value == null) {
             return String.valueOf(nullStringRepresentation);
+        }
 
-        if (value.getClass().isArray())
+        if (value.getClass().isArray() && !value.getClass().getComponentType().isPrimitive()) {
             return String.format(
                     "[%s]",
                     Arrays.stream((Object[]) value)
-                            .map(element -> String.valueOf(element))
+                            .map(String::valueOf)
                             .collect(Collectors.joining(", "))
             );
+        }
 
         return String.valueOf(value);
     }
@@ -135,12 +130,7 @@ public final class ValueWrapper implements Serializable {
      */
     private ValueWrapper(Object value) {
         this.value = value;
-        this.valueHashCode = value == null
-                ? 0
-                : value.hashCode();
-        this.type = value == null
-                ? null
-                : value.getClass();
+        this.type = value == null ? Object.class : value.getClass();
     }
 
     /**
@@ -175,7 +165,24 @@ public final class ValueWrapper implements Serializable {
      * @return a string representation for the wrapper value; never {@code null}
      */
     public String getValueStringRepresentation() {
-        return ValueWrapper.getValueStringRepresentation(this.getValue(), null);
+        if (this.value == null) {
+            return "null";
+        }
+
+        if (this.type.isArray()) {
+            if (this.type.getComponentType().isPrimitive()) {
+                return String.valueOf(value);
+            }
+
+            return String.format(
+                    "[%s]",
+                    Arrays.stream((Object[]) value)
+                            .map(String::valueOf)
+                            .collect(Collectors.joining(", "))
+            );
+        }
+
+        return String.valueOf(value);
     }
 
     /**
@@ -184,7 +191,7 @@ public final class ValueWrapper implements Serializable {
      * @return {@code true} if the wrapped value is not null;
      * {@code false} otherwise.
      */
-    public boolean isValueDefined() {
+    public boolean isEmpty() {
         return this.getValue() != null;
     }
 
@@ -195,29 +202,8 @@ public final class ValueWrapper implements Serializable {
      * @return {@code true} if the wrapped value is null;
      * {@code false} otherwise.
      */
-    public boolean isValueUndefined() {
-        return !this.isValueDefined();
-    }
-
-    /**
-     * Indicates whether the wrapped value type is defined or not.
-     *
-     * @return {@code true} if the wrapped value type is not null;
-     * {@code false} otherwise.
-     */
-    public boolean isTypeDefined() {
-        return this.getType() != null;
-    }
-
-    /**
-     * Indicates whether the wrapped value type is undefined
-     * or it is defined.
-     *
-     * @return {@code true} if the wrapped value type is null;
-     * {@code false} otherwise.
-     */
-    public boolean isTypeUndefined() {
-        return !this.isTypeDefined();
+    public boolean isPresent() {
+        return !this.isEmpty();
     }
 
     /**
@@ -234,11 +220,53 @@ public final class ValueWrapper implements Serializable {
         final int prime = 31;
 
         int result = 1;
-        result = prime * result + valueHashCode;
-        result = prime * result + ((this.value == null) ? 0 : this.value.hashCode());
-        result = prime * result + ((this.type == null) ? 0 : this.type.hashCode());
+        result = prime * result + valueHashCode();
+        result = prime * result + this.type.hashCode();
 
         return result;
+    }
+
+    /**
+     * Returns a hash code value for the value object.
+     *
+     * @return  a hash code value for the value object.
+     * @see     java.lang.Object#equals(java.lang.Object)
+     * @see     java.lang.System#identityHashCode
+     */
+    private int valueHashCode() {
+        if (this.value == null) {
+            return 0;
+        }
+
+        if (!this.type.isArray()) {
+            return this.value.hashCode();
+        }
+
+        Class<?> componentType = this.type.getComponentType();
+        if (!componentType.isPrimitive()) {
+            return Arrays.hashCode((Object[]) this.value);
+        }
+
+        switch (componentType.getName()) {
+            case "int":
+                return Arrays.hashCode((int[]) this.value);
+            case "char":
+                return Arrays.hashCode((char[]) this.value);
+            case "byte":
+                return Arrays.hashCode((byte[]) this.value);
+            case "long":
+                return Arrays.hashCode((long[]) this.value);
+            case "short":
+                return Arrays.hashCode((short[]) this.value);
+            case "float":
+                return Arrays.hashCode((float[]) this.value);
+            case "double":
+                return Arrays.hashCode((double[]) this.value);
+            case "boolean":
+                return Arrays.hashCode((boolean[]) this.value);
+            default:
+                throw new IllegalArgumentException("Unknown primitive type: " + componentType.getName());
+        }
     }
 
     /**
@@ -262,8 +290,6 @@ public final class ValueWrapper implements Serializable {
 
         ValueWrapper other = (ValueWrapper) obj;
 
-        boolean isValueHashCodeEquals = this.valueHashCode == other.valueHashCode;
-
         boolean isValueEquals = false;
         if (this.value == null || other.value == null) {
             if (this.value == null && other.value == null) {
@@ -273,61 +299,37 @@ public final class ValueWrapper implements Serializable {
             isValueEquals = this.value.equals(other.value);
         }
 
-        boolean isTypeEquals = false;
-        if (this.type == null || other.type == null) {
-            if (this.type == null && other.type == null) {
-                isTypeEquals = true;
-            }
-        } else {
-            isTypeEquals = this.type.equals(other.type);
-        }
+        boolean isTypeEquals = this.type.equals(other.type);
 
-        return isValueHashCodeEquals & isValueEquals && isTypeEquals;
+        return isValueEquals && isTypeEquals;
     }
 
     /**
      * Returns the string representation of a value along with its type and
      * identity hash code.
      *
-     * The {@code toString} method for this class returns a string consisting of:
-     * <ul>
-     *     <li>
-     *         the string representation of the origin value - if the origin value is null;
-     *
-     *         for instance:
-     *         <blockquote>
-     *             <pre>
-     *                 value.getValueStringRepresentation()
-     *             </pre>
-     *         </blockquote>
-     *     </li>
-     *     <li>
-     *         the name of the class of which the origin value object is an instance,
-     *         the at-sign character `{@code @}', the unsigned hexadecimal representation
-     *         of the hash code of the origin value object, the at-sign character `{@code =}'
-     *         and the string representation of the origin value - if the origin value is null.
-     *
-     *         for instance:
-     *         <blockquote>
-     *             <pre>
-     *                 '[' + getClass().getName() + '@' + Integer.toHexString(value.hashCode()) + ']'
-     *                 + '=' + value.getValueStringRepresentation()
-     *             </pre>
-     *         </blockquote>
-     *     </li>
-     * </ul>
+     * The {@code toString} method for this class returns a string consisting of follows: the name of the class of
+     * which
+     * the origin value object is an instance, the at-sign character `{@code @}', the unsigned hexadecimal
+     * representation of the hash code of the origin value object, the at-sign character `{@code =}' and the string
+     * representation of the origin value - if the origin value is null. For instance:
+     * <blockquote>
+     * <pre>
+     * '[' + getClass().getName() + '@'
+     * + Integer.toHexString(value.hashCode()) + ']'
+     * + '=' + value.getValueStringRepresentation()
+     * </pre>
+     * </blockquote>
      *
      * @return a string representation of the object.
      */
     @Override
     public String toString() {
-        return this.isTypeDefined()
-                ? String.format(
-                "[%s@%s]=%s",
-                this.getType().getName(),
-                Integer.toHexString(this.valueHashCode),
-                this.getValueStringRepresentation()
-        )
-                : this.getValueStringRepresentation();
+        return String.format(
+            "[%s@%s]=%s",
+            this.getType().getName(),
+            Integer.toHexString(this.valueHashCode()),
+            this.getValueStringRepresentation()
+        );
     }
 }

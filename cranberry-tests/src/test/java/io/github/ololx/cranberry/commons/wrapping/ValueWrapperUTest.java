@@ -41,7 +41,10 @@ public class ValueWrapperUTest {
     }
 
     @DataProvider(name = "values")
-    public static Object[] values() {
+    public static Object[][] values() {
+        int[] primitiveArray = new int[] {0, 1, 2};
+        Integer[] wrappedArray = new Integer[] {0, 1, 2};
+
         return new Object[][] {
                 {
                         ValueWrapper.getInstance(Boolean.TRUE),
@@ -82,12 +85,20 @@ public class ValueWrapperUTest {
                 {
                     0,
                         ValueWrapper.getInstance(0)
+                },
+                {
+                    wrappedArray,
+                        ValueWrapper.getInstance(wrappedArray)
+                },
+                {
+                    primitiveArray,
+                    ValueWrapper.getInstance(primitiveArray)
                 }
         };
     }
 
     @DataProvider(name = "testTypeValues")
-    public static Object[] testTypeValues() {
+    public static Object[][] testTypeValues() {
         return new Object[][] {
                 {
                         null,
@@ -109,46 +120,6 @@ public class ValueWrapperUTest {
     }
 
     @Test(dataProvider = "testTypeValues")
-    public void isTypeDefined_whenValueWrapperCreatedFromValue_thenItHasATypeForThisValue(Object value,
-                                                                                          Boolean expectedTypeExistance) {
-        log.info(
-                String.format(
-                        "Start test running with params:\nvalue - %s\nexpectedTypeExistance - %s",
-                        value,
-                        expectedTypeExistance
-                )
-        );
-
-        Boolean actualTypeExistance = ValueWrapper.getInstance(value).isTypeDefined();
-        log.info(String.format("Got actual value:\nactualTypeExistance - %s", actualTypeExistance));
-
-        assertTrue(
-                expectedTypeExistance.equals(actualTypeExistance),
-                "The ValueWrapper has wrong type"
-        );
-    }
-
-    @Test(dataProvider = "testTypeValues")
-    public void isTypeUndefined_whenValueWrapperCreatedFromValue_thenItHasATypeForThisValue(Object value,
-                                                                                          Boolean expectedTypeExistance) {
-        log.info(
-                String.format(
-                        "Start test running with params:\nvalue - %s\nexpectedTypeExistance - %s",
-                        value,
-                        expectedTypeExistance
-                )
-        );
-
-        Boolean actualTypeExistance = ValueWrapper.getInstance(value).isTypeUndefined();
-        log.info(String.format("Got actual value:\nactualTypeExistance - %s", actualTypeExistance));
-
-        assertTrue(
-                expectedTypeExistance.equals(!actualTypeExistance),
-                "The ValueWrapper has wrong type"
-        );
-    }
-
-    @Test(dataProvider = "testTypeValues")
     public void isValueDefined_whenValueWrapperCreatedFromValue_thenItHasATypeForThisValue(Object value,
                                                                                           Boolean expectedTypeExistance) {
         log.info(
@@ -159,7 +130,7 @@ public class ValueWrapperUTest {
                 )
         );
 
-        Boolean actualTypeExistance = ValueWrapper.getInstance(value).isValueDefined();
+        Boolean actualTypeExistance = ValueWrapper.getInstance(value).isEmpty();
         log.info(String.format("Got actual value:\nactualTypeExistance - %s", actualTypeExistance));
 
         assertTrue(
@@ -179,7 +150,7 @@ public class ValueWrapperUTest {
                 )
         );
 
-        Boolean actualTypeExistance = ValueWrapper.getInstance(value).isValueUndefined();
+        Boolean actualTypeExistance = ValueWrapper.getInstance(value).isPresent();
         log.info(String.format("Got actual value:\nactualTypeExistance - %s", actualTypeExistance));
 
         assertTrue(
@@ -284,13 +255,15 @@ public class ValueWrapperUTest {
         log.info(String.format("Got actual value:\nactualValueWrapperHashCode - %s", actualValueWrapperHashCode));
 
         assertTrue(
-                otherValueWrapper.hashCode() == actualValueWrapperHashCode,
+            actualValueWrapperHashCode == otherValueWrapper.hashCode(),
                 "The ValueWrapper instances are not equals"
         );
     }
 
     @Test
     public void equalsHashCodeContracts() {
-        EqualsVerifier.forClass(ValueWrapper.class).verify();
+        EqualsVerifier.forClass(ValueWrapper.class)
+            .withNonnullFields("value", "type")
+            .verify();
     }
 }

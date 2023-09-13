@@ -113,17 +113,23 @@
 
     <!--[properties-->
     <properties>
+        <!--[project specific-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <!--project specific]-->
+
+        <!--<sonar cloud properties-->
+        <sonar.organization>ololx</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.build.outputDirectory}</sonar.coverage.jacoco.xmlReportPaths>
+        <!--sonar cloud properties>-->
+
         <!--[distribution plugins versions-->
         <plugin.nexus.staging.ver>1.6.8</plugin.nexus.staging.ver>
         <plugin.maven.source.ver>3.2.1</plugin.maven.source.ver>
         <plugin.maven.javadoc.ver>3.3.1</plugin.maven.javadoc.ver>
         <plugin.maven.gpg.ver>3.0.1</plugin.maven.gpg.ver>
         <!--distribution plugins versions]-->
-
-        <!--[project specific-->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-        <!--project specific]-->
 
         <!--[plugins versions-->
         <plugin.maven-checkstyle-plugin.version>2.17</plugin.maven-checkstyle-plugin.version>
@@ -214,12 +220,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>${plugin.maven.javadoc.ver}</version>
-                    <configuration>
-                        <source>${java.version}</source>
-                        <detectJavaApiLink>false</detectJavaApiLink>
-                        <show>protected</show>
-                        <failOnError>false</failOnError>
-                    </configuration>
                     <executions>
                         <execution>
                             <id>attach-javadocs</id>
@@ -228,6 +228,33 @@
                             </goals>
                         </execution>
                     </executions>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <detectJavaApiLink>true</detectJavaApiLink>
+                        <show>package</show>
+                        <failOnError>true</failOnError>
+                        <javaApiLinks>
+                            <property>
+                                <name>api_1.8</name>
+                                <value>https://docs.oracle.com/javase/8/docs/api/</value>
+                            </property>
+                        </javaApiLinks>
+                        <bottom>
+                            <![CDATA[Copyright 2021, <a href="https://ololx.github.io"> ololx </a>]]>
+                        </bottom>
+                        <tags>
+                            <tag><name>apiNote</name></tag>
+                            <tag><name>implSpec</name></tag>
+                            <tag><name>implNote</name></tag>
+                            <tag><name>param</name></tag>
+                            <tag><name>return</name></tag>
+                            <tag><name>throws</name></tag>
+                            <tag><name>since</name></tag>
+                            <tag><name>version</name></tag>
+                            <tag><name>serialData</name></tag>
+                            <tag><name>see</name></tag>
+                        </tags>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

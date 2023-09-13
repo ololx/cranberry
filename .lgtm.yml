@@ -1,5 +1,0 @@
-extraction:
-  java:
-    index:
-      build_command: "mvn clean package -Dmaven.test.skip=true"
-      java_version: "11"

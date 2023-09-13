@@ -23,7 +23,7 @@
     <!--[artifact-->
     <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry</artifactId>
-    <version>0.14.1-SNAPSHOT</version>
+    <version>0.14.1</version>
     <packaging>pom</packaging>
     <!--artifact]-->
 
@@ -66,7 +66,6 @@
         <module>/cranberry-statement</module>
         <module>/cranberry-logging</module>
         <module>/cranberry-data</module>
-        <module>/cranberry-tests</module>
     </modules>
     <!--deploying modules]-->
 
@@ -256,6 +255,7 @@
                     </executions>
                 </plugin>
                 <!--distribution plugins]-->
+
             </plugins>
         </pluginManagement>
         <!--build optional]-->
@@ -511,6 +511,15 @@
         </profile>
         <!--distribution build]-->
 
+        <profile>
+            <id>basic</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>cranberry-tests</module>
+            </modules>
+        </profile>
     </profiles>
     <!--build specific]-->
 

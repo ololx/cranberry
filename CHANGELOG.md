@@ -11,6 +11,12 @@ adheres to [Semantic Versioning](http://semver.org/).
 
 - The new statement for the checking logical assertions.
 
+## [0.14.1] - 2023-09-13
+
+## Fixed
+
+- Improve `equals()`, `hashCode()` and `toString()` methods for array type in `ValueWrapper`.
+
 ## [0.14.0] - 2022-01-31
 
 ## Added

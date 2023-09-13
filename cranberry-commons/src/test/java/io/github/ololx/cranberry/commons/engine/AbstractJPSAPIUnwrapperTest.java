@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cranberry.commons.engine;
+package io.github.ololx.cranberry.commons.engine;
 
 import javax.annotation.processing.ProcessingEnvironment;
 

@@ -2,7 +2,7 @@
 <suite name="Annotation test suite">
     <test name="All annotation tests">
         <classes>
-            <class name="io.github.ololx.cranberry.data.annotation.FinalAnnotationITest" />
+            <class name="io.github.ololx.cranberry.data.modifier.annotation.FinalAnnotationITest" />
         </classes>
     </test>
 </suite>

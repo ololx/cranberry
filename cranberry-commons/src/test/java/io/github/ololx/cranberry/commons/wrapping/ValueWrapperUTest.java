@@ -14,9 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cranberry.commons.wrapping;
+package io.github.ololx.cranberry.commons.wrapping;
 
-import io.github.ololx.cranberry.commons.wrapping.ValueWrapper;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

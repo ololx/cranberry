@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="ValueWrapper test suite">
+<suite name="All tests suite" parallel="methods" thread-count="10">
     <test name="All ValueWrapper tests">
         <classes>
             <class name="io.github.ololx.cranberry.commons.wrapping.ValueWrapperUTest" />

@@ -1,0 +1,37 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="All tests suite">
+    <test name="All annotation tests">
+        <classes>
+            <class name="io.github.ololx.cranberry.statement.annotation.NotBlankAnnotationPositiveITest" />
+            <class name="io.github.ololx.cranberry.statement.annotation.NotBlankAnnotationNegativeITest" />
+            <class name="io.github.ololx.cranberry.statement.annotation.NotNullAnnotationPositiveITest" />
+            <class name="io.github.ololx.cranberry.statement.annotation.NotNullAnnotationNegativeITest" />
+            <class name="io.github.ololx.cranberry.statement.annotation.NotEmptyAnnotationPositiveITest" />
+            <class name="io.github.ololx.cranberry.statement.annotation.NotEmptyAnnotationNegativeITest" />
+            <class name="io.github.ololx.cranberry.statement.annotation.TrueAnnotationPositiveITest" />
+            <class name="io.github.ololx.cranberry.statement.annotation.TrueAnnotationNegativeITest" />
+        </classes>
+    </test>
+    <test name="All statements tests">
+        <classes>
+            <class name="io.github.ololx.cranberry.statement.internal.util.StatementsStateNotNullPositiveUTest" />
+            <class name="io.github.ololx.cranberry.statement.internal.util.StatementsStateNotNullNegativeUTest" />
+            <class name="io.github.ololx.cranberry.statement.internal.util.StatementsStateNotEmptyPositiveUTest" />
+            <class name="io.github.ololx.cranberry.statement.internal.util.StatementsStateNotEmptyNegativeUTest" />
+            <class name="io.github.ololx.cranberry.statement.internal.util.StatementsStateNotBlankPositiveUTest" />
+            <class name="io.github.ololx.cranberry.statement.internal.util.StatementsStateNotBlankNegativeUTest" />
+            <class name="io.github.ololx.cranberry.statement.internal.util.StatementsStateTruePositiveUTest" />
+            <class name="io.github.ololx.cranberry.statement.internal.util.StatementsStateTrueNegativeUTest" />
+        </classes>
+    </test>
+    <test name="All exceptions tests">
+        <classes>
+            <class name="io.github.ololx.cranberry.statement.internal.exception.StatementExceptionUTest" />
+        </classes>
+    </test>
+    <test name="All messages tests">
+        <classes>
+            <class name="io.github.ololx.cranberry.statement.resources.MessagesITest" />
+        </classes>
+    </test>
+</suite>

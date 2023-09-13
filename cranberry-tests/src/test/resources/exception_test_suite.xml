@@ -1,8 +1,0 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Exception test suite">
-    <test name="All exceptions tests">
-        <classes>
-            <class name="io.github.ololx.cranberry.statement.internal.exception.StatementExceptionUTest" />
-        </classes>
-    </test>
-</suite>

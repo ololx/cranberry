@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Annotation test suite">
+    <test name="All annotation tests">
+        <classes>
+            <class name="io.github.ololx.cranberry.data.annotation.FinalAnnotationITest" />
+        </classes>
+    </test>
+</suite>

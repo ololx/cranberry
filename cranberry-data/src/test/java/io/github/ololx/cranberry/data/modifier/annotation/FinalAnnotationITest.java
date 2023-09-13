@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.ololx.cranberry.data.annotation;
+package io.github.ololx.cranberry.data.modifier.annotation;
 
 import io.github.ololx.cranberry.data.modifier.annotation.Final;
 import org.testng.annotations.DataProvider;

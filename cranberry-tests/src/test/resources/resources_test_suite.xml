@@ -1,8 +1,0 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Messages test suite">
-    <test name="All messages tests">
-        <classes>
-            <class name="io.github.ololx.cranberry.statement.resources.MessagesITest" />
-        </classes>
-    </test>
-</suite>

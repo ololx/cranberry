@@ -8,7 +8,7 @@
     <parent>
         <groupId>io.github.ololx.cranberry</groupId>
         <artifactId>cranberry</artifactId>
-        <version>${revision}${sha1}${changelist}</version>
+        <version>0.14.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <!--parent]-->

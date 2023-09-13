@@ -23,7 +23,7 @@
     <!--[artifact-->
     <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry</artifactId>
-    <version>${revision}${sha1}${changelist}</version>
+    <version>0.14.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <!--artifact]-->
 
@@ -113,12 +113,6 @@
 
     <!--[properties-->
     <properties>
-        <!--[project versions-->
-        <revision>0.14.0</revision>
-        <changelist></changelist>
-        <sha1/>
-        <!--project versions]-->
-
         <!--[distribution plugins versions-->
         <plugin.nexus.staging.ver>1.6.8</plugin.nexus.staging.ver>
         <plugin.maven.source.ver>3.2.1</plugin.maven.source.ver>
@@ -337,23 +331,20 @@
                             <rules>
                                 <banDuplicatePomDependencyVersions />
                                 <requireMavenVersion>
-                                    <version>3.3.1,</version>
-                                    <message>
-                                        Invalid Maven version. It should, at least, be 3.3.1
-                                    </message>
+                                    <version>[3.3.1,)</version>
+                                    <message>Invalid Maven version. It should be at least 3.3.1</message>
                                 </requireMavenVersion>
-                                <!--<requireJavaVersion>
-                                    <version>1.8, 1.8</version>
-                                    <message>
-                                        Invalid Maven version. It should be 1.8
-                                    </message>
-                                </requireJavaVersion>-->
+                                <requireJavaVersion>
+                                    <version>[1.8, 15)</version>
+                                    <message>Invalid Java version. It should be between 1.8 and 14</message>
+                                </requireJavaVersion>
                             </rules>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-verifier-plugin</artifactId>
                 <version>${plugin.maven-verifier-plugin.version}</version>
                 <configuration>

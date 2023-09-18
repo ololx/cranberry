@@ -23,7 +23,7 @@
     <!--[artifact-->
     <groupId>io.github.ololx.cranberry</groupId>
     <artifactId>cranberry</artifactId>
-    <version>0.14.2-SNAPSHOT</version>
+    <version>0.14.2</version>
     <packaging>pom</packaging>
     <!--artifact]-->
 

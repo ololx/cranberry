@@ -16,7 +16,6 @@
  */
 package io.github.ololx.cranberry.data.modifier.annotation;
 
-import io.github.ololx.cranberry.data.modifier.annotation.Final;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

@@ -11,6 +11,12 @@ adheres to [Semantic Versioning](http://semver.org/).
 
 - The new statement for the checking logical assertions.
 
+## [0.14.2] - 2023-09-18
+
+## Fixed
+
+- Improve array string representation of `@LogParam` annotation - print elements of arrays.
+
 ## [0.14.1] - 2023-09-13
 
 ## Fixed

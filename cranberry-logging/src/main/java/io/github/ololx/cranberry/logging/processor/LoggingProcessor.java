@@ -15,12 +15,21 @@ import com.sun.tools.javac.util.List;
 import io.github.ololx.cranberry.commons.handler.EnterCompilationHandler;
 import io.github.ololx.cranberry.commons.scanner.MethodCompilationTreeScanner;
 import io.github.ololx.cranberry.commons.utils.TypeUtil;
+import io.github.ololx.cranberry.commons.wrapping.ValueWrapper;
 import io.github.ololx.cranberry.logging.annotation.LogParam;
 import io.github.ololx.cranberry.logging.wrapper.LoggerWrapper;
 
-import javax.annotation.processing.*;
+import javax.annotation.processing.AbstractProcessor;
+import javax.annotation.processing.Messager;
+import javax.annotation.processing.ProcessingEnvironment;
+import javax.annotation.processing.RoundEnvironment;
+import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
-import javax.lang.model.element.*;
+import javax.lang.model.element.AnnotationMirror;
+import javax.lang.model.element.AnnotationValue;
+import javax.lang.model.element.Element;
+import javax.lang.model.element.ExecutableElement;
+import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Types;
 import java.util.HashSet;
 import java.util.Map;
@@ -186,12 +195,19 @@ public class LoggingProcessor extends AbstractProcessor {
             message = String.valueOf(annotationEnElementValue.getValue().getValue());
         }
 
-        JCExpression mainFormatExpression = this.getMethodExecutionExpression("String.format");
+        JCExpression varToStringExpression = this.getMethodExecutionExpression(String.format(
+            "%s.getValueStringRepresentation",
+            ValueWrapper.class.getCanonicalName()
+        ));
+        List<JCExpression> varToStringArgs = List.nil();
+        varToStringArgs = varToStringArgs.append(maker.Ident(param.name));
+        JCExpression varToString = maker.Apply(List.<JCExpression>nil(), varToStringExpression, varToStringArgs);
 
+        JCExpression mainFormatExpression = this.getMethodExecutionExpression("String.format");
         List<JCExpression> mainFormatArgs = List.nil();
         mainFormatArgs = mainFormatArgs.append(maker.Literal(message != null ? "%s %s" : "%s = %s"));
         mainFormatArgs = mainFormatArgs.append(maker.Literal(message != null ? message : param.getName().toString()));
-        mainFormatArgs = mainFormatArgs.append(maker.Ident(param.name));
+        mainFormatArgs = mainFormatArgs.append(varToString);
 
         JCExpression format = maker.Apply(List.<JCExpression>nil(), mainFormatExpression, mainFormatArgs);
 
@@ -199,8 +215,7 @@ public class LoggingProcessor extends AbstractProcessor {
         printlnArgs = printlnArgs.append(format);
         printlnArgs = printlnArgs.append(maker.Literal(((JCMethodDecl) currentNode).getName().toString()));
 
-        JCStatement statement = maker.Exec(maker.Apply(List.<JCExpression>nil(), loggerGet, printlnArgs)
-        );
+        JCStatement statement = maker.Exec(maker.Apply(List.<JCExpression>nil(), loggerGet, printlnArgs));
 
         return statement;
     }
